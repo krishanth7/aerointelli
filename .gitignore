@@ -1,0 +1,11 @@
+# IDE and System Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Project-specific logs or agents config
+.agents/
+.gemini/
+*tmp*
+*.log
