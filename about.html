@@ -27,8 +27,8 @@
   <meta name="twitter:description" content="Pioneering closed-loop food systems, organic aeroponics, and AI crop intelligence.">
 
   <!-- LCP Performance Optimization & Preloads -->
-  <link rel="preload" as="image" href="assets/about_hero_desktop.jpg" media="(min-width: 769px)" fetchpriority="high">
-  <link rel="preload" as="image" href="assets/about_hero_mobile.jpg" media="(max-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/about_hero_desktop.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/about_hero_mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/logo.png" fetchpriority="high">
 
   <!-- Structured Data (AboutPage, Organization & FAQPage Schema) -->
@@ -126,12 +126,14 @@
       <!-- Background images — CSS handles desktop vs. mobile swap -->
       <div class="ab-hero-bg" aria-hidden="true">
         <picture>
-          <source media="(max-width: 768px)" srcset="assets/about_hero_mobile.jpg">
+          <source media="(max-width: 768px)" srcset="assets/about_hero_mobile.webp" type="image/webp">
+          <source media="(min-width: 769px)" srcset="assets/about_hero_desktop.webp" type="image/webp">
           <img
-            src="assets/about_hero_desktop.jpg"
-            alt=""
+            src="assets/about_hero_desktop.webp"
+            alt="Aero Intelli Facility"
             class="ab-hero-bg-img"
             loading="eager"
+            fetchpriority="high"
             decoding="async"
           >
         </picture>
