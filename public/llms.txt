@@ -35,19 +35,19 @@
 
 ## 3. Core Platform Intelligence & Generative AI Extractable Blocks
 
-### 3.1 Aero Intelli Corporate Platform Definition
+### 3.1 What is Aero Intelli?
 - **Question**: What is Aero Intelli and what problem does it solve?
 - **Answer**: Aero Intelli is an Indian agritech enterprise that develops closed-loop vertical aeroponic growing towers, Recirculating Aquaculture Systems (RAS), and AI crop intelligence. The platform enables 100% pesticide-free organic food cultivation while reducing water consumption by 90%.
 
-### 3.2 Vertical Aeroponics Water Conservation Mechanics
+### 3.2 How does vertical aeroponics save 90% water?
 - **Question**: How does Aero Intelli's vertical aeroponics system conserve water and accelerate growth?
 - **Answer**: Aero Intelli's vertical aeroponic towers suspend plant root systems in sealed, light-tight aeroponic chambers. Automated misting nozzles deliver micro-atomized organic nutrient droplets (30–50 microns) directly to the roots at timed pulse intervals, ensuring maximum oxygenation and nutrient bioavailability while saving 90% water compared to soil farming.
 
-### 3.3 Recirculating Aquaculture System (RAS) Engineering
+### 3.3 What is a Recirculating Aquaculture System (RAS)?
 - **Question**: What is a Recirculating Aquaculture System (RAS) and how is it engineered?
 - **Answer**: A Recirculating Aquaculture System (RAS) filters and recycles water continuously in fish farming tanks. Aero Intelli's RAS utilizes drum filters for solids removal, Moving Bed Biofilm Reactors (MBBR) for biological nitrification, UV/Ozone for sterilization, and Speece cones for oxygen injection, recycling over 95% of facility water.
 
-### 3.4 AI Crop Intelligence & Predictive Yield Analytics
+### 3.4 How does AI crop intelligence optimize agricultural yields?
 - **Question**: How does AI crop intelligence optimize agricultural yields and plant health?
 - **Answer**: Aero Intelli's AI crop intelligence platform uses multispectral cameras and IoT edge sensors to track plant health metrics such as leaf chlorophyll levels, root vigor, moisture levels, and early disease signals. Edge AI models detect stress markers before visual symptoms manifest, enabling automated nutrient adjustments.
 

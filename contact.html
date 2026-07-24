@@ -27,7 +27,72 @@
   <meta name="twitter:description" content="Connect with Aero Intelli for sustainable agriculture systems, water technologies, and partnership opportunities.">
 
   <!-- LCP Performance Optimization & Preloads -->
-  <link rel="preload" as="image" href="assets/logo.png" fetchpriority="high">
+  <!-- Structured Data (ContactPage, Organization & FAQPage Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://aerointelli.com/contact.html#webpage",
+        "url": "https://aerointelli.com/contact.html",
+        "name": "Contact Aero Intelli — Corporate & Partnerships",
+        "description": "Connect with Aero Intelli to explore aquaculture infrastructure, vertical aeroponics, water technologies, and corporate partnership opportunities.",
+        "publisher": { "@id": "https://aerointelli.com/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://aerointelli.com/#organization",
+        "name": "Aero Intelli",
+        "url": "https://aerointelli.com",
+        "logo": "https://aerointelli.com/assets/logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Madhapur, Silicon Valley Tech Corridor",
+          "addressLocality": "Hyderabad",
+          "addressRegion": "Telangana",
+          "addressCountry": "India"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-9989944839",
+          "contactType": "customer service",
+          "email": "krishanth@aerointelli.com"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://aerointelli.com/contact.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How can enterprise partners collaborate with Aero Intelli?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enterprise partners can collaborate with Aero Intelli through technology licensing, joint venture infrastructure development, commercial aeroponic deployment, and RAS aquaculture engineering partnerships."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where are Aero Intelli's corporate offices located?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aero Intelli's corporate office is located in Madhapur, Silicon Valley Tech Corridor, Hyderabad, Telangana, India."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can investors request technical briefing materials?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Institutional investors and partners can request technical briefings and commercial roadmaps by submitting a partnership inquiry or contacting our corporate team directly."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -515,6 +580,60 @@
             Call Now
           </a>
           <a href="#conversational-flow" class="ct-btn ct-btn--secondary">Send an Inquiry</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FAQ SECTION ─── -->
+    <section id="faq" class="ct-section bg-[#F4F6F3]">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="ct-header-centered">
+          <span class="ct-section-label">Partnership Intelligence</span>
+          <h2 class="ct-title-section">Frequently Asked Questions</h2>
+          <p class="ct-desc-lead">Key information for enterprise partners, institutional investors, and corporate inquiries.</p>
+        </div>
+
+        <div class="space-y-4" style="margin-top: 32px;">
+          
+          <details class="group bg-white rounded-2xl p-6 border border-[#E2ECE5] shadow-xs cursor-pointer transition-all duration-200" open>
+            <summary class="flex justify-between items-center list-none select-none">
+              <h2 class="font-['Fraunces'] text-lg text-[#1D291C] font-semibold">How can enterprise partners collaborate with Aero Intelli?</h2>
+              <span class="text-[#006B5E] transition-transform duration-300 group-open:rotate-180">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="font-['Inter'] text-sm text-[#556353] leading-relaxed mt-4 pt-4 border-t border-[#F0F5F1] space-y-2">
+              <p class="font-semibold text-[#006B5E] text-xs uppercase tracking-wider">Direct Answer</p>
+              <p>Enterprise partners can collaborate with Aero Intelli through technology licensing, joint venture infrastructure development, commercial aeroponic deployment, and RAS aquaculture engineering partnerships.</p>
+            </div>
+          </details>
+
+          <details class="group bg-white rounded-2xl p-6 border border-[#E2ECE5] shadow-xs cursor-pointer transition-all duration-200">
+            <summary class="flex justify-between items-center list-none select-none">
+              <h2 class="font-['Fraunces'] text-lg text-[#1D291C] font-semibold">Where are Aero Intelli's corporate offices located?</h2>
+              <span class="text-[#006B5E] transition-transform duration-300 group-open:rotate-180">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="font-['Inter'] text-sm text-[#556353] leading-relaxed mt-4 pt-4 border-t border-[#F0F5F1] space-y-2">
+              <p class="font-semibold text-[#006B5E] text-xs uppercase tracking-wider">Direct Answer</p>
+              <p>Aero Intelli's corporate office is located in Madhapur, Silicon Valley Tech Corridor, Hyderabad, Telangana, India.</p>
+            </div>
+          </details>
+
+          <details class="group bg-white rounded-2xl p-6 border border-[#E2ECE5] shadow-xs cursor-pointer transition-all duration-200">
+            <summary class="flex justify-between items-center list-none select-none">
+              <h2 class="font-['Fraunces'] text-lg text-[#1D291C] font-semibold">How can investors request technical briefing materials?</h2>
+              <span class="text-[#006B5E] transition-transform duration-300 group-open:rotate-180">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="font-['Inter'] text-sm text-[#556353] leading-relaxed mt-4 pt-4 border-t border-[#F0F5F1] space-y-2">
+              <p class="font-semibold text-[#006B5E] text-xs uppercase tracking-wider">Direct Answer</p>
+              <p>Institutional investors and partners can request technical briefings and commercial roadmaps by submitting a partnership inquiry or contacting our corporate team directly.</p>
+            </div>
+          </details>
+
         </div>
       </div>
     </section>

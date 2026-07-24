@@ -29,43 +29,63 @@
   <link rel="preload" as="image" href="../assets/ras-hero.png" fetchpriority="high">
   <link rel="preload" as="image" href="../assets/logo.png" fetchpriority="high">
 
-  <!-- Structured Data (FAQPage Schema) -->
+  <!-- Structured Data (TechArticle & FAQPage Schema) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "How does RAS differ from flow-through systems?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Flow-through systems pull water from a source, pass it through tanks once, and discharge it as effluent. RAS captures the water, mechanically and biologically purifies it, and returns it to the tanks—reusing up to 99% of the volume."
+        "@type": "TechArticle",
+        "@id": "https://aerointelli.com/Technology/RAS.html#article",
+        "headline": "Recirculating Aquaculture Systems (RAS) Engineering Platform",
+        "description": "Closed-loop water filtration, biological bio-reactors, UV/Ozone sterilization, and autonomous fish farming technology by Aero Intelli.",
+        "url": "https://aerointelli.com/Technology/RAS.html",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Aero Intelli",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://aerointelli.com/assets/logo.png"
+          }
         }
       },
       {
-        "@type": "Question",
-        "name": "What limits production density in RAS?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Density is bound entirely by engineering capabilities—specifically oxygen transfer efficiency and biofiltration capacity to process ammonia. Aero Intelli systems are engineered to lift these ceilings significantly."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is biosecurity maintained?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "By decoupling the farm from external water bodies and deploying commercial UV/Ozone loops, the vectors for pathogen entry are virtually eliminated, drastically reducing the need for antibiotics."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can the system operate autonomously?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "While human oversight is required for biological observation, our automation layer (SCADA) handles real-time parameter corrections, oxygen dosing, and water balancing autonomously."
-        }
+        "@type": "FAQPage",
+        "@id": "https://aerointelli.com/Technology/RAS.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does RAS differ from traditional flow-through aquaculture?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Flow-through systems pull water from a source, pass it through tanks once, and discharge it as effluent. RAS captures the water, mechanically and biologically purifies it, and returns it to the tanks—reusing up to 99% of system volume."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What limits production density in RAS engineering?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Density is bound entirely by engineering capabilities—specifically oxygen transfer efficiency and biofiltration capacity to process ammonia. Aero Intelli systems are engineered to lift these ceilings significantly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is biosecurity maintained in closed-loop aquaculture?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "By decoupling the farm from external water bodies and deploying commercial UV/Ozone loops, the vectors for pathogen entry are virtually eliminated, drastically reducing the need for antibiotics."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the system operate autonomously without continuous manual intervention?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "While human oversight is required for biological observation, our automation layer (SCADA) handles real-time parameter corrections, oxygen dosing, and water balancing autonomously."
+            }
+          }
+        ]
       }
     ]
   }
@@ -428,27 +448,27 @@
 
     <!-- SECTION 10: FAQ -->
     <section class="dt-section">
-      <h2 class="dt-section-title ras-title-display">Executive Briefing</h2>
+      <h2 class="dt-section-title ras-title-display">Executive Briefing &amp; Technical Q&amp;A</h2>
       <div class="dt-faq-grid">
         <div class="dt-faq-card">
-          <h4>Recirculating Aquaculture vs. Flow-Through Systems</h4>
-          <p><strong>Core Question:</strong> How does RAS differ from traditional flow-through aquaculture?</p>
-          <p><strong>Answer:</strong> Flow-through systems pull water from a source, pass it through tanks once, and discharge it as effluent. RAS captures the water, mechanically and biologically purifies it, and returns it to the tanks—reusing up to 99% of system volume.</p>
+          <h2 class="text-xl font-semibold text-white mb-2">How does RAS differ from traditional flow-through aquaculture?</h2>
+          <p class="text-xs text-[#006B5E] font-semibold mb-1 uppercase tracking-wider">Direct Answer</p>
+          <p>Flow-through systems pull water from a source, pass it through tanks once, and discharge it as effluent. RAS captures the water, mechanically and biologically purifies it, and returns it to the tanks—reusing up to 99% of system volume.</p>
         </div>
         <div class="dt-faq-card">
-          <h4>Production Density Boundaries &amp; Bio-Capacity</h4>
-          <p><strong>Core Question:</strong> What limits production density in RAS engineering?</p>
-          <p><strong>Answer:</strong> Density is bound entirely by engineering capabilities—specifically oxygen transfer efficiency and biofiltration capacity to process ammonia. Aero Intelli systems are engineered to lift these ceilings significantly.</p>
+          <h2 class="text-xl font-semibold text-white mb-2">What limits production density in RAS engineering?</h2>
+          <p class="text-xs text-[#006B5E] font-semibold mb-1 uppercase tracking-wider">Direct Answer</p>
+          <p>Density is bound entirely by engineering capabilities—specifically oxygen transfer efficiency and biofiltration capacity to process ammonia. Aero Intelli systems are engineered to lift these ceilings significantly.</p>
         </div>
         <div class="dt-faq-card">
-          <h4>Pathogen Control &amp; Facility Biosecurity</h4>
-          <p><strong>Core Question:</strong> How is biosecurity maintained in closed-loop aquaculture?</p>
-          <p><strong>Answer:</strong> By decoupling the farm from external water bodies and deploying commercial UV/Ozone loops, the vectors for pathogen entry are virtually eliminated, drastically reducing the need for antibiotics.</p>
+          <h2 class="text-xl font-semibold text-white mb-2">How is biosecurity maintained in closed-loop aquaculture?</h2>
+          <p class="text-xs text-[#006B5E] font-semibold mb-1 uppercase tracking-wider">Direct Answer</p>
+          <p>By decoupling the farm from external water bodies and deploying commercial UV/Ozone loops, the vectors for pathogen entry are virtually eliminated, drastically reducing the need for antibiotics.</p>
         </div>
         <div class="dt-faq-card">
-          <h4>Autonomous SCADA Controls &amp; Sensor Automation</h4>
-          <p><strong>Core Question:</strong> Can the system operate autonomously without continuous manual intervention?</p>
-          <p><strong>Answer:</strong> While human oversight is required for biological observation, our automation layer (SCADA) handles real-time parameter corrections, oxygen dosing, and water balancing autonomously.</p>
+          <h2 class="text-xl font-semibold text-white mb-2">Can the system operate autonomously without continuous manual intervention?</h2>
+          <p class="text-xs text-[#006B5E] font-semibold mb-1 uppercase tracking-wider">Direct Answer</p>
+          <p>While human oversight is required for biological observation, our automation layer (SCADA) handles real-time parameter corrections, oxygen dosing, and water balancing autonomously.</p>
         </div>
       </div>
     </section>

@@ -31,35 +31,63 @@
   <link rel="preload" as="image" href="assets/about_hero_mobile.jpg" media="(max-width: 768px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/logo.png" fetchpriority="high">
 
-  <!-- Structured Data (FAQPage Schema) -->
+  <!-- Structured Data (AboutPage, Organization & FAQPage Schema) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "What is Aero Intelli's corporate mission?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Aero Intelli's mission is to eliminate agricultural chemical dependencies, conserve 90%+ water reserves, and deliver pesticide-free organic food security through intelligent closed-loop vertical aeroponics and smart RAS aquaculture."
+        "@type": "AboutPage",
+        "@id": "https://aerointelli.com/about.html#webpage",
+        "url": "https://aerointelli.com/about.html",
+        "name": "About Aero Intelli — Sustainable Agritech Vision",
+        "description": "Discover Aero Intelli: Pioneering zero-chemical vertical aeroponics, smart RAS aquaculture, and AI crop intelligence for sustainable food security.",
+        "publisher": { "@id": "https://aerointelli.com/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://aerointelli.com/#organization",
+        "name": "Aero Intelli",
+        "url": "https://aerointelli.com",
+        "logo": "https://aerointelli.com/assets/logo.png",
+        "description": "Pioneering organic vertical aeroponics, smart recirculating aquaculture, and AI crop intelligence.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Madhapur, Silicon Valley Tech Corridor",
+          "addressLocality": "Hyderabad",
+          "addressRegion": "Telangana",
+          "addressCountry": "India"
         }
       },
       {
-        "@type": "Question",
-        "name": "Where is Aero Intelli headquartered?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Aero Intelli is headquartered in Madhapur, Silicon Valley tech corridor, Hyderabad, Telangana, India."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What core technologies does Aero Intelli develop?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Aero Intelli develops zero-chemical vertical aeroponic towers, Recirculating Aquaculture Systems (RAS), multispectral AI crop intelligence, and closed-loop clean water recycling infrastructure."
-        }
+        "@type": "FAQPage",
+        "@id": "https://aerointelli.com/about.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Aero Intelli's corporate mission in sustainable agriculture?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aero Intelli's mission is to eliminate agricultural chemical dependencies, conserve 90%+ water reserves, and deliver pesticide-free organic food security through intelligent closed-loop vertical aeroponics and smart RAS aquaculture."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is Aero Intelli headquartered?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aero Intelli is headquartered in Madhapur, Silicon Valley tech corridor, Hyderabad, Telangana, India."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Aero Intelli combine aeroponics and AI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aero Intelli combines zero-chemical vertical aeroponic towers with edge AI sensors and computer vision to monitor plant physiological stress, micro-atomize organic nutrients, and optimize crop yields autonomously."
+            }
+          }
+        ]
       }
     ]
   }
@@ -553,7 +581,59 @@
 
           <p class="font-['IBM_Plex_Sans'] text-base md:text-lg mt-8 max-w-[560px]" style="line-height:1.75; color:#55606E;">
             Bunga Krishanth founded Aero Intelli to close the technology gap, empowering Indian farmers with the same intelligent tools used by the world's most advanced food producers. What started as hands-on work — writing control code, wiring sensors, and testing water chemistry by hand — became a company built to place automated AI systems in the hands of growers. Every system we deliver is designed to ensure our farmers work side-by-side with state-of-the-art technology.
-          </p>
+      </div>
+    </section>
+
+    <!-- ─── FAQ SECTION ─── -->
+    <section id="faq" class="py-20 lg:py-28 bg-[#F4F6F3]">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+          <span class="inline-block font-['Inter'] text-xs font-semibold uppercase tracking-wider text-[#006B5E] mb-3 select-none">Corporate Intelligence</span>
+          <h2 class="font-['Fraunces'] text-3xl sm:text-4xl text-[#1D291C] font-semibold">Frequently Asked Questions</h2>
+          <p class="font-['Inter'] text-sm text-[#556353] mt-4">Key insights into Aero Intelli's corporate mission, headquarters, and agritech platform.</p>
+        </div>
+
+        <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+          
+          <details class="group bg-white rounded-2xl p-6 border border-[#E2ECE5] shadow-xs cursor-pointer transition-all duration-200" open>
+            <summary class="flex justify-between items-center list-none select-none">
+              <h2 class="font-['Fraunces'] text-lg text-[#1D291C] font-semibold">What is Aero Intelli's corporate mission in sustainable agriculture?</h2>
+              <span class="text-[#006B5E] transition-transform duration-300 group-open:rotate-180">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="font-['Inter'] text-sm text-[#556353] leading-relaxed mt-4 pt-4 border-t border-[#F0F5F1] space-y-2">
+              <p class="font-semibold text-[#006B5E] text-xs uppercase tracking-wider">Direct Answer</p>
+              <p>Aero Intelli's mission is to eliminate agricultural chemical dependencies, conserve 90%+ water reserves, and deliver pesticide-free organic food security through intelligent closed-loop vertical aeroponics and smart RAS aquaculture.</p>
+            </div>
+          </details>
+
+          <details class="group bg-white rounded-2xl p-6 border border-[#E2ECE5] shadow-xs cursor-pointer transition-all duration-200">
+            <summary class="flex justify-between items-center list-none select-none">
+              <h2 class="font-['Fraunces'] text-lg text-[#1D291C] font-semibold">Where is Aero Intelli headquartered?</h2>
+              <span class="text-[#006B5E] transition-transform duration-300 group-open:rotate-180">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="font-['Inter'] text-sm text-[#556353] leading-relaxed mt-4 pt-4 border-t border-[#F0F5F1] space-y-2">
+              <p class="font-semibold text-[#006B5E] text-xs uppercase tracking-wider">Direct Answer</p>
+              <p>Aero Intelli is headquartered in Madhapur, Silicon Valley tech corridor, Hyderabad, Telangana, India.</p>
+            </div>
+          </details>
+
+          <details class="group bg-white rounded-2xl p-6 border border-[#E2ECE5] shadow-xs cursor-pointer transition-all duration-200">
+            <summary class="flex justify-between items-center list-none select-none">
+              <h2 class="font-['Fraunces'] text-lg text-[#1D291C] font-semibold">How does Aero Intelli combine aeroponics and AI?</h2>
+              <span class="text-[#006B5E] transition-transform duration-300 group-open:rotate-180">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="font-['Inter'] text-sm text-[#556353] leading-relaxed mt-4 pt-4 border-t border-[#F0F5F1] space-y-2">
+              <p class="font-semibold text-[#006B5E] text-xs uppercase tracking-wider">Direct Answer</p>
+              <p>Aero Intelli combines zero-chemical vertical aeroponic towers with edge AI sensors and computer vision to monitor plant physiological stress, micro-atomize organic nutrients, and optimize crop yields autonomously.</p>
+            </div>
+          </details>
+
         </div>
       </div>
     </section>
