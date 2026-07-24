@@ -99,7 +99,6 @@
                     <li><a href="${this.getLink('#blog')}">Blog</a></li>
                     <li><a href="${this.getLink('#research')}">Research</a></li>
                     <li><a href="${this.getLink('#case-studies')}">Case Studies</a></li>
-                    <li><a href="${this.getLink('llms.txt')}">AI / LLM Manifest</a></li>
                     <li><a href="${this.getLink('contact.html')}">Contact</a></li>
                   </ul>
                 </div>
@@ -137,17 +136,14 @@
               <div class="f-bottom-links">
                 <a href="${this.getLink('legal/terms-and-conditions.html')}">Terms &amp; Conditions</a>
                 <a href="${this.getLink('legal/privacy-policy.html')}">Privacy Policy</a>
-                <a href="${this.getLink('sitemap.xml')}">Sitemap</a>
                 <div class="f-more-menu-wrapper">
-                  <button type="button" class="f-more-btn" id="f-more-menu-btn" aria-label="More legal policies and system manifests" aria-expanded="false" aria-haspopup="true">
+                  <button type="button" class="f-more-btn" id="f-more-menu-btn" aria-label="More legal policies" aria-expanded="false" aria-haspopup="true">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg>
                   </button>
                   <div class="f-more-dropdown" id="f-more-dropdown-menu" role="menu" aria-hidden="true">
                     <a href="${this.getLink('legal/refund-policy.html')}" role="menuitem">Refund &amp; Cancellation Policy</a>
                     <a href="${this.getLink('legal/shipping-policy.html')}" role="menuitem">Shipping &amp; Delivery Policy</a>
                     <a href="${this.getLink('legal/disclaimer.html')}" role="menuitem">Disclaimer</a>
-                    <a href="${this.getLink('llms.txt')}" role="menuitem">AI Search Manifest (llms.txt)</a>
-                    <a href="${this.getLink('robots.txt')}" role="menuitem">Robots Policy (robots.txt)</a>
                   </div>
                 </div>
               </div>
