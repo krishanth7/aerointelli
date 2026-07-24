@@ -53,13 +53,18 @@ body {
   justify-content: center;
   text-align: center;
   background-color: #020617;
-  background-image: url('../assets/ras-hero.webp');
+  background-image: url('../assets/ras_hero_mobile.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #FFFFFF;
   padding: 120px 20px;
   overflow: hidden;
+}
+@media (min-width: 769px) {
+  .dt-hero {
+    background-image: url('../assets/ras-hero.webp');
+  }
 }
 
 /* Dark tech overlay so text remains readable over the image */
