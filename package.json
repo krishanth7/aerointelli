@@ -20,12 +20,13 @@
     "react-dom": "^19.2.7",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
-    "vite": "^8.1.5",
+    "vite": "^6.4.3",
     "wrangler": "^4.114.0"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "predeploy": "npm run build",
     "deploy": "npm run build && wrangler deploy",
     "preview": "npm run build && wrangler dev"
   }

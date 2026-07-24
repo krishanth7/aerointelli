@@ -2,6 +2,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "aerointelli",
   "compatibility_date": "2026-07-24",
+  "build": {
+    "command": "npm run build"
+  },
   "observability": {
     "enabled": true
   },
