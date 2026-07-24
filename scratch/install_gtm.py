@@ -7,7 +7,18 @@ GTM_HEAD = """  <!-- Google Tag Manager -->
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-PCLBPXPB');</script>
-  <!-- End Google Tag Manager -->\n"""
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PCLBPXPB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'GTM-PCLBPXPB');
+  </script>
+  <!-- End Google tag (gtag.js) -->\n"""
 
 GTM_BODY = """  <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCLBPXPB"
@@ -35,18 +46,22 @@ for file_path in html_files:
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Skip if GTM already installed
-    if 'GTM-PCLBPXPB' in content:
-        print(f"GTM already present in {file_path}")
-        continue
+    # Remove previous GTM insertions if any
+    content = re.sub(r'<!-- Google Tag Manager -->.*?<!-- End Google Tag Manager -->\s*', '', content, flags=re.DOTALL)
+    content = re.sub(r'<!-- Google tag \(gtag\.js\) -->.*?<!-- End Google tag \(gtag\.js\) -->\s*', '', content, flags=re.DOTALL)
+    content = re.sub(r'<!-- Google Tag Manager \(noscript\) -->.*?<!-- End Google Tag Manager \(noscript\) -->\s*', '', content, flags=re.DOTALL)
 
-    # Insert head snippet as high in <head> as possible (right after <head>)
-    content = re.sub(r'(<head.*?>)', r'\1\n' + GTM_HEAD, content, count=1, flags=re.IGNORECASE)
+    # Ensure <meta charset="UTF-8"> comes immediately after <head>
+    # Insert GTM_HEAD immediately after <meta name="viewport"...> or after charset
+    if '<meta charset="UTF-8">' in content:
+        content = re.sub(r'(<meta charset="UTF-8">.*?\n)', r'\1' + GTM_HEAD, content, count=1, flags=re.IGNORECASE)
+    else:
+        content = re.sub(r'(<head.*?>\n)', r'\1' + GTM_HEAD, content, count=1, flags=re.IGNORECASE)
 
-    # Insert body snippet immediately after opening <body> tag
+    # Insert GTM_BODY immediately after opening <body> tag
     content = re.sub(r'(<body.*?>)', r'\1\n' + GTM_BODY, content, count=1, flags=re.IGNORECASE)
 
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write(content)
 
-    print(f"Successfully installed GTM in {file_path}")
+    print(f"Updated Google Tag in {file_path}")
