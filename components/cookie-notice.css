@@ -1,0 +1,396 @@
+/* ==========================================================================
+   AERO INTELLI — PREMIUM COOKIE NOTICE & SETTINGS STYLING
+   ========================================================================== */
+
+/* ---- Banner Container ---- */
+.aero-cookie-banner {
+  position: fixed;
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 107, 94, 0.06), 0 10px 20px rgba(15, 23, 42, 0.04);
+  color: #0F172A;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.aero-cookie-banner.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Responsive banner layout */
+@media (min-width: 768px) {
+  .aero-cookie-banner {
+    bottom: 32px;
+    right: 32px;
+    max-width: 440px;
+    border-radius: 20px;
+    padding: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .aero-cookie-banner {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 24px 24px 0 0;
+    padding: 24px 20px 28px;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+/* ---- Text Content ---- */
+.aero-cookie-title {
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aero-cookie-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+.aero-cookie-text a {
+  color: #006B5E;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.aero-cookie-text a:hover {
+  color: #008F7D;
+  border-color: #008F7D;
+}
+
+/* ---- Button Actions ---- */
+.aero-cookie-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aero-cookie-btn-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.aero-cookie-btn {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  text-align: center;
+  border: none;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.aero-cookie-btn--primary {
+  background: #006B5E;
+  color: #FFFFFF;
+  flex: 1;
+  box-shadow: 0 4px 12px rgba(0, 107, 94, 0.15);
+}
+
+.aero-cookie-btn--primary:hover {
+  background: #008F7D;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 143, 125, 0.25);
+}
+
+.aero-cookie-btn--secondary {
+  background: #F1F5F9;
+  color: #334155;
+  border: 1px solid #E2E8F0;
+  flex: 1;
+}
+
+.aero-cookie-btn--secondary:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.aero-cookie-btn--text {
+  background: transparent;
+  color: #006B5E;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  width: max-content;
+  margin: 4px auto 0 auto;
+}
+
+.aero-cookie-btn--text:hover {
+  background: rgba(0, 107, 94, 0.05);
+  color: #008F7D;
+}
+
+/* ---- Cookie Settings Modal ---- */
+.aero-cookie-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+}
+
+.aero-cookie-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.aero-cookie-modal {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 540px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #0F172A;
+}
+
+.aero-cookie-overlay.show .aero-cookie-modal {
+  transform: scale(1) translateY(0);
+}
+
+.aero-cookie-modal-header {
+  padding: 24px 28px 16px;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aero-cookie-modal-title {
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.aero-cookie-modal-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.aero-cookie-modal-close:hover {
+  background: #F1F5F9;
+  color: #0F172A;
+}
+
+.aero-cookie-modal-body {
+  padding: 20px 28px 28px;
+  overflow-y: auto;
+  flex: 1;
+  font-size: 14px;
+}
+
+.aero-cookie-modal-desc {
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Category card stylings */
+.aero-cookie-category {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.aero-cookie-category:hover {
+  border-color: rgba(0, 107, 94, 0.3);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.aero-cookie-cat-info {
+  flex: 1;
+}
+
+.aero-cookie-cat-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.aero-cookie-cat-name {
+  font-weight: 600;
+  color: #0F172A;
+}
+
+.aero-cookie-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.aero-cookie-badge--required {
+  background: #E0F2FE;
+  color: #0369A1;
+}
+
+.aero-cookie-badge--optional {
+  background: #F1F5F9;
+  color: #475569;
+}
+
+.aero-cookie-cat-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #64748B;
+}
+
+/* ---- Custom Switch Switch Box ---- */
+.aero-cookie-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.aero-cookie-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.aero-cookie-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #CBD5E1;
+  transition: .3s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: 34px;
+}
+
+.aero-cookie-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.1);
+}
+
+.aero-cookie-switch input:checked + .aero-cookie-slider {
+  background-color: #006B5E;
+}
+
+.aero-cookie-switch input:focus + .aero-cookie-slider {
+  box-shadow: 0 0 1px #006B5E;
+}
+
+.aero-cookie-switch input:checked + .aero-cookie-slider:before {
+  transform: translateX(20px);
+}
+
+.aero-cookie-switch input:disabled + .aero-cookie-slider {
+  background-color: #E2E8F0;
+  cursor: not-allowed;
+}
+
+.aero-cookie-switch input:disabled + .aero-cookie-slider:before {
+  background-color: #94A3B8;
+}
+
+/* ---- Modal Footer ---- */
+.aero-cookie-modal-footer {
+  padding: 20px 28px;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: rgba(248, 250, 252, 0.8);
+}
+
+/* Custom Scrollbar for modal */
+.aero-cookie-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.aero-cookie-modal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.aero-cookie-modal-body::-webkit-scrollbar-thumb {
+  background-color: #CBD5E1;
+  border-radius: 3px;
+}
+
+.aero-cookie-modal-body::-webkit-scrollbar-thumb:hover {
+  background-color: #94A3B8;
+}

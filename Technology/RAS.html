@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recirculating Aquaculture Systems | Engineering Platform — Aero Intelli</title>
+  <meta name="description" content="Explore Aero Intelli's Recirculating Aquaculture Systems (RAS). Closed-loop water treatment, biological filtration, IoT automation, and sustainable fish production.">
+  <meta name="keywords" content="RAS, Recirculating Aquaculture System, aquaculture engineering, closed-loop fish farming, water treatment, biofiltration, Aero Intelli">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aerointelli.com/Technology/RAS.html">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://aerointelli.com/sitemap.xml">
+  <meta name="theme-color" content="#006B5E">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aerointelli.com/Technology/RAS.html">
+  <meta property="og:site_name" content="Aero Intelli">
+  <meta property="og:title" content="Recirculating Aquaculture Systems | Aero Intelli">
+  <meta property="og:description" content="Closed-loop water treatment, biofiltration, IoT automation, and sustainable fish production engineering.">
+  <meta property="og:image" content="https://aerointelli.com/assets/og-image.png">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@aerointelli">
+  <meta name="twitter:title" content="Recirculating Aquaculture Systems | Aero Intelli">
+  <meta name="twitter:description" content="Closed-loop water treatment, biofiltration, IoT automation, and sustainable fish production engineering.">
+  <!-- LCP Performance Optimization & Preloads -->
+  <link rel="preload" as="image" href="../assets/ras-hero.png" fetchpriority="high">
+  <link rel="preload" as="image" href="../assets/logo.png" fetchpriority="high">
+
+  <!-- Structured Data (FAQPage Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does RAS differ from flow-through systems?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Flow-through systems pull water from a source, pass it through tanks once, and discharge it as effluent. RAS captures the water, mechanically and biologically purifies it, and returns it to the tanks—reusing up to 99% of the volume."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What limits production density in RAS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Density is bound entirely by engineering capabilities—specifically oxygen transfer efficiency and biofiltration capacity to process ammonia. Aero Intelli systems are engineered to lift these ceilings significantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is biosecurity maintained?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "By decoupling the farm from external water bodies and deploying commercial UV/Ozone loops, the vectors for pathogen entry are virtually eliminated, drastically reducing the need for antibiotics."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can the system operate autonomously?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "While human oversight is required for biological observation, our automation layer (SCADA) handles real-time parameter corrections, oxygen dosing, and water balancing autonomously."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../components/header.css">
+  <link rel="stylesheet" href="../components/footer.css">
+  <link rel="stylesheet" href="ras.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+</head>
+<body class="ras-wrapper">
+  <div id="header-root"></div>
+  
+  <main id="main">
+    
+    <!-- SECTION 1: IMMERSIVE HERO -->
+    <section class="dt-hero">
+      <div class="dt-hero-content reveal-on-load">
+        <span class="dt-label">TECHNOLOGY</span>
+        <h1 class="dt-hero-title ras-title-display">Recirculating<br>Aquaculture Systems</h1>
+        <h2 class="dt-hero-sub">Engineering the Future of Sustainable Fish Production</h2>
+        <p class="dt-hero-desc">
+          Aero Intelli's Recirculating Aquaculture Systems combine advanced water treatment, intelligent automation, biological engineering, and data-driven monitoring to create highly efficient aquaculture environments.
+        </p>
+        <div class="dt-btn-group">
+          <a href="#engineering" class="dt-btn dt-btn-primary">Explore Technology</a>
+          <a href="../contact.html" class="dt-btn dt-btn-glass">Request Consultation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE CHALLENGE -->
+    <section id="challenge-scroll-wrapper" class="bg-white" style="height: 300vh; position: relative;">
+      <div class="sticky top-0 w-full h-screen flex flex-col justify-center items-center overflow-hidden pt-20">
+        <h2 class="dt-section-title ras-title-display center" style="margin-bottom: 80px;">Aquaculture Faces a Resource Challenge</h2>
+        <div class="dt-challenge-grid w-full max-w-7xl px-8" style="perspective: 1200px;">
+          
+          <div class="dt-stat-card dt-3d-card" style="opacity: 0; will-change: transform, opacity; transform-origin: bottom center;">
+            <div class="dt-stat-val">Water Consumption</div>
+            <div class="dt-stat-title">Traditional systems exhaust fresh water.</div>
+            <div class="dt-stat-desc">Flow-through aquaculture and open-pond systems demand massive continuous volumes of fresh water, rapidly depleting local natural resources and limiting geographic viability.</div>
+          </div>
+          
+          <div class="dt-stat-card dt-3d-card" style="opacity: 0; will-change: transform, opacity; transform-origin: bottom center;">
+            <div class="dt-stat-val">Production Efficiency</div>
+            <div class="dt-stat-title">Environmental variability limits yields.</div>
+            <div class="dt-stat-desc">Open-water systems are exposed to unpredictable weather, temperature fluctuations, and external pathogens, leading to inconsistent harvests and high mortality rates.</div>
+          </div>
+          
+          <div class="dt-stat-card dt-3d-card" style="opacity: 0; will-change: transform, opacity; transform-origin: bottom center;">
+            <div class="dt-stat-val">Environmental Impact</div>
+            <div class="dt-stat-title">Uncontrolled effluent damages ecosystems.</div>
+            <div class="dt-stat-desc">Untreated waste discharge from conventional fish farming causes severe eutrophication in local waterways, destroying surrounding aquatic biodiversity.</div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE APPROACH (ULTRA-PREMIUM BENTO BOX) -->
+    <section class="w-full" style="background-color: #000000; padding: 120px 0;">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        
+        <div class="text-center mb-20">
+          <h2 class="text-5xl md:text-6xl font-bold text-white tracking-tight mb-6" style="letter-spacing: -0.02em;">A Closed-Loop Ecosystem.</h2>
+          <p class="text-slate-400 text-xl max-w-2xl mx-auto font-light">Every stage of water treatment, intelligently orchestrated.</p>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)] md:auto-rows-[280px]">
+          
+          <!-- Box 1: Filtration (Col span 2) -->
+          <div class="md:col-span-2 bg-[#0a0a0a] rounded-[32px] p-10 md:p-12 relative overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 group shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div class="relative z-10 flex flex-col h-full justify-between">
+              <div>
+                <h3 class="text-white font-semibold text-3xl mb-3 tracking-tight">Mechanical Filtration</h3>
+                <p class="text-slate-400 text-base max-w-md leading-relaxed">Micro-drum filters extract suspended solids down to 40 microns with zero operational downtime, ensuring pristine water clarity.</p>
+              </div>
+              <!-- Abstract Visual -->
+              <div class="w-full h-1/2 flex items-end pb-4">
+                 <div class="w-full h-[2px] bg-white/10 rounded-full overflow-hidden relative">
+                    <div class="absolute top-0 left-0 h-full bg-white w-1/3 group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out"></div>
+                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Box 2: UV (Col span 1) -->
+          <div class="bg-[#0a0a0a] rounded-[32px] p-10 md:p-12 relative overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 group shadow-2xl flex flex-col justify-between">
+             <div class="absolute -top-20 -right-20 w-64 h-64 bg-purple-600/20 blur-[80px] rounded-full group-hover:bg-purple-600/40 transition-colors duration-700"></div>
+             <div class="relative z-10">
+                <h3 class="text-white font-semibold text-3xl mb-3 tracking-tight">UV Sterilization</h3>
+                <p class="text-slate-400 text-base leading-relaxed">Industrial-grade ultraviolet reactors destroying 99.9% of harmful pathogens instantly.</p>
+             </div>
+             <div class="relative z-10 mt-8">
+               <div class="w-16 h-16 rounded-full border border-purple-500/30 flex items-center justify-center">
+                 <svg class="w-8 h-8 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                 </svg>
+               </div>
+             </div>
+          </div>
+
+          <!-- Box 3: Digital Core (Col span 3 - WIDE) -->
+          <div class="md:col-span-3 bg-[#0a0a0a] rounded-[32px] p-10 md:p-12 relative overflow-hidden border border-white/5 hover:border-sky-500/30 transition-all duration-500 group shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-r from-sky-900/10 via-transparent to-sky-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between h-full gap-12">
+               <div class="max-w-xl">
+                 <div class="text-sky-400 font-mono text-sm font-bold tracking-widest uppercase mb-4 flex items-center gap-2">
+                   <div class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></div>
+                   Aero Intelli AI
+                 </div>
+                 <h3 class="text-white font-semibold text-4xl mb-4 tracking-tight">The Digital Brain.</h3>
+                 <p class="text-slate-400 text-lg leading-relaxed">Continuous sensor telemetry and proprietary machine learning models completely automate the AEROS system. It doesn't just monitor water quality—it predicts and corrects anomalies before they happen.</p>
+               </div>
+               
+               <!-- Abstract Data Visual -->
+               <div class="flex gap-3 items-end h-32 w-full md:w-auto px-4">
+                  <div class="w-6 md:w-8 bg-sky-500/10 rounded-t-md h-12 group-hover:h-24 transition-all duration-700 delay-75"></div>
+                  <div class="w-6 md:w-8 bg-sky-500/20 rounded-t-md h-20 group-hover:h-32 transition-all duration-700 delay-150"></div>
+                  <div class="w-6 md:w-8 bg-sky-500/30 rounded-t-md h-16 group-hover:h-20 transition-all duration-700 delay-200"></div>
+                  <div class="w-6 md:w-8 bg-sky-500/50 rounded-t-md h-24 group-hover:h-16 transition-all duration-700 delay-300"></div>
+                  <div class="w-6 md:w-8 bg-sky-400 rounded-t-md h-14 group-hover:h-28 transition-all duration-700 delay-100 shadow-[0_0_20px_rgba(56,189,248,0.4)]"></div>
+               </div>
+            </div>
+          </div>
+
+          <!-- Box 4: Oxygen (Col span 1) -->
+          <div class="bg-[#0a0a0a] rounded-[32px] p-10 md:p-12 relative overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 group shadow-2xl flex flex-col justify-between">
+             <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-blue-600/20 blur-[80px] rounded-full group-hover:bg-blue-600/40 transition-colors duration-700"></div>
+             <div class="relative z-10">
+                <h3 class="text-white font-semibold text-3xl mb-3 tracking-tight">Oxygenation</h3>
+                <p class="text-slate-400 text-base leading-relaxed">Precision hyper-saturation of dissolved oxygen via high-efficiency low-head cones.</p>
+             </div>
+             <div class="relative z-10 mt-8 font-mono text-5xl font-light text-blue-400">
+               O₂
+             </div>
+          </div>
+
+          <!-- Box 5: Bio (Col span 2) -->
+          <div class="md:col-span-2 bg-[#0a0a0a] rounded-[32px] p-10 md:p-12 relative overflow-hidden border border-white/5 hover:border-emerald-500/30 transition-all duration-500 group shadow-2xl">
+             <div class="absolute inset-0 bg-gradient-to-tl from-emerald-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+             <div class="relative z-10 flex flex-col justify-between h-full">
+                <div>
+                  <h3 class="text-white font-semibold text-3xl mb-3 tracking-tight">Moving Bed Bio-Reactor (MBBR)</h3>
+                  <p class="text-slate-400 text-base max-w-lg leading-relaxed">Trillions of highly-adapted microbes living on suspended biomedia continuously converting toxic ammonia into harmless nitrates.</p>
+                </div>
+                
+                <!-- Abstract Conversion Visual -->
+                <div class="flex items-center gap-4 mt-12 opacity-60 group-hover:opacity-100 transition-opacity duration-500">
+                   <div class="w-16 h-16 rounded-2xl border border-white/10 flex items-center justify-center text-white font-mono text-lg bg-white/5">NH₃</div>
+                   <div class="flex-1 border-t-2 border-dashed border-white/10 relative">
+                     <div class="absolute top-1/2 -translate-y-1/2 left-0 w-3 h-3 bg-emerald-500 rounded-full shadow-[0_0_15px_#10b981] group-hover:left-full transition-all duration-1000 ease-in-out"></div>
+                   </div>
+                   <div class="w-16 h-16 rounded-2xl border border-emerald-500/50 flex items-center justify-center text-emerald-400 font-mono text-lg bg-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.2)]">NO₃</div>
+                </div>
+             </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: ENGINEERING PLATFORM -->
+    <section id="engineering" class="dt-section bg-gray-50" style="padding: 140px 5%; border-radius: 60px;">
+      <h2 class="dt-section-title ras-title-display">Built Around Advanced Engineering</h2>
+      <div class="dt-panels">
+        
+        <div class="dt-panel">
+          <div class="dt-panel-title">Mechanical Filtration</div>
+          <div class="dt-panel-desc">Precision drum filters down to 40 microns continuously extract suspended solids, uneaten feed, and large particulate matter before they can break down and degrade water quality.</div>
+        </div>
+        
+        <div class="dt-panel">
+          <div class="dt-panel-title">Biofiltration</div>
+          <div class="dt-panel-desc">Advanced Moving Bed Biofilm Reactors (MBBR) house highly specific nitrifying bacteria that convert toxic ammonia into harmless nitrate, ensuring a safe biological environment.</div>
+        </div>
+        
+        <div class="dt-panel">
+          <div class="dt-panel-title">Degassing</div>
+          <div class="dt-panel-desc">Aeration stripping towers forcibly remove excess carbon dioxide and nitrogen gases produced by high-density fish respiration, preventing pH crashes.</div>
+        </div>
+        
+        <div class="dt-panel">
+          <div class="dt-panel-title">Oxygenation</div>
+          <div class="dt-panel-desc">High-pressure oxygen dissolution cones precisely inject pure oxygen back into the water column, supporting massive biomass densities safely.</div>
+        </div>
+        
+        <div class="dt-panel">
+          <div class="dt-panel-title">Disinfection</div>
+          <div class="dt-panel-desc">Commercial-grade Ultraviolet (UV) and Ozone treatment loops destroy free-floating bacteria, viruses, and pathogens, maintaining absolute biosecurity.</div>
+        </div>
+        
+        <div class="dt-panel" style="border-color: #006B5E; background: #F0FDFA;">
+          <div class="dt-panel-title" style="color: #006B5E;">Recirculation</div>
+          <div class="dt-panel-desc">Polished, perfectly balanced water is pumped back into the culture tanks—recovering up to 99% of total system volume for a continuous closed-loop cycle.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: INTELLIGENCE LAYER -->
+    <section class="dt-section" style="padding-top: 80px; padding-bottom: 80px;">
+      <div class="dt-intelligence">
+        <h2 class="dt-section-title ras-title-display" style="color: white; margin-bottom: 60px;">Where Aquaculture Meets Artificial Intelligence</h2>
+        
+        <div class="dt-int-grid">
+          <div class="dt-int-module">
+            <h3>Machine Learning</h3>
+            <ul class="dt-int-list">
+              <li>Growth prediction modeling</li>
+              <li>Feed conversion optimization</li>
+              <li>Water quality forecasting</li>
+              <li>Automated anomaly detection</li>
+            </ul>
+          </div>
+          
+          <div class="dt-int-module">
+            <h3>Computer Vision</h3>
+            <ul class="dt-int-list">
+              <li>Real-time fish counting</li>
+              <li>Non-invasive biomass estimation</li>
+              <li>Behavioral stress analysis</li>
+              <li>Visual health monitoring</li>
+            </ul>
+          </div>
+          
+          <div class="dt-int-module">
+            <h3>IoT Monitoring</h3>
+            <ul class="dt-int-list">
+              <li>Redundant sensor networks</li>
+              <li>Continuous DO, pH, ORP logging</li>
+              <li>Flow rate and pressure tracking</li>
+              <li>Predictive equipment maintenance</li>
+            </ul>
+          </div>
+          
+          <div class="dt-int-module">
+            <h3>Automation</h3>
+            <ul class="dt-int-list">
+              <li>SCADA system integration</li>
+              <li>Automated parameter correction</li>
+              <li>Real-time critical alert systems</li>
+              <li>Cloud-based remote management</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: PERFORMANCE METRICS -->
+    <section class="dt-section">
+      <h2 class="dt-section-title ras-title-display center">Designed for Efficiency</h2>
+      <div class="dt-dash-grid">
+        <div class="dt-dash-card">
+          <div class="dt-dash-val">99%</div>
+          <div class="dt-dash-label">Water Reuse Capability</div>
+        </div>
+        <div class="dt-dash-card dark">
+          <div class="dt-dash-val">24/7</div>
+          <div class="dt-dash-label">Production Stability</div>
+        </div>
+        <div class="dt-dash-card dark">
+          <div class="dt-dash-val">100%</div>
+          <div class="dt-dash-label">Operational Visibility</div>
+        </div>
+        <div class="dt-dash-card">
+          <div class="dt-dash-val">Zero</div>
+          <div class="dt-dash-label">Ecosystem Effluent</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: APPLICATIONS -->
+    <section class="dt-section bg-gray-50" style="padding: 140px 5%;">
+      <h2 class="dt-section-title ras-title-display">Built for Diverse Aquaculture Operations</h2>
+      <div class="dt-app-grid">
+        <div class="dt-app-card">
+          <h3>Commercial Fish Production</h3>
+          <p class="text-gray-600 text-lg">Scalable modules for high-density farming of Tilapia, Murrel, Catfish, Salmon, and marine species intended for commercial wholesale markets.</p>
+        </div>
+        <div class="dt-app-card">
+          <h3>Research Facilities</h3>
+          <p class="text-gray-600 text-lg">Highly controlled, isolated loops providing absolute environmental precision for academic and private biological research institutions.</p>
+        </div>
+        <div class="dt-app-card">
+          <h3>Hatcheries & Nurseries</h3>
+          <p class="text-gray-600 text-lg">Ultra-pure water systems designed to maximize survival rates for delicate fingerlings and advanced breeding programs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: TECHNOLOGY STACK -->
+    <section class="dt-section">
+      <h2 class="dt-section-title ras-title-display center">The Technology Stack Behind Every System</h2>
+      <div class="dt-stack">
+        <div class="dt-layer" style="background:#006B5E; color:white; max-width:900px;">
+          <span>Layer 6 &mdash; Cloud Infrastructure</span>
+          <span class="dt-layer-num">Global</span>
+        </div>
+        <div class="dt-layer" style="max-width:850px;">
+          <span>Layer 5 &mdash; Data Analytics</span>
+          <span class="dt-layer-num">Intelligence</span>
+        </div>
+        <div class="dt-layer" style="max-width:800px;">
+          <span>Layer 4 &mdash; Machine Learning</span>
+          <span class="dt-layer-num">AI Core</span>
+        </div>
+        <div class="dt-layer" style="max-width:750px;">
+          <span>Layer 3 &mdash; Automation Systems</span>
+          <span class="dt-layer-num">Control</span>
+        </div>
+        <div class="dt-layer" style="max-width:700px;">
+          <span>Layer 2 &mdash; Water Engineering</span>
+          <span class="dt-layer-num">Hardware</span>
+        </div>
+        <div class="dt-layer" style="max-width:650px;">
+          <span>Layer 1 &mdash; Aquaculture Operations</span>
+          <span class="dt-layer-num">Biology</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: RESEARCH & INNOVATION -->
+    <section class="dt-section bg-gray-50" style="padding-top: 100px; padding-bottom: 100px;">
+      <h2 class="dt-section-title ras-title-display center">Driven by Continuous Innovation</h2>
+      <div class="dt-research-grid">
+        <div class="dt-research-card">
+          <h3>Water Technologies</h3>
+          <p class="text-gray-500">Pioneering advancements in nano-filtration and zero-exchange architectures.</p>
+        </div>
+        <div class="dt-research-card">
+          <h3>AI Systems</h3>
+          <p class="text-gray-500">Training proprietary neural networks on millions of hours of aquaculture data.</p>
+        </div>
+        <div class="dt-research-card">
+          <h3>Monitoring</h3>
+          <p class="text-gray-500">Developing next-generation optical and chemical sensor hardware.</p>
+        </div>
+        <div class="dt-research-card">
+          <h3>Sustainability</h3>
+          <p class="text-gray-500">Engineering absolute circularity in feed conversion and solid waste valorization.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: FAQ -->
+    <section class="dt-section">
+      <h2 class="dt-section-title ras-title-display">Executive Briefing</h2>
+      <div class="dt-faq-grid">
+        <div class="dt-faq-card">
+          <h4>How does RAS differ from flow-through systems?</h4>
+          <p>Flow-through systems pull water from a source, pass it through tanks once, and discharge it as effluent. RAS captures the water, mechanically and biologically purifies it, and returns it to the tanks—reusing up to 99% of the volume.</p>
+        </div>
+        <div class="dt-faq-card">
+          <h4>What limits production density in RAS?</h4>
+          <p>Density is bound entirely by engineering capabilities—specifically oxygen transfer efficiency and biofiltration capacity to process ammonia. Aero Intelli systems are engineered to lift these ceilings significantly.</p>
+        </div>
+        <div class="dt-faq-card">
+          <h4>How is biosecurity maintained?</h4>
+          <p>By decoupling the farm from external water bodies and deploying commercial UV/Ozone loops, the vectors for pathogen entry are virtually eliminated, drastically reducing the need for antibiotics.</p>
+        </div>
+        <div class="dt-faq-card">
+          <h4>Can the system operate autonomously?</h4>
+          <p>While human oversight is required for biological observation, our automation layer (SCADA) handles real-time parameter corrections, oxygen dosing, and water balancing autonomously.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: FINAL STATEMENT -->
+    <section class="dt-statement">
+      <h2>The future of aquaculture depends on systems that produce more with fewer resources while maintaining absolute environmental responsibility.</h2>
+    </section>
+
+    <!-- SECTION 12: CTA -->
+    <section class="dt-cta-section">
+      <div class="dt-cta-box">
+        <h2>Let's Build the Next Generation of Aquaculture</h2>
+        <p>Connect with Aero Intelli to explore advanced aquaculture technologies, intelligent infrastructure, and sustainable production systems.</p>
+        <div class="dt-btn-group">
+          <a href="../contact.html" class="dt-btn dt-btn-primary">Schedule Consultation</a>
+          <a href="../contact.html" class="dt-btn dt-btn-glass">Contact Aero Intelli</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-root"></div>
+  
+  <!-- Component Scripts -->
+  <script src="../components/header.js"></script>
+  <script src="../components/footer.js"></script>
+
+  <!-- 3D Scroll Script for Challenge Section (Desktop 3D Domino Fold / Mobile Responsive) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const wrapper = document.getElementById('challenge-scroll-wrapper');
+      const cards = document.querySelectorAll('.dt-3d-card');
+      
+      if (!wrapper || cards.length === 0) return;
+      
+      let ticking = false;
+      
+      function update3DScroll() {
+        // Mobile Viewport Check: Reset inline styles so CSS flex rules govern clean mobile layout
+        if (window.innerWidth <= 768) {
+          cards.forEach((card) => {
+            card.style.transform = '';
+            card.style.opacity = '';
+          });
+          ticking = false;
+          return;
+        }
+
+        const rect = wrapper.getBoundingClientRect();
+        
+        // Scroll progress from 0 (top of wrapper at top of screen) to 1 (bottom of wrapper at top of screen)
+        const scrollPx = -rect.top;
+        const maxScroll = wrapper.offsetHeight - window.innerHeight;
+        
+        let progress = scrollPx / maxScroll;
+        
+        // Clamp to avoid visual glitches off-screen
+        if (progress < -0.1 || progress > 1.1) {
+            ticking = false;
+            return;
+        }
+        
+        progress = Math.max(0, Math.min(1, progress));
+        
+        // Elegant 3D Domino Fold for Desktop
+        cards.forEach((card, index) => {
+          let start = 0.1 + (index * 0.2);
+          let end = start + 0.3;
+          
+          let cardProgress = (progress - start) / (end - start);
+          cardProgress = Math.max(0, Math.min(1, cardProgress)); 
+          
+          let rotateX = 90 - (cardProgress * 90); 
+          let translateY = 150 - (cardProgress * 150);
+          let opacity = cardProgress;
+          
+          card.style.transform = `translateY(${translateY}px) rotateX(${rotateX}deg)`;
+          card.style.opacity = opacity;
+        });
+        
+        ticking = false;
+      }
+      
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(update3DScroll);
+          ticking = true;
+        }
+      });
+      
+      window.addEventListener('resize', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(update3DScroll);
+          ticking = true;
+        }
+      });
+      
+      // Initialize immediately
+      update3DScroll();
+    });
+  </script>
+</body>
+</html>

@@ -1,3 +1,8 @@
+# Build and Node dependencies
+node_modules/
+dist/
+.claude/
+
 # IDE and System Files
 .vscode/
 .idea/

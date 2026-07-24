@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Policy — Aero Intelli</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="Official Cookie Policy for Aero Intelli explaining cookie usage, telemetry tokens, and analytics consent.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aerointelli.com/legal/cookie-policy.html">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://aerointelli.com/sitemap.xml">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Clean Corporate CSS matching refund-policy.html */
+    :root {
+      --color-primary: #006B5E;
+      --color-primary-hover: #008F7D;
+      --color-text-main: #0F172A;
+      --color-text-body: #334155;
+      --color-text-muted: #64748B;
+      --color-border: #E2E8F0;
+      --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text-body);
+      background-color: #FFFFFF;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Header styling */
+    .legal-header {
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 0;
+      background: #FFFFFF;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .header-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--color-text-main);
+    }
+    
+    .brand-link img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+    
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    
+    .back-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 200ms ease;
+    }
+    
+    .back-link:hover {
+      color: var(--color-primary-hover);
+    }
+    
+    /* Content styling */
+    .legal-content {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+    
+    .hero-area {
+      margin-bottom: 48px;
+    }
+    
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--color-text-main);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    
+    .last-updated {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    
+    .hero-desc {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      font-weight: 450;
+      max-width: 700px;
+    }
+    
+    /* Table of contents */
+    .toc-container {
+      background-color: #F8FAFC;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 56px;
+    }
+    
+    .toc-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    
+    .toc-list {
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    
+    @media (max-width: 600px) {
+      .toc-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .toc-list a {
+      color: var(--color-text-body);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 150ms ease;
+    }
+    
+    .toc-list a:hover {
+      color: var(--color-primary);
+    }
+    
+    /* Legal Section */
+    .legal-section {
+      margin-bottom: 48px;
+    }
+    
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    
+    .section-subtitle {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin: 20px 0 10px 0;
+      letter-spacing: -0.01em;
+    }
+    
+    .section-text {
+      font-size: 16px;
+      color: var(--color-text-body);
+      margin-bottom: 16px;
+    }
+    
+    .section-list {
+      margin-left: 24px;
+      margin-bottom: 16px;
+      list-style-type: disc;
+    }
+    
+    .section-list li {
+      margin-bottom: 8px;
+      font-size: 16px;
+      color: var(--color-text-body);
+    }
+    
+    .divider {
+      height: 1px;
+      background-color: var(--color-border);
+      border: none;
+      margin: 48px 0;
+    }
+    
+    /* Contact Box */
+    .contact-card {
+      background-color: #F8FAFC;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 64px;
+    }
+    
+    .contact-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    
+    .contact-info {
+      font-size: 15px;
+      color: var(--color-text-body);
+      margin-bottom: 16px;
+    }
+    
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text-main);
+    }
+    
+    .contact-details a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    
+    .contact-details a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Footer styling */
+    .legal-footer {
+      border-top: 1px solid var(--color-border);
+      background-color: #F8FAFC;
+      padding: 48px 0;
+      margin-top: 120px;
+    }
+    
+    .footer-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    
+    .copyright {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+    
+    /* Responsive style */
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 40px;
+      }
+      .legal-content {
+        margin: 48px auto;
+      }
+      .divider {
+        margin: 32px 0;
+      }
+    }
+
+    /* ── Interactive Tagline Shimmer Animation ── */
+    .footer-tagline-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .footer-tagline-new {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--color-text-main);
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                  color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                  text-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      user-select: none;
+    }
+
+    .footer-tagline-new:hover {
+      transform: translateY(-2px);
+      color: #008F7D;
+      text-shadow: 0 0 16px rgba(0, 143, 125, 0.2);
+      background: linear-gradient(90deg, #006B5E 0%, #008F7D 50%, #00BFA5 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: tagline-shimmer 3s linear infinite;
+    }
+
+    .footer-tagline-new::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #008F7D, transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .footer-tagline-new:hover::after {
+      transform: scaleX(1);
+    }
+
+    @keyframes tagline-shimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+  </style>
+
+  <!-- Cookie Notice Stylesheet -->
+  <link rel="stylesheet" href="../components/cookie-notice.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="legal-header">
+    <div class="header-container">
+      <a href="../index.html" class="brand-link">
+        <img src="../assets/logo.png" alt="Aero Intelli Logo">
+        <span class="brand-name">Aero Intelli</span>
+      </a>
+      <a href="../index.html" class="back-link">
+        Back to Home &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="legal-content">
+    <div class="hero-area">
+      <p class="last-updated">Last Updated: July 2026</p>
+      <h1 class="page-title">Cookie Policy</h1>
+      <p class="hero-desc">This Cookie Policy explains how Aero Intelli ("Aero Intelli," "we," "our," or "us") uses cookies and similar technologies when you visit our website, products, services, and digital platforms.</p>
+    </div>
+
+    <!-- Table of Contents -->
+    <nav class="toc-container" aria-label="Table of Contents">
+      <h2 class="toc-title">Table of Contents</h2>
+      <ul class="toc-list">
+        <li><a href="#what-are">1. What Are Cookies?</a></li>
+        <li><a href="#how-use">2. How We Use Cookies</a></li>
+        <li><a href="#types">3. Types of Cookies We Use</a></li>
+        <li><a href="#third-party">4. Third-Party Cookies</a></li>
+        <li><a href="#managing">5. Managing Cookies</a></li>
+        <li><a href="#data-protection">6. Data Protection</a></li>
+        <li><a href="#policy-changes">7. Changes to Policy</a></li>
+        <li><a href="#contact">8. Contact Information</a></li>
+      </ul>
+    </nav>
+
+    <!-- Sections -->
+    <section id="what-are" class="legal-section">
+      <h2 class="section-title">1. What Are Cookies?</h2>
+      <p class="section-text">Cookies are small text files stored on your device when you visit a website. They help websites function properly, remember user preferences, improve user experiences, and provide analytical insights.</p>
+      <p class="section-text">Cookies do not typically contain personally identifiable information, but information collected through cookies may be associated with other information you provide to us.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="how-use" class="legal-section">
+      <h2 class="section-title">2. How We Use Cookies</h2>
+      <p class="section-text">By continuing to use our website, you consent to the use of cookies in accordance with this Cookie Policy unless you disable them through your browser settings or cookie preferences.</p>
+      <p class="section-text">Aero Intelli uses cookies to:</p>
+      <ul class="section-list">
+        <li>Ensure website functionality and security.</li>
+        <li>Remember user preferences and settings.</li>
+        <li>Improve website performance.</li>
+        <li>Analyze website traffic and visitor behavior.</li>
+        <li>Enhance user experience.</li>
+        <li>Support marketing and communication activities.</li>
+        <li>Measure website effectiveness and performance.</li>
+      </ul>
+    </section>
+
+    <hr class="divider">
+
+    <section id="types" class="legal-section">
+      <h2 class="section-title">3. Types of Cookies We Use</h2>
+      
+      <h3 class="section-subtitle">Essential Cookies</h3>
+      <p class="section-text">These cookies are necessary for the operation of the website and cannot be disabled in our systems. They help enable:</p>
+      <ul class="section-list">
+        <li>Secure navigation</li>
+        <li>Form submissions</li>
+        <li>Session management</li>
+        <li>Website security features</li>
+        <li>Authentication functions</li>
+      </ul>
+      <p class="section-text">Without these cookies, certain parts of the website may not function properly.</p>
+
+      <h3 class="section-subtitle">Performance and Analytics Cookies</h3>
+      <p class="section-text">These cookies help us understand how visitors interact with our website. They may collect information such as:</p>
+      <ul class="section-list">
+        <li>Pages visited</li>
+        <li>Time spent on pages</li>
+        <li>Traffic sources</li>
+        <li>Device information</li>
+        <li>Website performance metrics</li>
+      </ul>
+      <p class="section-text">The information collected is generally aggregated and used to improve website performance.</p>
+
+      <h3 class="section-subtitle">Functional Cookies</h3>
+      <p class="section-text">These cookies allow the website to remember preferences and provide enhanced functionality. Examples include:</p>
+      <ul class="section-list">
+        <li>Language preferences</li>
+        <li>Region settings</li>
+        <li>User interface preferences</li>
+        <li>Saved form information</li>
+      </ul>
+
+      <h3 class="section-subtitle">Marketing and Advertising Cookies</h3>
+      <p class="section-text">These cookies may be used to deliver relevant content, measure campaign effectiveness, and understand visitor interests. These cookies may be placed by Aero Intelli or approved third-party service providers.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="third-party" class="legal-section">
+      <h2 class="section-title">4. Third-Party Cookies</h2>
+      <p class="section-text">Certain third-party services integrated into our website may place cookies on your device. Examples may include:</p>
+      <ul class="section-list">
+        <li>Analytics providers</li>
+        <li>Payment gateways</li>
+        <li>Video platforms</li>
+        <li>Social media integrations</li>
+        <li>Customer support tools</li>
+        <li>Marketing and advertising platforms</li>
+      </ul>
+      <p class="section-text">Aero Intelli does not control third-party cookies and encourages users to review the privacy policies of those providers.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="managing" class="legal-section">
+      <h2 class="section-title">5. Managing Cookies</h2>
+      <p class="section-text">Most web browsers allow users to manage, disable, or delete cookies through browser settings. You may choose to:</p>
+      <ul class="section-list">
+        <li>Accept all cookies</li>
+        <li>Block certain cookies</li>
+        <li>Delete existing cookies</li>
+        <li>Receive notifications when cookies are used</li>
+      </ul>
+      <p class="section-text">Please note that disabling certain cookies may impact website functionality and user experience. You can also change your preferences on our website at any time by clicking the Cookie Settings option in our cookie banner or footer.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="data-protection" class="legal-section">
+      <h2 class="section-title">6. Data Protection</h2>
+      <p class="section-text">Information collected through cookies is handled in accordance with our Privacy Policy and applicable data protection laws.</p>
+      <p class="section-text">We implement reasonable security measures to protect information collected through our website.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="policy-changes" class="legal-section">
+      <h2 class="section-title">7. Changes to This Cookie Policy</h2>
+      <p class="section-text">Aero Intelli reserves the right to update, modify, or revise this Cookie Policy at any time.</p>
+      <p class="section-text">Updated versions will be published on this website and become effective immediately upon publication.</p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-card">
+      <h2 class="contact-title">8. Contact Information</h2>
+      <p class="contact-info">If you have questions regarding this Cookie Policy, please contact:</p>
+      <p class="contact-info"><strong>Aero Intelli</strong></p>
+      <div class="contact-details">
+        <span>Website: <a href="http://www.aerointelli.com" target="_blank" rel="noopener noreferrer">www.aerointelli.com</a></span>
+        <span>Email: <a href="mailto:info@aerointelli.com">info@aerointelli.com</a></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="legal-footer">
+    <div class="footer-container">
+      <div class="footer-tagline-container">
+        <h2 class="footer-tagline-new">Engineering the Future of Food, Water &amp; Sustainability</h2>
+      </div>
+      <p class="copyright">&copy; 2026 Aero Intelli. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Notice Script -->
+  <script src="../components/cookie-notice.js"></script>
+
+</body>
+</html>

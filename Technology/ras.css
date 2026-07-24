@@ -1,0 +1,874 @@
+/* ================================================
+   RAS Deep-Tech Engineering Platform — Aero Intelli
+   Inspired by Apple, NVIDIA, Stripe, Tesla
+   ================================================ */
+
+/* Base & Typography */
+body {
+  background: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  color: #0f172a;
+}
+
+.ras-wrapper {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.ras-title-display {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+/* Animations */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(0, 107, 94, 0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(0, 107, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 107, 94, 0); }
+}
+
+@keyframes lineFlow {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.reveal-on-load {
+  animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================
+   1. Immersive Hero
+   ========================================== */
+.dt-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #020617;
+  background-image: url('../assets/ras-hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #FFFFFF;
+  padding: 120px 20px;
+  overflow: hidden;
+}
+
+/* Dark tech overlay so text remains readable over the image */
+.dt-hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    linear-gradient(to bottom, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 0.9) 100%),
+    linear-gradient(45deg, rgba(0, 107, 94, 0.2) 0%, transparent 40%),
+    linear-gradient(-45deg, rgba(14, 165, 233, 0.2) 0%, transparent 40%);
+  z-index: 1;
+}
+
+/* Grid overlay */
+.dt-hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 1;
+  transform: perspective(500px) rotateX(60deg) scale(2);
+  transform-origin: bottom center;
+}
+
+.dt-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1000px;
+}
+
+.dt-label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #38bdf8;
+  margin-bottom: 30px;
+  display: block;
+}
+
+.dt-hero-title {
+  font-size: clamp(48px, 6vw, 96px);
+  line-height: 1;
+  margin-bottom: 24px;
+  background: linear-gradient(to bottom right, #ffffff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dt-hero-sub {
+  font-size: clamp(20px, 2.5vw, 32px);
+  font-weight: 300;
+  color: #e2e8f0;
+  margin-bottom: 32px;
+}
+
+.dt-hero-desc {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #94a3b8;
+  max-width: 700px;
+  margin: 0 auto 48px;
+}
+
+.dt-btn-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.dt-btn {
+  padding: 18px 40px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(10px);
+}
+
+.dt-btn-primary {
+  background: #FFFFFF;
+  color: #000000;
+}
+.dt-btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(255,255,255,0.2);
+}
+
+.dt-btn-glass {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #FFFFFF;
+}
+.dt-btn-glass:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* ==========================================
+   2. The Challenge (Executive Report)
+   ========================================== */
+.dt-section {
+  padding: 140px 5%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.dt-section-title {
+  font-size: clamp(36px, 4vw, 56px);
+  letter-spacing: -0.02em;
+  margin-bottom: 80px;
+  color: #0f172a;
+}
+.dt-section-title.center {
+  text-align: center;
+}
+
+.dt-challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.dt-stat-card {
+  border-left: 2px solid #e2e8f0;
+  padding-left: 32px;
+}
+
+.dt-stat-val {
+  font-size: 48px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  color: #006B5E;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.dt-stat-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #0f172a;
+}
+
+.dt-stat-desc {
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   3. The Approach (Visual Architecture)
+   ========================================== */
+.dt-ecosystem-canvas {
+  background: #F8FAFC;
+  border-radius: 40px;
+  padding: 100px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
+}
+
+.dt-eco-node {
+  background: #FFFFFF;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+  border-radius: 20px;
+  padding: 24px 48px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #0f172a;
+  position: relative;
+  z-index: 2;
+  margin: 20px 0;
+  transition: transform 0.4s ease;
+}
+.dt-eco-node:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+.dt-eco-node.accent {
+  background: #006B5E;
+  color: #FFFFFF;
+}
+
+/* Animated connecting lines using SVG in HTML */
+.dt-eco-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: lineFlow 4s linear infinite forwards;
+}
+
+/* ==========================================
+   4. Engineering Platform (Horizontal Panels)
+   ========================================== */
+.dt-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dt-panel {
+  background: #FFFFFF;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: center;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.dt-panel:hover {
+  transform: translateX(10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+  border-color: #cbd5e1;
+}
+
+.dt-panel-title {
+  font-size: 28px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  color: #0f172a;
+}
+.dt-panel-desc {
+  font-size: 18px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .dt-panel {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ==========================================
+   5. Intelligence Layer (Floating Modules)
+   ========================================== */
+.dt-intelligence {
+  background: #020617;
+  color: #FFFFFF;
+  border-radius: 40px;
+  padding: 140px 5%;
+}
+
+.dt-int-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.dt-int-module {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 32px;
+  padding: 48px 32px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dt-int-module:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.dt-int-module h3 {
+  font-size: 24px;
+  font-family: 'Space Grotesk', sans-serif;
+  margin-bottom: 24px;
+  color: #38bdf8;
+}
+
+.dt-int-list {
+  list-style: none;
+  padding: 0;
+}
+
+.dt-int-list li {
+  font-size: 16px;
+  color: #94a3b8;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dt-int-list li::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: #38bdf8;
+  border-radius: 50%;
+}
+
+/* ==========================================
+   6. Performance Metrics (Dashboard)
+   ========================================== */
+.dt-dash-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.dt-dash-card {
+  background: #F0FDFA;
+  border-radius: 32px;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+}
+
+.dt-dash-card.dark {
+  background: #EFF6FF;
+}
+
+.dt-dash-val {
+  font-size: 80px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  color: #006B5E;
+  line-height: 1;
+}
+
+.dt-dash-card.dark .dt-dash-val {
+  color: #2563eb;
+}
+
+.dt-dash-label {
+  font-size: 24px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+@media (max-width: 768px) {
+  .dt-dash-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   7. Applications (Industry Cards)
+   ========================================== */
+.dt-app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+
+.dt-app-card {
+  background: #FFFFFF;
+  border-radius: 32px;
+  padding: 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid #f1f5f9;
+  transition: transform 0.5s ease;
+}
+
+.dt-app-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+}
+
+.dt-app-card h3 {
+  font-size: 28px;
+  font-family: 'Space Grotesk', sans-serif;
+  margin-bottom: 24px;
+  color: #0f172a;
+}
+
+/* ==========================================
+   8. Technology Stack (Layered Visual)
+   ========================================== */
+.dt-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.dt-layer {
+  width: 100%;
+  max-width: 800px;
+  background: #F8FAFC;
+  border: 1px solid #e2e8f0;
+  padding: 24px 40px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #334155;
+  transition: all 0.3s;
+}
+
+.dt-layer:hover {
+  background: #006B5E;
+  color: #FFFFFF;
+  border-color: #006B5E;
+  transform: scale(1.02);
+}
+
+.dt-layer-num {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+/* ==========================================
+   9. Research & Innovation
+   ========================================== */
+.dt-research-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.dt-research-card {
+  padding: 40px 32px;
+  background: #FFFFFF;
+  border-top: 4px solid #006B5E;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+  border-radius: 0 0 24px 24px;
+}
+
+.dt-research-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 1024px) {
+  .dt-research-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .dt-research-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   10. Executive FAQ
+   ========================================== */
+.dt-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.dt-faq-card {
+  background: #F8FAFC;
+  padding: 40px;
+  border-radius: 24px;
+}
+
+.dt-faq-card h4 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+.dt-faq-card p {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .dt-faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   11. Final Statement
+   ========================================== */
+.dt-statement {
+  padding: 200px 5%;
+  text-align: center;
+}
+
+.dt-statement h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==========================================
+   12. Deep-Tech CTA
+   ========================================== */
+.dt-cta-section {
+  padding: 0 5% 100px;
+}
+
+.dt-cta-box {
+  background: #020617;
+  color: #FFFFFF;
+  border-radius: 40px;
+  padding: 100px 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.dt-cta-box::before {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle at center, rgba(0, 107, 94, 0.2) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dt-cta-box > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dt-cta-box h2 {
+  font-size: clamp(40px, 5vw, 64px);
+  font-family: 'Space Grotesk', sans-serif;
+  margin-bottom: 24px;
+}
+
+.dt-cta-box p {
+  font-size: 20px;
+  color: #94a3b8;
+  max-width: 800px;
+  margin: 0 auto 48px;
+}
+
+/* ==========================================
+   13. Comprehensive Mobile & Tablet Responsive Engine
+   ========================================== */
+@media (max-width: 1024px) {
+  .dt-section {
+    padding: 90px 24px;
+  }
+  .dt-section-title {
+    margin-bottom: 48px;
+  }
+  .dt-dash-card {
+    padding: 40px;
+    min-height: 240px;
+  }
+  .dt-dash-val {
+    font-size: 64px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hero Section Mobile Refinement */
+  .dt-hero {
+    padding: 110px 20px 60px;
+    min-height: 85vh;
+  }
+  .dt-hero-title {
+    font-size: 38px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .dt-hero-title br {
+    display: none;
+  }
+  .dt-hero-sub {
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+  .dt-hero-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .dt-btn-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .dt-btn {
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+
+  /* 3D Challenge Section Mobile Optimization */
+  #challenge-scroll-wrapper {
+    height: auto !important;
+    position: relative !important;
+    padding: 60px 20px 80px !important;
+  }
+  #challenge-scroll-wrapper .sticky {
+    position: relative !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    justify-content: flex-start !important;
+  }
+  #challenge-scroll-wrapper h2 {
+    margin-bottom: 32px !important;
+    font-size: 28px !important;
+  }
+  .dt-challenge-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    perspective: none !important;
+    padding: 0 !important;
+  }
+  .dt-stat-card {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto !important;
+    margin-bottom: 0 !important;
+    padding: 32px 24px !important;
+    border-radius: 20px !important;
+    width: 100% !important;
+  }
+  .dt-stat-val {
+    font-size: 14px !important;
+    letter-spacing: 0.1em !important;
+  }
+  .dt-stat-title {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .dt-stat-desc {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Engineering Platform Section */
+  #engineering {
+    padding: 60px 20px !important;
+    border-radius: 28px !important;
+  }
+  .dt-panels {
+    gap: 12px;
+  }
+  .dt-panel {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+  .dt-panel-title {
+    font-size: 20px;
+  }
+  .dt-panel-desc {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Intelligence Layer */
+  .dt-intelligence {
+    padding: 60px 20px;
+    border-radius: 28px;
+  }
+  .dt-intelligence h2 {
+    margin-bottom: 36px !important;
+    font-size: 28px !important;
+  }
+  .dt-int-grid {
+    gap: 16px;
+  }
+  .dt-int-module {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+  .dt-int-module h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  /* Performance Metrics Section */
+  .dt-dash-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .dt-dash-card {
+    padding: 24px 16px;
+    min-height: 160px;
+    border-radius: 20px;
+  }
+  .dt-dash-val {
+    font-size: 42px;
+  }
+  .dt-dash-label {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  /* Applications Section */
+  .dt-app-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .dt-app-card {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+  .dt-app-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .dt-app-card p {
+    font-size: 14px;
+  }
+
+  /* Technology Stack Section */
+  .dt-stack {
+    gap: 12px;
+  }
+  .dt-layer {
+    max-width: 100% !important;
+    padding: 18px 20px;
+    border-radius: 14px;
+    font-size: 15px;
+  }
+  .dt-layer-num {
+    font-size: 12px;
+  }
+
+  /* Research Grid Section */
+  .dt-research-card {
+    padding: 24px 20px;
+    border-radius: 0 0 16px 16px;
+  }
+  .dt-research-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  /* FAQ Cards */
+  .dt-faq-card {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+  .dt-faq-card h4 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .dt-faq-card p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Final Statement */
+  .dt-statement {
+    padding: 80px 20px;
+  }
+  .dt-statement h2 {
+    font-size: 26px;
+  }
+
+  /* Deep-Tech CTA Box */
+  .dt-cta-section {
+    padding: 0 16px 60px;
+  }
+  .dt-cta-box {
+    padding: 48px 20px;
+    border-radius: 24px;
+  }
+  .dt-cta-box h2 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  .dt-cta-box p {
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dt-hero-title {
+    font-size: 32px;
+  }
+  .dt-dash-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .dt-dash-val {
+    font-size: 34px;
+  }
+  .dt-dash-label {
+    font-size: 12px;
+  }
+}

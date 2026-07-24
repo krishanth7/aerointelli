@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disclaimer — Aero Intelli</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="Official Disclaimer for Aero Intelli outlining forward-looking statements, operational liabilities, and intellectual property.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aerointelli.com/legal/disclaimer.html">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://aerointelli.com/sitemap.xml">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Clean Corporate CSS */
+    :root {
+      --color-primary: #006B5E;
+      --color-primary-hover: #008F7D;
+      --color-text-main: #0F172A;
+      --color-text-body: #334155;
+      --color-text-muted: #64748B;
+      --color-border: #E2E8F0;
+      --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text-body);
+      background-color: #FFFFFF;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Header styling */
+    .legal-header {
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 0;
+      background: #FFFFFF;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .header-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--color-text-main);
+    }
+    
+    .brand-link img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+    
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    
+    .back-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 200ms ease;
+    }
+    
+    .back-link:hover {
+      color: var(--color-primary-hover);
+    }
+    
+    /* Content styling */
+    .legal-content {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+    
+    .hero-area {
+      margin-bottom: 48px;
+    }
+    
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--color-text-main);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    
+    .last-updated {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    
+    .hero-desc {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      font-weight: 450;
+      max-width: 700px;
+    }
+    
+    /* Table of contents */
+    .toc-container {
+      background-color: #F8FAFC;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 56px;
+    }
+    
+    .toc-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    
+    .toc-list {
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    
+    @media (max-width: 600px) {
+      .toc-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .toc-list a {
+      color: var(--color-text-body);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 150ms ease;
+    }
+    
+    .toc-list a:hover {
+      color: var(--color-primary);
+    }
+    
+    /* Legal Section */
+    .legal-section {
+      margin-bottom: 48px;
+    }
+    
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    
+    .section-text {
+      font-size: 16px;
+      color: var(--color-text-body);
+      margin-bottom: 16px;
+    }
+    
+    .section-list {
+      margin-left: 24px;
+      margin-bottom: 16px;
+      list-style-type: disc;
+    }
+    
+    .section-list li {
+      margin-bottom: 8px;
+      font-size: 16px;
+      color: var(--color-text-body);
+    }
+    
+    .divider {
+      height: 1px;
+      background-color: var(--color-border);
+      border: none;
+      margin: 48px 0;
+    }
+    
+    /* Contact Box */
+    .contact-card {
+      background-color: #F8FAFC;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 64px;
+    }
+    
+    .contact-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    
+    .contact-info {
+      font-size: 15px;
+      color: var(--color-text-body);
+      margin-bottom: 16px;
+    }
+    
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text-main);
+    }
+    
+    .contact-details a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    
+    .contact-details a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Footer styling */
+    .legal-footer {
+      border-top: 1px solid var(--color-border);
+      background-color: #F8FAFC;
+      padding: 48px 0;
+      margin-top: 120px;
+    }
+    
+    .footer-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    
+    .copyright {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+    
+    /* Responsive style */
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 40px;
+      }
+      .legal-content {
+        margin: 48px auto;
+      }
+      .divider {
+        margin: 32px 0;
+      }
+    }
+
+    /* ── Interactive Tagline Shimmer Animation ── */
+    .footer-tagline-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .footer-tagline-new {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--color-text-main);
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                  color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                  text-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      user-select: none;
+    }
+
+    .footer-tagline-new:hover {
+      transform: translateY(-2px);
+      color: #008F7D;
+      text-shadow: 0 0 16px rgba(0, 143, 125, 0.2);
+      background: linear-gradient(90deg, #006B5E 0%, #008F7D 50%, #00BFA5 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: tagline-shimmer 3s linear infinite;
+    }
+
+    .footer-tagline-new::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #008F7D, transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .footer-tagline-new:hover::after {
+      transform: scaleX(1);
+    }
+
+    @keyframes tagline-shimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+  </style>
+  <!-- Cookie Notice Stylesheet -->
+  <link rel="stylesheet" href="../components/cookie-notice.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="legal-header">
+    <div class="header-container">
+      <a href="../index.html" class="brand-link">
+        <img src="../assets/logo.png" alt="Aero Intelli Logo">
+        <span class="brand-name">Aero Intelli</span>
+      </a>
+      <a href="../index.html" class="back-link">
+        Back to Home &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="legal-content">
+    <div class="hero-area">
+      <p class="last-updated">Last Updated: July 2026</p>
+      <h1 class="page-title">Disclaimer</h1>
+      <p class="hero-desc">The information provided on the Aero Intelli website ("Website") is for general informational and educational purposes only. By accessing or using this Website, you acknowledge and agree to the terms outlined in this Disclaimer.</p>
+    </div>
+
+    <!-- Table of Contents -->
+    <nav class="toc-container" aria-label="Table of Contents">
+      <h2 class="toc-title">Table of Contents</h2>
+      <ul class="toc-list">
+        <li><a href="#general">1. General Information</a></li>
+        <li><a href="#professional">2. No Professional Advice</a></li>
+        <li><a href="#products">3. Products and Services</a></li>
+        <li><a href="#technology">4. Technology &amp; Performance</a></li>
+        <li><a href="#links">5. External Links</a></li>
+        <li><a href="#intellectual">6. Intellectual Property</a></li>
+        <li><a href="#liability">7. Limitation of Liability</a></li>
+        <li><a href="#guarantees">8. No Guarantees</a></li>
+        <li><a href="#changes">9. Changes to Disclaimer</a></li>
+        <li><a href="#contact">10. Contact Information</a></li>
+      </ul>
+    </nav>
+
+    <!-- Sections -->
+    <section id="general" class="legal-section">
+      <h2 class="section-title">1. General Information</h2>
+      <p class="section-text">Aero Intelli makes every effort to ensure that the information presented on this Website is accurate, complete, and up to date. However, we make no representations or warranties of any kind, express or implied, regarding the accuracy, reliability, completeness, suitability, or availability of any information, products, services, or related content contained on the Website.</p>
+      <p class="section-text">Any reliance you place on such information is strictly at your own risk.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="professional" class="legal-section">
+      <h2 class="section-title">2. No Professional Advice</h2>
+      <p class="section-text">The content available on this Website is provided for informational purposes only and should not be considered legal, financial, investment, medical, agricultural, engineering, environmental, aquaculture, or professional advice.</p>
+      <p class="section-text">Users are encouraged to consult qualified professionals before making decisions based on information obtained from this Website.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="products" class="legal-section">
+      <h2 class="section-title">3. Products and Services</h2>
+      <p class="section-text">Descriptions, specifications, pricing, availability, and features of products or services displayed on this Website are subject to change without prior notice.</p>
+      <p class="section-text">Aero Intelli reserves the right to modify, discontinue, or update any product, service, technology, or offering at any time without liability.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="technology" class="legal-section">
+      <h2 class="section-title">4. Technology and Performance Information</h2>
+      <p class="section-text">Any references to performance improvements, efficiency gains, sustainability outcomes, production yields, water savings, energy savings, or other projected results are provided as estimates and may vary depending on operational conditions, environmental factors, management practices, and other variables.</p>
+      <p class="section-text">Actual results may differ significantly from stated expectations.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="links" class="legal-section">
+      <h2 class="section-title">5. External Links</h2>
+      <p class="section-text">This Website may contain links to third-party websites, services, or resources. These links are provided solely for convenience and informational purposes.</p>
+      <p class="section-text">Aero Intelli does not endorse, control, or assume responsibility for the content, privacy practices, accuracy, or availability of any third-party websites.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="intellectual" class="legal-section">
+      <h2 class="section-title">6. Intellectual Property</h2>
+      <p class="section-text">All trademarks, logos, designs, graphics, text, images, videos, documents, and other content displayed on this Website are the property of Aero Intelli or their respective owners and are protected by applicable intellectual property laws.</p>
+      <p class="section-text">Unauthorized use, reproduction, distribution, or modification of any content is prohibited without prior written permission.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="liability" class="legal-section">
+      <h2 class="section-title">7. Limitation of Liability</h2>
+      <p class="section-text">To the fullest extent permitted by applicable law, Aero Intelli shall not be liable for any direct, indirect, incidental, consequential, special, or punitive damages arising from or related to:</p>
+      <ul class="section-list">
+        <li>Use of or inability to use the Website</li>
+        <li>Errors or omissions in content</li>
+        <li>Reliance on information provided on the Website</li>
+        <li>Interruptions, delays, or technical issues</li>
+        <li>Third-party content or services</li>
+      </ul>
+      <p class="section-text">Your use of the Website is solely at your own risk.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="guarantees" class="legal-section">
+      <h2 class="section-title">8. No Guarantees</h2>
+      <p class="section-text">Aero Intelli does not guarantee uninterrupted access to the Website, error-free operation, or that the Website will be free from viruses, malware, or other harmful components.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="changes" class="legal-section">
+      <h2 class="section-title">9. Changes to This Disclaimer</h2>
+      <p class="section-text">Aero Intelli reserves the right to update, amend, or modify this Disclaimer at any time without prior notice. Changes become effective immediately upon publication on this Website.</p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-card">
+      <h2 class="contact-title">10. Contact Information</h2>
+      <p class="contact-info">Aero Intelli</p>
+      <p class="contact-info">If you have any questions regarding this Disclaimer, please contact us:</p>
+      <div class="contact-details">
+        <span>Email: <a href="mailto:support@aerointelli.com">support@aerointelli.com</a></span>
+        <span>Website: <a href="https://www.aerointelli.com" target="_blank" rel="noopener noreferrer">www.aerointelli.com</a></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="legal-footer">
+    <div class="footer-container">
+      <div class="footer-tagline-container">
+        <h2 class="footer-tagline-new">Engineering the Future of Food, Water &amp; Sustainability</h2>
+      </div>
+      <p class="copyright">&copy; 2026 Aero Intelli. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Notice Script -->
+  <script src="../components/cookie-notice.js"></script>
+
+</body>
+</html>

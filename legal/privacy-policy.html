@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Aero Intelli</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="Official Privacy Policy for Aero Intelli explaining how we collect, use, store, and protect your personal information and farm telemetry.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aerointelli.com/legal/privacy-policy.html">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://aerointelli.com/sitemap.xml">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Clean Corporate CSS */
+    :root {
+      --color-primary: #006B5E;
+      --color-primary-hover: #008F7D;
+      --color-text-main: #0F172A;
+      --color-text-body: #334155;
+      --color-text-muted: #64748B;
+      --color-border: #E2E8F0;
+      --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text-body);
+      background-color: #FFFFFF;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Header styling */
+    .legal-header {
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 0;
+      background: #FFFFFF;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .header-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--color-text-main);
+    }
+    
+    .brand-link img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+    
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    
+    .back-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 200ms ease;
+    }
+    
+    .back-link:hover {
+      color: var(--color-primary-hover);
+    }
+    
+    /* Content styling */
+    .legal-content {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+    
+    .hero-area {
+      margin-bottom: 48px;
+    }
+    
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--color-text-main);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    
+    .last-updated {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    
+    .hero-desc {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      font-weight: 450;
+      max-width: 700px;
+    }
+    
+    /* Table of contents */
+    .toc-container {
+      background-color: #F8FAFC;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 56px;
+    }
+    
+    .toc-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    
+    .toc-list {
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    
+    @media (max-width: 600px) {
+      .toc-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .toc-list a {
+      color: var(--color-text-body);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 150ms ease;
+    }
+    
+    .toc-list a:hover {
+      color: var(--color-primary);
+    }
+    
+    /* Legal Section */
+    .legal-section {
+      margin-bottom: 48px;
+    }
+    
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    
+    .section-text {
+      font-size: 16px;
+      color: var(--color-text-body);
+      margin-bottom: 16px;
+    }
+    
+    .section-list {
+      margin-left: 24px;
+      margin-bottom: 16px;
+      list-style-type: disc;
+    }
+    
+    .section-list li {
+      margin-bottom: 8px;
+      font-size: 16px;
+      color: var(--color-text-body);
+    }
+    
+    .divider {
+      height: 1px;
+      background-color: var(--color-border);
+      border: none;
+      margin: 48px 0;
+    }
+    
+    /* Contact Box */
+    .contact-card {
+      background-color: #F8FAFC;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 64px;
+    }
+    
+    .contact-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--color-text-main);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    
+    .contact-info {
+      font-size: 15px;
+      color: var(--color-text-body);
+      margin-bottom: 16px;
+    }
+    
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text-main);
+    }
+    
+    .contact-details a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    
+    .contact-details a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Footer styling */
+    .legal-footer {
+      border-top: 1px solid var(--color-border);
+      background-color: #F8FAFC;
+      padding: 48px 0;
+      margin-top: 120px;
+    }
+    
+    .footer-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    
+    .copyright {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+    
+    /* Responsive style */
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 40px;
+      }
+      .legal-content {
+        margin: 48px auto;
+      }
+      .divider {
+        margin: 32px 0;
+      }
+    }
+
+    /* ── Interactive Tagline Shimmer Animation ── */
+    .footer-tagline-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .footer-tagline-new {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--color-text-main);
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                  color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                  text-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      user-select: none;
+    }
+
+    .footer-tagline-new:hover {
+      transform: translateY(-2px);
+      color: #008F7D;
+      text-shadow: 0 0 16px rgba(0, 143, 125, 0.2);
+      background: linear-gradient(90deg, #006B5E 0%, #008F7D 50%, #00BFA5 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: tagline-shimmer 3s linear infinite;
+    }
+
+    .footer-tagline-new::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #008F7D, transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .footer-tagline-new:hover::after {
+      transform: scaleX(1);
+    }
+
+    @keyframes tagline-shimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+  </style>
+  <!-- Cookie Notice Stylesheet -->
+  <link rel="stylesheet" href="../components/cookie-notice.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="legal-header">
+    <div class="header-container">
+      <a href="../index.html" class="brand-link">
+        <img src="../assets/logo.png" alt="Aero Intelli Logo">
+        <span class="brand-name">Aero Intelli</span>
+      </a>
+      <a href="../index.html" class="back-link">
+        Back to Home &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="legal-content">
+    <div class="hero-area">
+      <p class="last-updated">Last Updated: July 2026</p>
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="hero-desc">This Privacy Policy explains how Aero Intelli collects, uses, stores, and protects your personal information when you interact with our website, products, services, and digital platforms.</p>
+    </div>
+
+    <!-- Table of Contents -->
+    <nav class="toc-container" aria-label="Table of Contents">
+      <h2 class="toc-title">Table of Contents</h2>
+      <ul class="toc-list">
+        <li><a href="#introduction">1. Introduction</a></li>
+        <li><a href="#collection">2. Information We Collect</a></li>
+        <li><a href="#usage">3. How We Use Information</a></li>
+        <li><a href="#cookies">4. Cookies &amp; Tracking</a></li>
+        <li><a href="#sharing">5. Data Sharing</a></li>
+        <li><a href="#security">6. Data Security</a></li>
+        <li><a href="#retention">7. Data Retention</a></li>
+        <li><a href="#rights">8. User Rights</a></li>
+        <li><a href="#children">9. Children's Privacy</a></li>
+        <li><a href="#transfers">10. Data Transfers</a></li>
+        <li><a href="#changes">11. Changes to Policy</a></li>
+        <li><a href="#contact">12. Contact Information</a></li>
+      </ul>
+    </nav>
+
+    <!-- Sections -->
+    <section id="introduction" class="legal-section">
+      <h2 class="section-title">1. Introduction</h2>
+      <p class="section-text">Aero Intelli is committed to protecting your privacy. This Privacy Policy details our practices concerning the collection, use, maintenance, and protection of personal data across our organic aeroponic growth platforms, SaaS agricultural management dashboard, and digital websites.</p>
+      <p class="section-text">By accessing or using our websites, software services, or physical smart agricultural monitoring products, you consent to the data collection and processing methods described herein.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="collection" class="legal-section">
+      <h2 class="section-title">2. Information We Collect</h2>
+      <p class="section-text">We collect several types of data depending on how you interact with our technology services:</p>
+      <ul class="section-list">
+        <li><strong>Personal Information:</strong> Name, professional email address, billing address, contact phone numbers, and payment details.</li>
+        <li><strong>Farm &amp; Telemetry Data:</strong> Real-time environmental metrics from your aeroponic chambers, system flow rates, crop yields, pH levels, and software telemetry logs.</li>
+        <li><strong>Usage Data:</strong> Device IP address, operating system, browser configuration, page views, and operational duration on our SaaS agriculture platform.</li>
+      </ul>
+    </section>
+
+    <hr class="divider">
+
+    <section id="usage" class="legal-section">
+      <h2 class="section-title">3. How We Use Information</h2>
+      <p class="section-text">The data we capture serves to power, sustain, and improve your farming operations. Specifically, we use it to:</p>
+      <ul class="section-list">
+        <li>Operate, calibrate, and upgrade your smart aeroponic monitoring hardware and software systems.</li>
+        <li>Perform diagnostic checks and prevent software anomalies or hardware system failures.</li>
+        <li>Generate performance benchmarks, environmental insights, and crop health metrics on your dashboard.</li>
+        <li>Process transactional payments and handle customer support inquiries.</li>
+        <li>Optimize the efficiency and resource sustainability of our global smart irrigation networks.</li>
+      </ul>
+    </section>
+
+    <hr class="divider">
+
+    <section id="cookies" class="legal-section">
+      <h2 class="section-title">4. Cookies &amp; Tracking Technologies</h2>
+      <p class="section-text">We use cookies, tokens, and web beacons to recognize your account status and keep your configuration active between browser sessions.</p>
+      <p class="section-text">These tracking technologies store layout preferences, help monitor traffic metrics, and improve our security systems. You can manage or disable cookie configurations within your local browser preferences; however, disabling them may limit the operational capacity of our SaaS dashboard.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="sharing" class="legal-section">
+      <h2 class="section-title">5. Data Sharing &amp; Third Parties</h2>
+      <p class="section-text">Aero Intelli does not sell or distribute personal data or proprietary farm logs to commercial advertising entities.</p>
+      <p class="section-text">We only share information with trusted third-party providers (such as secure cloud storage nodes, payment gateways, and backend analytical tools) who operate under strict non-disclosure obligations to help deliver our platforms.</p>
+      <p class="section-text">Additionally, we may disclose records if requested by statutory authorities to comply with safety compliance, standard legal audits, or state regulations.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="security" class="legal-section">
+      <h2 class="section-title">6. Data Security</h2>
+      <p class="section-text">We deploy robust administrative, operational, and digital security measures designed to guard customer records. This includes AES encryption at rest, secure SSL/TLS protocols during data transit, and restricted firewall access logs.</p>
+      <p class="section-text">While we apply maximum professional caution, no web system can guarantee 100% absolute safety. We maintain automated system checks and database backups to minimize risks and maintain integrity.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="retention" class="legal-section">
+      <h2 class="section-title">7. Data Retention</h2>
+      <p class="section-text">Aero Intelli holds your personal information and agricultural logs only as long as you maintain an active dashboard account, or as required by regulatory compliance rules.</p>
+      <p class="section-text">Once your subscription terminates, we systematically purge personal identifier links. Telemetry data is completely anonymized and integrated into long-term agricultural performance research logs to improve our yield optimization algorithms.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="rights" class="legal-section">
+      <h2 class="section-title">8. User Rights</h2>
+      <p class="section-text">Depending on your state or regional location, you are entitled to certain privacy rights, including:</p>
+      <ul class="section-list">
+        <li>The right to inspect what personal databases are compiled under your name.</li>
+        <li>The right to correct or update obsolete data attributes.</li>
+        <li>The right to request complete deletion of personal records.</li>
+        <li>The right to limit processing or restrict transfers of your telemetry logs.</li>
+      </ul>
+      <p class="section-text">To initiate a privacy request, please submit a query to our support email listed below.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="children" class="legal-section">
+      <h2 class="section-title">9. Children's Privacy</h2>
+      <p class="section-text">Our software systems, agritech devices, and customer support channels are intended solely for professional business operations and users who are at least 18 years of age.</p>
+      <p class="section-text">We do not knowingly store or collect attributes related to children under 13. If you believe a child has submitted personal details, please contact us immediately to purge the record.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="transfers" class="legal-section">
+      <h2 class="section-title">10. International Data Transfers</h2>
+      <p class="section-text">Your information may be transferred to, and processed in, server infrastructure located outside your immediate state or country. We utilize standard contractual protection agreements and secure data pipelines to safeguard your records across international boundaries.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="changes" class="legal-section">
+      <h2 class="section-title">11. Changes to This Policy</h2>
+      <p class="section-text">We reserve the right to modify or adjust this Privacy Policy when updating our systems or responding to security regulations. When amendments occur, we will update the "Last Updated" timestamp at the top of this document.</p>
+      <p class="section-text">We suggest checking this page periodically to remain informed about our storage safety policies.</p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-card">
+      <h2 class="contact-title">12. Contact Information</h2>
+      <p class="contact-info">Aero Intelli</p>
+      <p class="contact-info">For questions regarding this Privacy Policy or other data operations, please reach our compliance desk at the address below.</p>
+      <div class="contact-details">
+        <span>Email: <a href="mailto:support@aerointelli.com">support@aerointelli.com</a></span>
+        <span>Website: <a href="https://www.aerointelli.com" target="_blank" rel="noopener noreferrer">www.aerointelli.com</a></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="legal-footer">
+    <div class="footer-container">
+      <div class="footer-tagline-container">
+        <h2 class="footer-tagline-new">Engineering the Future of Food, Water &amp; Sustainability</h2>
+      </div>
+      <p class="copyright">&copy; 2026 Aero Intelli. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Notice Script -->
+  <script src="../components/cookie-notice.js"></script>
+
+</body>
+</html>
