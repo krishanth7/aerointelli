@@ -1,0 +1,49 @@
+# ==============================================================================
+# Aero Intelli — Corporate Robots Configuration
+# https://aerointelli.com
+# ==============================================================================
+
+# Global Crawler Rules
+User-agent: *
+Allow: /
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /.claude/
+
+# Allow major AI Search & Agent Crawlers (AI SEO & LLM Citations)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# XML Sitemap Location
+Sitemap: https://aerointelli.com/sitemap.xml
+
+# LLM & AI Context Manifests
+# https://llmstxt.org/
+# https://aerointelli.com/llms.txt
+# https://aerointelli.com/llms-full.txt
