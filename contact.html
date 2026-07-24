@@ -212,9 +212,9 @@
     <!-- ─── GLOBAL OFFICES & FACILITIES ─── -->
     <section class="ct-section ct-offices-section" id="global-offices">
       <div class="ct-header-centered">
-        <span class="ct-section-label">Global Presence</span>
+        <span class="ct-section-label">Engineering Hubs</span>
         <h2 class="ct-title-section">Offices &amp; Facilities</h2>
-        <p>Connect with our engineering and business hubs around the world.</p>
+        <p>Connect with our corporate technology center and engineering laboratory.</p>
       </div>
 
       <div class="ct-offices-grid">
@@ -222,7 +222,7 @@
         <div class="ct-office-card ct-tilt-card">
           <div class="ct-tilt-card-glow"></div>
           <div class="ct-office-header">
-            <h3 class="ct-office-title">Global Headquarters</h3>
+            <h3 class="ct-office-title">Corporate Headquarters</h3>
             <span class="ct-office-location">Hyderabad, Telangana, India</span>
           </div>
           <div class="ct-office-body">
@@ -280,7 +280,7 @@
 
       <div class="ct-channels-grid">
         <!-- Careers -->
-        <a href="#conversational-flow" class="ct-channel-card">
+        <a href="#conversational-flow" class="ct-channel-card" data-pathway="Careers">
           <div class="ct-channel-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
@@ -289,7 +289,7 @@
         </a>
 
         <!-- Press -->
-        <a href="#conversational-flow" class="ct-channel-card">
+        <a href="#conversational-flow" class="ct-channel-card" data-pathway="Press">
           <div class="ct-channel-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
           </div>
@@ -298,7 +298,7 @@
         </a>
 
         <!-- Investors -->
-        <a href="#conversational-flow" class="ct-channel-card">
+        <a href="#conversational-flow" class="ct-channel-card" data-pathway="Investors">
           <div class="ct-channel-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
@@ -307,7 +307,7 @@
         </a>
 
         <!-- General -->
-        <a href="#conversational-flow" class="ct-channel-card">
+        <a href="#conversational-flow" class="ct-channel-card" data-pathway="Sales">
           <div class="ct-channel-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           </div>
@@ -355,6 +355,21 @@
               <button type="button" class="ct-selection-option" data-val="Partnerships">
                 <span class="ct-sel-opt-title">Partnerships</span>
                 <span class="ct-sel-opt-desc">Research, distribution, and institutional collaborations</span>
+              </button>
+
+              <button type="button" class="ct-selection-option" data-val="Careers">
+                <span class="ct-sel-opt-title">Careers &amp; Talent</span>
+                <span class="ct-sel-opt-desc">Join our team of engineers, researchers, and agronomists</span>
+              </button>
+
+              <button type="button" class="ct-selection-option" data-val="Press">
+                <span class="ct-sel-opt-title">Media &amp; Press</span>
+                <span class="ct-sel-opt-desc">Press kits, brand assets, and executive statements</span>
+              </button>
+
+              <button type="button" class="ct-selection-option" data-val="Investors">
+                <span class="ct-sel-opt-title">Investor Relations</span>
+                <span class="ct-sel-opt-desc">Capital structure, filings, and institutional inquiries</span>
               </button>
 
             </div>
@@ -1043,7 +1058,7 @@
       nextBtn.addEventListener('click', () => {
         if (currentStep === 4) {
           if (validateStep(4)) {
-            const userNameVal = document.getElementById('ct-name').value.trim();
+            const userNameVal = document.getElementById('ct-name').value.trim() || 'there';
             document.getElementById('success-user-name').textContent = userNameVal;
             
             form.style.display = 'none';
@@ -1408,15 +1423,26 @@
           const summaryTime = document.getElementById('ct-sched-summary-time');
           const summaryDept = document.getElementById('ct-sched-summary-dept');
           
-          if (summaryDate) summaryDate.textContent = dateInput.getAttribute('data-formatted') || dateInput.value;
-          if (summaryTime) summaryTime.textContent = timeInput.value;
-          if (summaryDept) summaryDept.textContent = deptInput.value;
+          if (summaryDate) summaryDate.textContent = dateInput.getAttribute('data-formatted') || dateInput.value || 'Upcoming Business Day';
+          if (summaryTime) summaryTime.textContent = timeInput.value || '10:00 AM EST';
+          if (summaryDept) summaryDept.textContent = deptInput.value || 'Engineering & Technical Projects';
 
           schedSteps.forEach(s => s.classList.remove('active'));
           document.querySelector('.ct-sched-step[data-sched-step="3"]').classList.add('active');
         }
       });
     }
+
+    // Direct Channel Pathway Click-through routing
+    document.querySelectorAll('[data-pathway]').forEach(card => {
+      card.addEventListener('click', () => {
+        const pathway = card.getAttribute('data-pathway');
+        const optBtn = document.querySelector(`.ct-selection-option[data-val="${pathway}"]`);
+        if (optBtn) {
+          optBtn.click();
+        }
+      });
+    });
 
     // Input error clear on focus
     if (schedNameInput) schedNameInput.addEventListener('focus', () => schedNameInput.style.borderColor = '');
