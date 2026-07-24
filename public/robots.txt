@@ -3,16 +3,11 @@
 # https://aerointelli.com
 # ==============================================================================
 
-# Global Crawler Rules
+# Global Crawler Rules — Fully Open & Indexable
 User-agent: *
 Allow: /
-Disallow: /dist/
-Disallow: /node_modules/
-Disallow: /.git/
-Disallow: /.vscode/
-Disallow: /.claude/
 
-# Allow major AI Search & Agent Crawlers (AI SEO & LLM Citations)
+# Allow major AI Search & Agent Crawlers (AI SEO, AEO & LLM Citations)
 User-agent: GPTBot
 Allow: /
 
@@ -29,6 +24,9 @@ User-agent: anthropic-ai
 Allow: /
 
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
