@@ -621,126 +621,198 @@
       </div>
     </section>
 
-    <!-- ─── FAQ SECTION (Ultra-Professional Mobile & Desktop Design) ─── -->
-    <section id="faq" class="ct-section bg-[#F4F6F3] py-20 lg:py-28 relative overflow-hidden">
-      <!-- Background subtle pattern -->
-      <div class="absolute inset-0 pointer-events-none opacity-40 select-none" style="background-image: radial-gradient(#006B5E 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+    <!-- ─── FAQ SECTION (Ultra-Corporate Mobile & Desktop Experience) ─── -->
+    <section id="faq" class="ct-section bg-[#F4F6F3] py-20 lg:py-32 relative overflow-hidden">
+      <!-- Ambient Background Pattern -->
+      <div class="absolute inset-0 pointer-events-none opacity-35 select-none" style="background-image: radial-gradient(#006B5E 0.6px, transparent 0.6px); background-size: 28px 28px;"></div>
       
-      <div class="max-w-4xl mx-auto px-5 sm:px-6 relative z-10">
+      <div class="max-w-5xl mx-auto px-5 sm:px-6 relative z-10">
         
         <!-- Header -->
-        <div class="ct-header-centered text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#006B5E]/10 border border-[#006B5E]/20 text-[#006B5E] text-xs font-semibold uppercase tracking-widest select-none mb-4">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E] animate-pulse"></span>
-            Partnership Intelligence
+        <div class="ct-header-centered text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#006B5E]/10 border border-[#006B5E]/20 text-[#006B5E] text-xs font-semibold uppercase tracking-widest select-none mb-4">
+            <span class="w-2 h-2 rounded-full bg-[#006B5E] animate-pulse"></span>
+            Corporate &amp; Technical Intelligence
           </span>
-          <h2 class="font-['Fraunces'] text-2xl sm:text-4xl lg:text-5xl font-semibold text-[#1D291C] tracking-tight">
+          <h2 class="font-['Fraunces'] text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1D291C] tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p class="font-['Inter'] text-sm sm:text-base text-[#556353] mt-3 leading-relaxed">
-            Key insights into Aero Intelli's corporate structure, technology deployments, and partnership inquiries.
+          <p class="font-['Inter'] text-sm sm:text-base text-[#556353] mt-4 leading-relaxed max-w-2xl mx-auto">
+            Comprehensive answers regarding commercial deployments, AEROS™ AI operating architecture, facilities, and partnership structures.
           </p>
         </div>
 
-        <!-- FAQ Accordion Stack -->
-        <div class="space-y-4">
+        <!-- Filter Category Tabs (Mobile & Desktop) -->
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 select-none" id="faq-category-tabs">
+          <button type="button" class="faq-tab active px-4 py-2 rounded-full font-['Inter'] text-xs sm:text-sm font-semibold transition-all duration-300 border border-[#006B5E] bg-[#006B5E] text-white shadow-sm" data-category="all">
+            All Questions
+          </button>
+          <button type="button" class="faq-tab px-4 py-2 rounded-full font-['Inter'] text-xs sm:text-sm font-semibold transition-all duration-300 border border-[#E2ECE5] bg-white text-[#556353] hover:border-[#006B5E] hover:text-[#006B5E]" data-category="enterprise">
+            🏢 Enterprise &amp; Operations
+          </button>
+          <button type="button" class="faq-tab px-4 py-2 rounded-full font-['Inter'] text-xs sm:text-sm font-semibold transition-all duration-300 border border-[#E2ECE5] bg-white text-[#556353] hover:border-[#006B5E] hover:text-[#006B5E]" data-category="technology">
+            🌿 Technology &amp; AEROS™ AI
+          </button>
+          <button type="button" class="faq-tab px-4 py-2 rounded-full font-['Inter'] text-xs sm:text-sm font-semibold transition-all duration-300 border border-[#E2ECE5] bg-white text-[#556353] hover:border-[#006B5E] hover:text-[#006B5E]" data-category="investors">
+            📈 Commercial &amp; Q4 2026
+          </button>
+        </div>
+
+        <!-- FAQ Cards Accordion Grid -->
+        <div class="space-y-4" id="faq-accordion-container">
           
-          <!-- Item 1 (Open by Default) -->
-          <details class="group bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" open>
+          <!-- Item 1: Enterprise -->
+          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="enterprise" open>
             <summary class="flex justify-between items-center gap-4 list-none select-none">
-              <h3 class="font-['Fraunces'] text-base sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200">
-                How can commercial producers and enterprise partners collaborate with Aero Intelli?
-              </h3>
-              <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
+              <div class="space-y-1">
+                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+                  Enterprise Partnership
+                </span>
+                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                  How can commercial producers and enterprise partners collaborate with Aero Intelli?
+                </h3>
+              </div>
+              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-4 pt-4 border-t border-[#F0F5F1] space-y-2">
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#006B5E]/10 text-[#006B5E] text-[11px] font-bold uppercase tracking-wider">
-                Direct Answer
+            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
+              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+                Direct Corporate Response
               </div>
-              <p class="mt-2 text-[#3D4A3B]">
-                Enterprise partners can collaborate with Aero Intelli through four commercial tracks: modular aeroponic farm deployment, turn-key Recirculating Aquaculture System (RAS) engineering, AEROS™ AI operating system licensing, and joint-venture agritech infrastructure projects.
+              <p class="text-[#3D4A3B] leading-relaxed">
+                Enterprise partners collaborate with Aero Intelli through four structured commercial frameworks: modular aeroponic farm deployment, turn-key Recirculating Aquaculture System (RAS) engineering, AEROS™ AI operating system licensing, and joint-venture agritech infrastructure developments.
               </p>
             </div>
           </details>
 
-          <!-- Item 2 -->
-          <details class="group bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer">
+          <!-- Item 2: Operations / Facilities -->
+          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="enterprise">
             <summary class="flex justify-between items-center gap-4 list-none select-none">
-              <h3 class="font-['Fraunces'] text-base sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200">
-                Where are Aero Intelli's corporate offices and engineering facilities located?
-              </h3>
-              <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
+              <div class="space-y-1">
+                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+                  Facilities &amp; Footprint
+                </span>
+                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                  Where are Aero Intelli's corporate headquarters and engineering laboratories located?
+                </h3>
+              </div>
+              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-4 pt-4 border-t border-[#F0F5F1] space-y-2">
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#006B5E]/10 text-[#006B5E] text-[11px] font-bold uppercase tracking-wider">
-                Direct Answer
+            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
+              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+                Direct Corporate Response
               </div>
-              <p class="mt-2 text-[#3D4A3B]">
-                Aero Intelli operates two specialized facilities in India: our Corporate Headquarters &amp; Technology Center is located in Madhapur, Tech Corridor, Hyderabad, Telangana; and our primary Engineering R&amp;D Laboratory &amp; Prototyping Facility is located in Amalapuram, East Godavari, Andhra Pradesh.
+              <p class="text-[#3D4A3B] leading-relaxed">
+                Aero Intelli operates two specialized engineering hubs in India: our Corporate Headquarters &amp; Technology Center is located in Madhapur, Tech Corridor, Hyderabad, Telangana; and our primary Engineering R&amp;D Laboratory &amp; Prototyping Facility is situated in Amalapuram, East Godavari, Andhra Pradesh.
               </p>
             </div>
           </details>
 
-          <!-- Item 3 -->
-          <details class="group bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer">
+          <!-- Item 3: Technology -->
+          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="technology">
             <summary class="flex justify-between items-center gap-4 list-none select-none">
-              <h3 class="font-['Fraunces'] text-base sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200">
-                How does AEROS™ AI automate crop health, nutrients, and biosecurity?
-              </h3>
-              <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
+              <div class="space-y-1">
+                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+                  AI Operating System
+                </span>
+                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                  How does AEROS™ AI monitor crop health, EC/pH, and biosecurity 24/7?
+                </h3>
+              </div>
+              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-4 pt-4 border-t border-[#F0F5F1] space-y-2">
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#006B5E]/10 text-[#006B5E] text-[11px] font-bold uppercase tracking-wider">
-                Direct Answer
+            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
+              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+                Direct Corporate Response
               </div>
-              <p class="mt-2 text-[#3D4A3B]">
-                AEROS™ AI pairs high-resolution optical computer vision with inline water chemistry telemetry (EC, pH, Dissolved Oxygen, ORP). The system autonomously adjusts peristaltic nutrient dosing, root misting frequencies, and microclimates 24/7 to prevent disease before visual symptoms manifest.
+              <p class="text-[#3D4A3B] leading-relaxed">
+                AEROS™ AI integrates continuous multi-spectral computer vision with inline water chemistry telemetry sensors (EC, pH, Dissolved Oxygen, ORP). The system automatically modulates peristaltic nutrient dosing pumps, misting intervals, and environmental microclimates 24/7 to guarantee optimal plant development and early biosecurity protection.
               </p>
             </div>
           </details>
 
-          <!-- Item 4 -->
-          <details class="group bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer">
+          <!-- Item 4: Technology -->
+          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="technology">
             <summary class="flex justify-between items-center gap-4 list-none select-none">
-              <h3 class="font-['Fraunces'] text-base sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200">
-                What is the rollout timeline and pre-launch availability for Q4 2026?
-              </h3>
-              <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
+              <div class="space-y-1">
+                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+                  Water &amp; Aeroponics
+                </span>
+                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                  How do Aero Intelli's aeroponic systems achieve 90% water savings?
+                </h3>
+              </div>
+              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-4 pt-4 border-t border-[#F0F5F1] space-y-2">
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#006B5E]/10 text-[#006B5E] text-[11px] font-bold uppercase tracking-wider">
-                Direct Answer
+            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
+              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+                Direct Corporate Response
               </div>
-              <p class="mt-2 text-[#3D4A3B]">
-                Aero Intelli is currently accepting priority waitlist registrations for commercial deployments commencing Q4 2026. Over 2,400 agricultural producers and enterprise operators have joined the early-access roster.
+              <p class="text-[#3D4A3B] leading-relaxed">
+                By suspending roots in closed misting chambers and atomizing organic nutrient solution directly onto root structures, Aero Intelli captures, filters, and recirculates 90%+ of all moisture that traditional soil farming loses to percolation and runoff.
               </p>
             </div>
           </details>
 
-          <!-- Item 5 -->
-          <details class="group bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer">
+          <!-- Item 5: Commercial / Investors -->
+          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="investors">
             <summary class="flex justify-between items-center gap-4 list-none select-none">
-              <h3 class="font-['Fraunces'] text-base sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200">
-                How can institutional investors and analysts request briefing materials?
-              </h3>
-              <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
+              <div class="space-y-1">
+                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+                  Commercial Rollout
+                </span>
+                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                  What is the commercial rollout timeline and pre-launch availability for Q4 2026?
+                </h3>
+              </div>
+              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-4 pt-4 border-t border-[#F0F5F1] space-y-2">
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#006B5E]/10 text-[#006B5E] text-[11px] font-bold uppercase tracking-wider">
-                Direct Answer
+            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
+              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+                Direct Corporate Response
               </div>
-              <p class="mt-2 text-[#3D4A3B]">
-                Institutional investors, agritech analysts, and municipal partners can request NDA-sheltered technical whitepapers, yield models, and capital allocation frameworks by selecting "Investor Relations" in our corporate contact wizard or scheduling a virtual briefing directly.
+              <p class="text-[#3D4A3B] leading-relaxed">
+                Commercial facility deployments commence in Q4 2026. Aero Intelli is actively reviewing waitlist applications from over 2,400 agricultural producers, enterprise farm operators, and commercial partners seeking early allocation slots.
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 6: Investors -->
+          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="investors">
+            <summary class="flex justify-between items-center gap-4 list-none select-none">
+              <div class="space-y-1">
+                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+                  Investor Briefings
+                </span>
+                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                  How can institutional investors and analysts request briefing materials?
+                </h3>
+              </div>
+              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
+              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+                Direct Corporate Response
+              </div>
+              <p class="text-[#3D4A3B] leading-relaxed">
+                Institutional investors and qualified agritech partners can request NDA-sheltered technical briefing materials, unit economic models, and capital allocation frameworks by selecting "Investor Relations" in our contact wizard.
               </p>
             </div>
           </details>
@@ -1128,13 +1200,76 @@
       }, 400);
     };
 
+    // Resend Email API Notification Helper
+    const sendResendEmailNotification = async (payloadData) => {
+      const resendApiKey = 're_4N1xFk4k_FoQMmaQXhUAjsmffKMX4Y1Cx';
+      const emailContent = {
+        from: 'AeroIntelli Portal <onboarding@resend.dev>',
+        to: ['bkrishanth7@gmail.com'],
+        subject: payloadData.subject || '[AeroIntelli] New Contact Inquiry',
+        html: `
+          <div style="font-family: Arial, sans-serif; padding: 24px; color: #1D291C; max-width: 600px; margin: 0 auto; border: 1px solid #E2ECE5; border-radius: 16px; background-color: #FAFAF7;">
+            <h2 style="color: #006B5E; margin-top: 0; font-size: 22px;">🌱 AeroIntelli Corporate Portal Inquiry</h2>
+            <hr style="border: 0; border-top: 1px solid #E2ECE5; margin: 16px 0;">
+            <p style="margin: 8px 0;"><strong>Full Name:</strong> ${payloadData.name || 'Not Provided'}</p>
+            <p style="margin: 8px 0;"><strong>Email Address:</strong> ${payloadData.email || 'Not Provided'}</p>
+            <p style="margin: 8px 0;"><strong>Organization / Company:</strong> ${payloadData.company || 'N/A'}</p>
+            <p style="margin: 8px 0;"><strong>Inquiry Pathway:</strong> ${payloadData.inquiryType || 'General'}</p>
+            <p style="margin: 8px 0;"><strong>Target Location:</strong> ${payloadData.location || 'N/A'}</p>
+            <p style="margin: 8px 0;"><strong>Project Type / Scale:</strong> ${payloadData.projectType || 'N/A'}</p>
+            ${payloadData.date ? `<p style="margin: 8px 0;"><strong>Scheduled Session:</strong> ${payloadData.date} at ${payloadData.time} (${payloadData.dept})</p>` : ''}
+            <div style="margin-top: 16px;">
+              <strong>Message Details:</strong>
+              <blockquote style="background: #FFFFFF; padding: 14px 18px; border-left: 4px solid #006B5E; border-radius: 8px; margin: 8px 0; color: #3D4A3B; line-height: 1.6;">
+                ${payloadData.message || 'No additional message text submitted.'}
+              </blockquote>
+            </div>
+            <hr style="border: 0; border-top: 1px solid #E2ECE5; margin: 20px 0;">
+            <p style="font-size: 11px; color: #6B7568; margin: 0;">Automated notification via Resend API • AeroIntelli Systems 2026</p>
+          </div>
+        `
+      };
+
+      try {
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${resendApiKey}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(emailContent)
+        });
+      } catch (e) {
+        console.warn('Resend API request status:', e);
+      }
+    };
+
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
         if (currentStep === 4) {
           if (validateStep(4)) {
-            const userNameVal = document.getElementById('ct-name').value.trim() || 'there';
+            const userNameVal = document.getElementById('ct-name') ? document.getElementById('ct-name').value.trim() || 'there' : 'there';
+            const userEmailVal = document.getElementById('ct-email') ? document.getElementById('ct-email').value.trim() : '';
+            const companyVal = document.getElementById('ct-company') ? document.getElementById('ct-company').value.trim() : '';
+            const inquiryTypeVal = document.getElementById('ct-inquiry-type') ? document.getElementById('ct-inquiry-type').value.trim() : '';
+            const locationVal = document.getElementById('ct-location') ? document.getElementById('ct-location').value.trim() : '';
+            const projectTypeVal = document.getElementById('ct-project-type') ? document.getElementById('ct-project-type').value.trim() : '';
+            const messageVal = document.getElementById('ct-message') ? document.getElementById('ct-message').value.trim() : '';
+
             document.getElementById('success-user-name').textContent = userNameVal;
-            
+
+            // Trigger Resend API Email Notification
+            sendResendEmailNotification({
+              name: userNameVal,
+              email: userEmailVal,
+              company: companyVal,
+              inquiryType: inquiryTypeVal,
+              location: locationVal,
+              projectType: projectTypeVal,
+              message: messageVal,
+              subject: `[AeroIntelli Inquiry] ${inquiryTypeVal || 'Corporate'} - ${companyVal || userNameVal}`
+            });
+
             form.style.display = 'none';
             if (successCard) successCard.style.display = 'flex';
             if (stepNumText) stepNumText.parentNode.style.display = 'none';
@@ -1497,15 +1632,57 @@
           const summaryTime = document.getElementById('ct-sched-summary-time');
           const summaryDept = document.getElementById('ct-sched-summary-dept');
           
-          if (summaryDate) summaryDate.textContent = dateInput.getAttribute('data-formatted') || dateInput.value || 'Upcoming Business Day';
-          if (summaryTime) summaryTime.textContent = timeInput.value || '10:00 AM EST';
-          if (summaryDept) summaryDept.textContent = deptInput.value || 'Engineering & Technical Projects';
+          const dateVal = dateInput.getAttribute('data-formatted') || dateInput.value || 'Upcoming Business Day';
+          const timeVal = timeInput.value || '10:00 AM EST';
+          const deptVal = deptInput.value || 'Engineering & Technical Projects';
+
+          if (summaryDate) summaryDate.textContent = dateVal;
+          if (summaryTime) summaryTime.textContent = timeVal;
+          if (summaryDept) summaryDept.textContent = deptVal;
+
+          // Trigger Resend Email Notification
+          sendResendEmailNotification({
+            name: schedNameInput.value.trim(),
+            email: emailInput.value.trim(),
+            dept: deptVal,
+            date: dateVal,
+            time: timeVal,
+            subject: `[AeroIntelli Virtual Booking] ${deptVal} - ${schedNameInput.value.trim()}`
+          });
 
           schedSteps.forEach(s => s.classList.remove('active'));
           document.querySelector('.ct-sched-step[data-sched-step="3"]').classList.add('active');
         }
       });
     }
+
+    // FAQ Category Tab Filter Logic
+    const faqTabs = document.querySelectorAll('#faq-category-tabs .faq-tab');
+    const faqItems = document.querySelectorAll('#faq-accordion-container .faq-item');
+
+    faqTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const category = tab.getAttribute('data-category');
+        
+        // Update active tab UI
+        faqTabs.forEach(t => {
+          t.classList.remove('active', 'bg-[#006B5E]', 'text-white', 'border-[#006B5E]');
+          t.classList.add('bg-white', 'text-[#556353]', 'border-[#E2ECE5]');
+        });
+        tab.classList.add('active', 'bg-[#006B5E]', 'text-white', 'border-[#006B5E]');
+        tab.classList.remove('bg-white', 'text-[#556353]', 'border-[#E2ECE5]');
+
+        // Filter details items
+        faqItems.forEach(item => {
+          const itemCat = item.getAttribute('data-category');
+          if (category === 'all' || itemCat === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
 
     // Direct Channel Pathway Click-through routing
     document.querySelectorAll('[data-pathway]').forEach(card => {
