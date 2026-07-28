@@ -118,12 +118,19 @@
             <!-- Newsletter Section -->
             <div class="footer-newsletter">
               <div class="f-news-text">
+                <div class="f-news-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <span>INSIGHTS &amp; UPDATES</span>
+                </div>
                 <h4 class="f-news-title">Stay Updated</h4>
                 <p class="f-news-desc">Receive insights about sustainable agriculture, food systems and innovation.</p>
               </div>
               <form class="f-news-form" id="footer-newsletter-form">
-                <input type="email" id="footer-newsletter-email" placeholder="Enter your email" required class="f-news-input" aria-label="Email address for newsletter">
-                <button type="submit" class="f-news-btn">Subscribe</button>
+                <input type="email" id="footer-newsletter-email" placeholder="Enter your work email" required class="f-news-input" aria-label="Email address for newsletter">
+                <button type="submit" class="f-news-btn">
+                  <span>Subscribe</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
               </form>
             </div>
 
