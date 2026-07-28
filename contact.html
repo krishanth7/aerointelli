@@ -622,18 +622,11 @@
     </section>
 
     <!-- ─── FAQ SECTION (Ultra-Corporate Mobile & Desktop Experience) ─── -->
-    <section id="faq" class="ct-section bg-[#F4F6F3] py-20 lg:py-32 relative overflow-hidden">
-      <!-- Ambient Background Pattern -->
-      <div class="absolute inset-0 pointer-events-none opacity-35 select-none" style="background-image: radial-gradient(#006B5E 0.6px, transparent 0.6px); background-size: 28px 28px;"></div>
-      
-      <div class="max-w-5xl mx-auto px-5 sm:px-6 relative z-10">
+    <section id="faq" class="ct-faq-section">
+      <div class="ct-faq-container">
         
         <!-- Header -->
         <div class="ct-header-centered text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#006B5E]/10 border border-[#006B5E]/20 text-[#006B5E] text-xs font-semibold uppercase tracking-widest select-none mb-4">
-            <span class="w-2 h-2 rounded-full bg-[#006B5E] animate-pulse"></span>
-            Corporate &amp; Technical Intelligence
-          </span>
           <h2 class="font-['Fraunces'] text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1D291C] tracking-tight">
             Frequently Asked Questions
           </h2>
@@ -641,44 +634,28 @@
             Comprehensive answers regarding commercial deployments, AEROS™ AI operating architecture, facilities, and partnership structures.
           </p>
         </div>
-
-        <!-- Filter Category Tabs (Mobile & Desktop) -->
-        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 select-none" id="faq-category-tabs">
-          <button type="button" class="faq-tab active px-4 py-2 rounded-full font-['Inter'] text-xs sm:text-sm font-semibold transition-all duration-300 border border-[#006B5E] bg-[#006B5E] text-white shadow-sm" data-category="all">
-            All Questions
-          </button>
-          <button type="button" class="faq-tab px-4 py-2 rounded-full font-['Inter'] text-xs sm:text-sm font-semibold transition-all duration-300 border border-[#E2ECE5] bg-white text-[#556353] hover:border-[#006B5E] hover:text-[#006B5E]" data-category="enterprise">
-            🏢 Enterprise &amp; Operations
-          </button>
-          <button type="button" class="faq-tab px-4 py-2 rounded-full font-['Inter'] text-xs sm:text-sm font-semibold transition-all duration-300 border border-[#E2ECE5] bg-white text-[#556353] hover:border-[#006B5E] hover:text-[#006B5E]" data-category="technology">
-            🌿 Technology &amp; AEROS™ AI
-          </button>
-          <button type="button" class="faq-tab px-4 py-2 rounded-full font-['Inter'] text-xs sm:text-sm font-semibold transition-all duration-300 border border-[#E2ECE5] bg-white text-[#556353] hover:border-[#006B5E] hover:text-[#006B5E]" data-category="investors">
-            📈 Commercial &amp; Q4 2026
-          </button>
-        </div>
-
+        
         <!-- FAQ Cards Accordion Grid -->
         <div class="space-y-4" id="faq-accordion-container">
           
           <!-- Item 1: Enterprise -->
-          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="enterprise" open>
-            <summary class="flex justify-between items-center gap-4 list-none select-none">
-              <div class="space-y-1">
-                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+          <details class="ct-faq-card faq-item" data-category="enterprise" open>
+            <summary class="ct-faq-summary">
+              <div>
+                <span class="ct-faq-badge">
                   Enterprise Partnership
                 </span>
-                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                <h3 class="ct-faq-question">
                   How can commercial producers and enterprise partners collaborate with Aero Intelli?
                 </h3>
               </div>
-              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
-                <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <span class="ct-faq-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
-              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+            <div class="ct-faq-body">
+              <div class="ct-faq-response-tag">
+                <span class="ct-faq-response-dot"></span>
                 Direct Corporate Response
               </div>
               <p class="text-[#3D4A3B] leading-relaxed">
@@ -688,23 +665,23 @@
           </details>
 
           <!-- Item 2: Operations / Facilities -->
-          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="enterprise">
-            <summary class="flex justify-between items-center gap-4 list-none select-none">
-              <div class="space-y-1">
-                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+          <details class="ct-faq-card faq-item" data-category="enterprise">
+            <summary class="ct-faq-summary">
+              <div>
+                <span class="ct-faq-badge">
                   Facilities &amp; Footprint
                 </span>
-                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                <h3 class="ct-faq-question">
                   Where are Aero Intelli's corporate headquarters and engineering laboratories located?
                 </h3>
               </div>
-              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
-                <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <span class="ct-faq-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
-              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+            <div class="ct-faq-body">
+              <div class="ct-faq-response-tag">
+                <span class="ct-faq-response-dot"></span>
                 Direct Corporate Response
               </div>
               <p class="text-[#3D4A3B] leading-relaxed">
@@ -714,23 +691,23 @@
           </details>
 
           <!-- Item 3: Technology -->
-          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="technology">
-            <summary class="flex justify-between items-center gap-4 list-none select-none">
-              <div class="space-y-1">
-                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+          <details class="ct-faq-card faq-item" data-category="technology">
+            <summary class="ct-faq-summary">
+              <div>
+                <span class="ct-faq-badge">
                   AI Operating System
                 </span>
-                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                <h3 class="ct-faq-question">
                   How does AEROS™ AI monitor crop health, EC/pH, and biosecurity 24/7?
                 </h3>
               </div>
-              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
-                <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <span class="ct-faq-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
-              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+            <div class="ct-faq-body">
+              <div class="ct-faq-response-tag">
+                <span class="ct-faq-response-dot"></span>
                 Direct Corporate Response
               </div>
               <p class="text-[#3D4A3B] leading-relaxed">
@@ -740,23 +717,23 @@
           </details>
 
           <!-- Item 4: Technology -->
-          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="technology">
-            <summary class="flex justify-between items-center gap-4 list-none select-none">
-              <div class="space-y-1">
-                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+          <details class="ct-faq-card faq-item" data-category="technology">
+            <summary class="ct-faq-summary">
+              <div>
+                <span class="ct-faq-badge">
                   Water &amp; Aeroponics
                 </span>
-                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                <h3 class="ct-faq-question">
                   How do Aero Intelli's aeroponic systems achieve 90% water savings?
                 </h3>
               </div>
-              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
-                <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <span class="ct-faq-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
-              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+            <div class="ct-faq-body">
+              <div class="ct-faq-response-tag">
+                <span class="ct-faq-response-dot"></span>
                 Direct Corporate Response
               </div>
               <p class="text-[#3D4A3B] leading-relaxed">
@@ -766,23 +743,23 @@
           </details>
 
           <!-- Item 5: Commercial / Investors -->
-          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="investors">
-            <summary class="flex justify-between items-center gap-4 list-none select-none">
-              <div class="space-y-1">
-                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+          <details class="ct-faq-card faq-item" data-category="investors">
+            <summary class="ct-faq-summary">
+              <div>
+                <span class="ct-faq-badge">
                   Commercial Rollout
                 </span>
-                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                <h3 class="ct-faq-question">
                   What is the commercial rollout timeline and pre-launch availability for Q4 2026?
                 </h3>
               </div>
-              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
-                <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <span class="ct-faq-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
-              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+            <div class="ct-faq-body">
+              <div class="ct-faq-response-tag">
+                <span class="ct-faq-response-dot"></span>
                 Direct Corporate Response
               </div>
               <p class="text-[#3D4A3B] leading-relaxed">
@@ -792,23 +769,23 @@
           </details>
 
           <!-- Item 6: Investors -->
-          <details class="faq-item group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#E2ECE5] shadow-xs hover:border-[#006B5E]/30 hover:shadow-md transition-all duration-300 cursor-pointer" data-category="investors">
-            <summary class="flex justify-between items-center gap-4 list-none select-none">
-              <div class="space-y-1">
-                <span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider text-[#006B5E] bg-[#006B5E]/10 px-2.5 py-0.5 rounded-md inline-block">
+          <details class="ct-faq-card faq-item" data-category="investors">
+            <summary class="ct-faq-summary">
+              <div>
+                <span class="ct-faq-badge">
                   Investor Briefings
                 </span>
-                <h3 class="font-['Fraunces'] text-lg sm:text-xl text-[#1D291C] font-semibold leading-snug group-hover:text-[#006B5E] transition-colors duration-200 mt-1">
+                <h3 class="ct-faq-question">
                   How can institutional investors and analysts request briefing materials?
                 </h3>
               </div>
-              <span class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#F0F5F1] group-open:bg-[#006B5E] group-open:text-white text-[#006B5E] flex items-center justify-center shrink-0 transition-all duration-300">
-                <svg class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <span class="ct-faq-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </summary>
-            <div class="font-['Inter'] text-xs sm:text-sm text-[#4E5C4C] leading-relaxed mt-5 pt-5 border-t border-[#F0F5F1] space-y-3">
-              <div class="flex items-center gap-2 text-[#006B5E] font-semibold text-xs uppercase tracking-wider">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#006B5E]"></span>
+            <div class="ct-faq-body">
+              <div class="ct-faq-response-tag">
+                <span class="ct-faq-response-dot"></span>
                 Direct Corporate Response
               </div>
               <p class="text-[#3D4A3B] leading-relaxed">
@@ -1657,7 +1634,7 @@
     }
 
     // FAQ Category Tab Filter Logic
-    const faqTabs = document.querySelectorAll('#faq-category-tabs .faq-tab');
+    const faqTabs = document.querySelectorAll('#faq-category-tabs .ct-faq-tab-btn');
     const faqItems = document.querySelectorAll('#faq-accordion-container .faq-item');
 
     faqTabs.forEach(tab => {
@@ -1665,12 +1642,8 @@
         const category = tab.getAttribute('data-category');
         
         // Update active tab UI
-        faqTabs.forEach(t => {
-          t.classList.remove('active', 'bg-[#006B5E]', 'text-white', 'border-[#006B5E]');
-          t.classList.add('bg-white', 'text-[#556353]', 'border-[#E2ECE5]');
-        });
-        tab.classList.add('active', 'bg-[#006B5E]', 'text-white', 'border-[#006B5E]');
-        tab.classList.remove('bg-white', 'text-[#556353]', 'border-[#E2ECE5]');
+        faqTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
 
         // Filter details items
         faqItems.forEach(item => {

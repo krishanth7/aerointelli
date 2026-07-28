@@ -182,6 +182,30 @@
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
       border-color: rgba(74, 107, 77, 0.3);
     }
+
+    /* ── 3D Scroll-Driven Perspective Animation (Desktop & Mobile) ── */
+    .scroll-3d-stage {
+      perspective: 1200px;
+    }
+    .scroll-3d-card {
+      opacity: 0;
+      transform: translateY(60px) rotateX(16deg) scale(0.93);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s ease,
+                  border-color 0.4s ease;
+      will-change: transform, opacity;
+      transform-style: preserve-3d;
+    }
+    .scroll-3d-card.is-visible {
+      opacity: 1;
+      transform: translateY(0) rotateX(0deg) scale(1);
+    }
+    @media (hover: hover) {
+      .scroll-3d-card:hover {
+        transform: translateY(-8px) rotateX(2deg) rotateY(-1.5deg) scale(1.015);
+      }
+    }
     .terminal-scrollbar::-webkit-scrollbar {
       width: 4px;
     }
@@ -350,19 +374,8 @@
       <div class="absolute inset-0 pointer-events-none opacity-[0.03] z-0" id="home-hero-blueprint" aria-hidden="true" style="background-image: linear-gradient(rgba(250,250,247,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(250,250,247,0.1) 1px, transparent 1px); background-size: 48px 48px;"></div>
       
       <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <!-- Badges & Social Proof -->
-        <div class="flex flex-wrap justify-center gap-3 select-none">
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 font-['Inter'] text-xs font-semibold tracking-wider text-[#00D9B5] uppercase">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#00D9B5] animate-pulse"></span>
-            2,400+ Agricultural Innovators on Waitlist
-          </span>
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 font-['Inter'] text-xs font-semibold tracking-wider text-[#38BDF8] uppercase">
-            💧 90% Water Conservation vs Traditional Farming
-          </span>
-        </div>
-
         <!-- Main Headline -->
-        <h1 class="font-['Fraunces'] text-4xl sm:text-6xl lg:text-7xl font-bold mt-8 text-[#FAFAF7] leading-[1.1] max-w-5xl mx-auto">
+        <h1 class="font-['Fraunces'] text-4xl sm:text-6xl lg:text-7xl font-bold text-[#FAFAF7] leading-[1.1] max-w-5xl mx-auto">
           Building the future of Food, Water &amp; Sustainability
         </h1>
 
@@ -399,136 +412,233 @@
       </div>
     </section>
 
-    <!-- ─── SOLUTIONS GRID ─── -->
-    <section id="home-solutions" class="relative py-16 md:py-24 lg:py-32 bg-[#FAFAF7]">
-      <div class="max-w-6xl mx-auto px-6">
-        
-        <div class="max-w-2xl mx-auto text-center mb-12 md:mb-16 lg:mb-20">
-          <span class="font-['Inter'] text-xs md:text-sm uppercase tracking-[0.25em] font-semibold text-[#4A6B4D]">ECO-INFRASTRUCTURE</span>
-          <h2 class="font-['Fraunces'] text-3xl md:text-5xl font-semibold leading-[1.2] text-[#22301F] mt-4">
-            Integrated Systems for Circular Yield
+    <!-- ─── ECO-INFRASTRUCTURE ─── -->
+    <section id="home-solutions" class="relative py-24 md:py-36 bg-[#FAFAF7] overflow-hidden border-y border-slate-200/60">
+      <!-- Ambient background mesh -->
+      <div class="absolute inset-0 bg-[radial-gradient(#006B5E_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03] pointer-events-none" aria-hidden="true"></div>
+
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+
+        <!-- ── ATTRACTIVE CORPORATE HEADER ── -->
+        <div class="max-w-3xl mx-auto text-center mb-16 md:mb-24" data-aos="fade-up">
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 border border-[#006B5E]/20 text-[#006B5E] text-xs font-mono tracking-widest uppercase font-bold shadow-sm backdrop-blur-md mb-6">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D9B5] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-[#006B5E]"></span>
+            </span>
+            ECO-INFRASTRUCTURE PLATFORM
+          </div>
+
+          <h2 class="font-['Fraunces'] text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#1D291C] leading-[1.08]">
+            Integrated Systems for <br class="hidden md:block">
+            <span class="relative inline-block bg-gradient-to-r from-[#006B5E] via-[#00A88F] to-[#2D5A27] bg-clip-text text-transparent">
+              Circular Yield
+            </span>
           </h2>
+
+          <p class="font-['Inter'] text-base sm:text-lg text-[#556353] mt-6 max-w-2xl mx-auto leading-relaxed">
+            Autonomous agritech infrastructure engineered for zero-pesticide biological yield, closed-loop water recovery, and real-time AI telemetric control.
+          </p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-          
-          <!-- Card 1: Aeroponics & Organic (Sage Green) -->
-          <div class="solution-card-hover bg-[#EAF2EB] border border-[#D5E2D7] rounded-[22px] md:rounded-[28px] p-6 md:p-8 flex flex-col justify-between min-h-[220px] md:min-h-[240px] shadow-sm col-span-2 lg:col-span-1 lg:col-start-1 lg:row-start-1">
-            <div>
-              <div class="flex flex-row items-center gap-3 md:gap-4">
-                <div class="w-12 h-12 rounded-2xl bg-[#2C4830]/5 border border-[#2C4830]/10 flex items-center justify-center text-[#2C4830]" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-leaf" viewBox="0 0 16 16">
-                    <path d="M1.4 1.7c.216.289.65.84 1.725 1.274 1.093.44 2.884.774 5.834.528l.37-.023c1.823-.06 3.117.598 3.956 1.579C14.16 6.082 14.5 7.41 14.5 8.5c0 .58-.032 1.285-.229 1.997q.198.248.382.54c.756 1.2 1.19 2.563 1.348 3.966a1 1 0 0 1-1.98.198c-.13-.97-.397-1.913-.868-2.77C12.173 13.386 10.565 14 8 14c-1.854 0-3.32-.544-4.45-1.435-1.125-.887-1.89-2.095-2.391-3.383C.16 6.62.16 3.646.509 1.902L.73.806zm-.05 1.39c-.146 1.609-.008 3.809.74 5.728.457 1.17 1.13 2.213 2.079 2.961.942.744 2.185 1.22 3.83 1.221 2.588 0 3.91-.66 4.609-1.445-1.789-2.46-4.121-1.213-6.342-2.68-.74-.488-1.735-1.323-1.844-2.308-.023-.214.237-.274.38-.112 1.4 1.6 3.573 1.757 5.59 2.045 1.227.215 2.21.526 3.033 1.158.058-.39.075-.782.075-1.158 0-.91-.288-1.988-.975-2.792-.626-.732-1.622-1.281-3.167-1.229l-.316.02c-3.05.253-5.01-.08-6.291-.598a5.3 5.3 0 0 1-1.4-.811"/>
-                  </svg>
+        <!-- ── 3D SCROLL STAGE ── -->
+        <div class="scroll-3d-stage space-y-6 lg:space-y-8" style="perspective: 1200px;">
+
+          <!-- ROW 1 · 2 Hero Cards (Organic Theme 01 & Sky Blue Theme 02) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+
+            <!-- Card 1: Aeroponics & Organic (Botanical Green Theme) -->
+            <a href="about.html" class="scroll-3d-card group relative bg-[#F1F7F2] border border-[#D6E6D8] rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-sm hover:shadow-xl hover:shadow-[#2C5B32]/10 hover:border-[#2C5B32]/40 transition-all duration-500 overflow-hidden">
+              <div>
+                <div class="flex items-center gap-3.5 mb-6">
+                  <div class="w-11 h-11 p-2.5 rounded-xl bg-[#E3F0E4] border border-[#C6DFC9] flex items-center justify-center text-[#2C5B32] group-hover:bg-[#2C5B32] group-hover:text-white transition-all duration-300 shadow-inner shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="Leaf--Streamline-Font-Awesome" height="24" width="24" fill="currentColor">
+                      <path d="M8.5 3c-2.45625 0 -4.534375 1.609375 -5.240625 3.828125 1.05 -0.53125 2.234375 -0.828125 3.490625 -0.828125h2.75c0.275 0 0.5 0.225 0.5 0.5s-0.225 0.5 -0.5 0.5h-2.75c-0.51875 0 -1.021875 0.059375 -1.509375 0.16875 -0.809375 0.184375 -1.559375 0.5125 -2.23125 0.959375C1.196875 9.3375 0 11.403125 0 13.75v0.5c0 0.415625 0.334375 0.75 0.75 0.75s0.75 -0.334375 0.75 -0.75v-0.5c0 -1.521875 0.646875 -2.890625 1.68125 -3.85C3.8 12.259375 5.946875 14 8.5 14l0.03125 0c4.128125 -0.021875 7.46875 -4.090625 7.46875 -9.10625 0 -1.33125 -0.234375 -2.596875 -0.659375 -3.7375 -0.08125 -0.215625 -0.396875 -0.20625 -0.50625 -0.003125C14.246875 2.253125 13.084375 3 11.75 3l-3.25 0z" fill="currentColor" stroke-width="0.0313"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-['Fraunces'] text-lg sm:text-xl md:text-2xl xl:text-[26px] font-bold text-[#1C3B20] tracking-tight group-hover:text-[#2C5B32] transition-colors duration-300 whitespace-nowrap">
+                    Aeroponics &amp; Organic
+                  </h3>
                 </div>
-                <h3 class="font-['Fraunces'] text-xl md:text-2xl font-semibold text-[#2C4830]">Aeroponics &amp; Organic</h3>
+
+                <p class="font-['Inter'] text-[#416847] text-sm md:text-base leading-relaxed mb-6">
+                  Oxygen-rich high-pressure misting architecture distributing micro-filtered organic nutrient feeds directly to exposed root zones with zero chemical pesticides.
+                </p>
               </div>
-              <p class="font-['Inter'] text-sm text-[#4F6853] leading-relaxed mt-4">
-                Oxygen-rich misting systems distributing customized organic nutrient feeds directly to exposed root zones.
-              </p>
-            </div>
-            <a href="about.html" class="font-['Inter'] text-xs font-semibold text-[#2C4830] hover:underline flex items-center gap-1.5 mt-6">
-              Read about system <span aria-hidden="true">&rarr;</span>
+
+              <div class="pt-6 border-t border-[#D6E6D8] flex items-center justify-between mt-auto">
+                <span class="text-xs font-semibold text-[#2C5B32]">Explore Technology</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C5B32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
             </a>
-            <!-- Card 2: NFT Hydroponics (Mint Green) -->
-          <div class="solution-card-hover bg-[#F0F7F4] border border-[#DCEBE4] rounded-[22px] md:rounded-[28px] p-6 md:p-8 flex flex-col justify-between min-h-[220px] md:min-h-[240px] shadow-sm col-span-2 lg:col-span-1 lg:col-start-2 lg:row-start-1">
-            <div>
-              <div class="flex flex-row items-center gap-3 md:gap-4">
-                <div class="w-12 h-12 rounded-2xl bg-[#1E3F31]/5 border border-[#1E3F31]/10 flex items-center justify-center text-[#1E3F31]" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+
+            <!-- Card 2: AEROS AI System (Atmospheric Sky Blue Theme) -->
+            <a href="about.html#who-we-are" class="scroll-3d-card group relative bg-[#F0F5FA] border border-[#D4E3F2] rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-sm hover:shadow-xl hover:shadow-[#245382]/10 hover:border-[#245382]/40 transition-all duration-500 overflow-hidden">
+              <div>
+                <div class="flex items-center gap-3.5 mb-6">
+                  <div class="w-11 h-11 p-2.5 rounded-xl bg-[#E1ECF7] border border-[#C3D7ED] flex items-center justify-center text-[#245382] group-hover:bg-[#245382] group-hover:text-white transition-all duration-300 shadow-inner shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <g clip-path="url(#clip0_4418_8807)">
+                        <path d="M21.25 12.75C21.67 12.75 22 12.41 22 12C22 11.58 21.67 11.25 21.25 11.25H20V9.05H21.25C21.67 9.05 22 8.72 22 8.3C22 7.89 21.67 7.55 21.25 7.55H19.77C19.29 5.96 18.04 4.71 16.45 4.23V2.75C16.45 2.34 16.11 2 15.7 2C15.29 2 14.95 2.34 14.95 2.75V4H12.75V2.75C12.75 2.34 12.41 2 12 2C11.59 2 11.25 2.34 11.25 2.75V4H9.06V2.75C9.06 2.34 8.72 2 8.31 2C7.89 2 7.56 2.34 7.56 2.75V4.23C5.96 4.71 4.71 5.96 4.23 7.55H2.75C2.34 7.55 2 7.89 2 8.3C2 8.72 2.34 9.05 2.75 9.05H4V11.25H2.75C2.34 11.25 2 11.58 2 12C2 12.41 2.34 12.75 2.75 12.75H4V14.95H2.75C2.34 14.95 2 15.28 2 15.7C2 16.11 2.34 16.45 2.75 16.45H4.23C4.7 18.04 5.96 19.29 7.56 19.77V21.25C7.56 21.66 7.89 22 8.31 22C8.72 22 9.06 21.66 9.06 21.25V20H11.26V21.25C11.26 21.66 11.59 22 12.01 22C12.42 22 12.76 21.66 12.76 21.25V20H14.95V21.25C14.95 21.66 15.29 22 15.7 22C16.11 22 16.45 21.66 16.45 21.25V19.77C18.04 19.29 19.29 18.04 19.77 16.45H21.25C21.67 16.45 22 16.11 22 15.7C22 15.28 21.67 14.95 21.25 14.95H20V12.75H21.25ZM17.26 14.26C17.26 15.91 15.91 17.26 14.26 17.26H9.74C8.09 17.26 6.74 15.91 6.74 14.26V9.74C6.74 8.09 8.09 6.74 9.74 6.74H14.26C15.91 6.74 17.26 8.09 17.26 9.74V14.26Z"/>
+                        <path d="M10.02 16.2502H13.99C15.24 16.2502 16.26 15.2402 16.26 13.9802V10.0102C16.26 8.76023 15.25 7.74023 13.99 7.74023H10.02C8.77 7.74023 7.75 8.75023 7.75 10.0102V13.9802C7.75 15.2402 8.76 16.2502 10.02 16.2502Z"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_4418_8807">
+                          <rect width="24" height="24" fill="currentColor"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <h3 class="font-['Fraunces'] text-lg sm:text-xl md:text-2xl xl:text-[26px] font-bold text-[#183654] tracking-tight group-hover:text-[#245382] transition-colors duration-300 whitespace-nowrap">
+                    AEROS AI System
+                  </h3>
                 </div>
-                <h3 class="font-['Fraunces'] text-xl md:text-2xl font-semibold text-[#1E3F31]">NFT Hydroponics</h3>
+
+                <p class="font-['Inter'] text-[#3F6285] text-sm md:text-base leading-relaxed mb-6">
+                  Autonomous operating intelligence managing real-time nutrient dosing loops, microclimate vapor deficits, and predictive crop health telemetry.
+                </p>
               </div>
-              <p class="font-['Inter'] text-sm text-[#446255] leading-relaxed mt-4">
-                Recirculating nutrient film techniques that slide thin organic moisture films down sloped custom channels.
-              </p>
-            </div>
-            <a href="about.html#who-we-are" class="font-['Inter'] text-xs font-semibold text-[#1E3F31] hover:underline flex items-center gap-1.5 mt-6">
-              Explore configuration <span aria-hidden="true">&rarr;</span>
+
+              <div class="pt-6 border-t border-[#D4E3F2] flex items-center justify-between mt-auto">
+                <span class="text-xs font-semibold text-[#245382]">System Architecture</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#245382" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
             </a>
+
           </div>
 
-          <!-- Card 3: AEROS AI (Mineral Lavender/Gray) -->
-          <div class="solution-card-hover bg-[#EBF0F5] border border-[#D8E1EA] rounded-[22px] md:rounded-[28px] p-6 md:p-8 flex flex-col justify-between min-h-[220px] md:min-h-[240px] shadow-sm col-span-2 lg:col-span-1 lg:col-start-3 lg:row-start-1">
-            <div>
-              <div class="flex flex-row items-center gap-3 md:gap-4">
-                <div class="w-12 h-12 rounded-2xl bg-[#2E3C4E]/5 border border-[#2E3C4E]/10 flex items-center justify-center text-[#2E3C4E]" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v2M15 1v2M9 21v2M15 21v2M21 9h2M21 15h2M1 9h2M1 15h2"/></svg>
-                </div>
-                <h3 class="font-['Fraunces'] text-xl md:text-2xl font-semibold text-[#2E3C4E]">AEROS AI</h3>
-              </div>
-              <p class="font-['Inter'] text-sm text-[#506073] leading-relaxed mt-4">
-                Our central operating system that automates nutrient loops, microclimates, and biosecurity real-time.
-              </p>
-            </div>
-            <a href="about.html#who-we-are" class="font-['Inter'] text-xs font-semibold text-[#2E3C4E] hover:underline flex items-center gap-1.5 mt-6">
-              Read system details <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
+          <!-- ROW 2 · 4 Secondary Nature Theme Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
 
-          <!-- Card 4: Vireon™ (Pale Amber) -->
-          <div class="solution-card-hover bg-[#FAF4E8] border border-[#EFE2CE] rounded-[22px] md:rounded-[28px] p-6 md:p-8 flex flex-col justify-between min-h-[220px] md:min-h-[240px] shadow-sm col-span-2 lg:col-span-1 lg:col-start-1 lg:row-start-2">
-            <div>
-              <div class="flex flex-row items-center gap-3 md:gap-4">
-                <div class="w-12 h-12 rounded-2xl bg-[#59421A]/5 border border-[#59421A]/10 flex items-center justify-center text-[#59421A]" aria-hidden="true">
-                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C12 2 6 10 6 14C6 17.3137 8.68629 20 12 20C15.3137 20 18 17.3137 18 14C18 10 12 2 12 2Z" /></svg>
+            <!-- Card 3: RAS Aquaculture (Aqua Stream / Teal Theme) -->
+            <a href="Technology/RAS.html" class="scroll-3d-card group relative bg-[#EFF7F6] border border-[#D0E9E6] rounded-2xl p-7 flex flex-col justify-between shadow-sm hover:shadow-xl hover:shadow-[#1B6660]/10 hover:border-[#1B6660]/40 transition-all duration-500">
+              <div>
+                <div class="flex items-center gap-3 mb-3.5">
+                  <div class="w-10 h-10 rounded-xl bg-[#E0F2EF] border border-[#BEFAF3] flex items-center justify-center text-[#1B6660] group-hover:bg-[#1B6660] group-hover:text-white transition-all duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 48 48" id="Fish--Streamline-Plump" height="20" width="20">
+                      <g id="fish--cook-cooking-fish-seanutrition-food-fish">
+                        <path id="Subtract" fill="currentColor" fill-rule="evenodd" d="M41.9944 13.0915C39.1421 9.88991 35.0065 7.5 29.9994 7.5c-7.4547 0 -13.7279 4.1836 -17.6856 8.3026 -1.3343 -2.7081 -4.23108 -4.4285 -6.05697 -5.313 -2.02369 -0.98028 -4.25129 0.3427 -4.52318 2.4824 -0.15071 1.186 -0.28037 2.7371 -0.21734 4.3208 0.06213 1.5609 0.31525 3.2807 1.01808 4.7271 0.36298 0.747 0.76275 1.4089 1.19821 1.9802 -0.43546 0.5712 -0.83523 1.2331 -1.19821 1.9801 -0.70283 1.4464 -0.95595 3.1662 -1.01808 4.7271 -0.06303 1.5837 0.06663 3.1348 0.21734 4.3208 0.27189 2.1397 2.49949 3.4627 4.52318 2.4824 1.8259 -0.8844 4.72277 -2.6049 6.05697 -5.3131C16.2716 36.3164 22.5447 40.5 29.9994 40.5c5.0071 0 9.1427 -2.3899 11.995 -5.5915 2.8304 -3.177 4.505 -7.2711 4.505 -10.9085 0 -3.6374 -1.6746 -7.7316 -4.505 -10.9085Zm-13.8828 0.4395c0.4802 -0.675 1.4167 -0.833 2.0917 -0.3528 0.6751 0.4802 0.8331 1.4167 0.3529 2.0918 -1.4476 2.0351 -2.2613 5.2985 -2.2613 8.7305 0 3.432 0.8137 6.6955 2.2613 8.7305 0.4802 0.6751 0.3222 1.6116 -0.3529 2.0918 -0.675 0.4802 -1.6115 0.3222 -2.0917 -0.3528 -1.9378 -2.7241 -2.8167 -6.6811 -2.8167 -10.4695s0.8789 -7.7454 2.8167 -10.4695ZM36 18.5c-0.8284 0 -1.5 0.6716 -1.5 1.5v1c0 0.8284 0.6716 1.5 1.5 1.5s1.5 -0.6716 1.5 -1.5v-1c0 -0.8284 -0.6716 -1.5 -1.5 -1.5Zm-17.4222 1.0224c0.264 -0.7852 1.1146 -1.2078 1.8998 -0.9438 0.7852 0.264 1.2078 1.1146 0.9438 1.8998 -0.2581 0.7677 -0.4218 2.0852 -0.4218 3.522 0 1.4368 0.1637 2.7543 0.4218 3.522 0.264 0.7852 -0.1586 1.6358 -0.9438 1.8998s-1.6358 -0.1586 -1.8998 -0.9438c-0.4086 -1.2153 -0.5782 -2.9063 -0.5782 -4.478 0 -1.5717 0.1696 -3.2627 0.5782 -4.478Z" clip-rule="evenodd" stroke-width="1"></path>
+                      </g>
+                    </svg>
+                  </div>
+                  <h3 class="font-['Fraunces'] text-base sm:text-lg lg:text-xl font-bold text-[#12423E] group-hover:text-[#1B6660] transition-colors duration-300 whitespace-nowrap">
+                    <span class="inline lg:hidden">RAS Aquaculture</span>
+                    <span class="hidden lg:inline">RAS Aqua</span>
+                  </h3>
                 </div>
-                <h3 class="font-['Fraunces'] text-xl md:text-2xl font-semibold text-[#59421A]">Vireon™</h3>
-              </div>
-              <p class="font-['Inter'] text-sm text-[#6E5528] leading-relaxed mt-4">
-                Ultra-pure structured mineral water enriched with natural ionic trace elements for cellular hydration.
-              </p>
-            </div>
-            <a href="contact.html?inquiry=vireon" class="font-['Inter'] text-xs font-semibold text-[#59421A] hover:underline flex items-center gap-1.5 mt-6">
-              Learn about Vireon™ <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
 
-          <!-- Card 5: COCO Origin™ (Soft Peach) -->
-          <div class="solution-card-hover bg-[#FAF0E6] border border-[#EFE0CE] rounded-[22px] md:rounded-[28px] p-6 md:p-8 flex flex-col justify-between min-h-[220px] md:min-h-[240px] shadow-sm col-span-2 lg:col-span-1 lg:col-start-1 lg:row-start-3">
-            <div>
-              <div class="flex flex-row items-center gap-3 md:gap-4">
-                <div class="w-12 h-12 rounded-2xl bg-[#5E3F24]/5 border border-[#5E3F24]/10 flex items-center justify-center text-[#5E3F24]" aria-hidden="true">
-                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M8 10h8"/></svg>
+                <p class="font-['Inter'] text-[#396C67] text-xs leading-relaxed mb-4">
+                  Recirculating biological aquatic filtration producing sustainable seafood and bio-rich nitrate feeds.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-[#D0E9E6] flex items-center justify-between">
+                <span class="text-[11px] font-semibold text-[#1B6660]">Explore RAS</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B6660" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            </a>
+
+            <!-- Card 4: NFT Hydroponics (Lavender Quartz Theme) -->
+            <a href="about.html#who-we-are" class="scroll-3d-card group relative bg-[#F5F2F9] border border-[#E0D7ED] rounded-2xl p-7 flex flex-col justify-between shadow-sm hover:shadow-xl hover:shadow-[#55387D]/10 hover:border-[#55387D]/40 transition-all duration-500">
+              <div>
+                <div class="flex items-center gap-3 mb-3.5">
+                  <div class="w-10 h-10 rounded-xl bg-[#ECE3F7] border border-[#D9C8ED] flex items-center justify-center text-[#55387D] group-hover:bg-[#55387D] group-hover:text-white transition-all duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sprout-icon lucide-sprout"><path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/><path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/><path d="M5 21h14"/></svg>
+                  </div>
+                  <h3 class="font-['Fraunces'] text-base sm:text-lg lg:text-xl font-bold text-[#331E4F] group-hover:text-[#55387D] transition-colors duration-300 whitespace-nowrap">
+                    <span class="inline lg:hidden">NFT Hydroponics</span>
+                    <span class="hidden lg:inline">NFT Hydro</span>
+                  </h3>
                 </div>
-                <h3 class="font-['Fraunces'] text-xl md:text-2xl font-semibold text-[#5E3F24]">COCO Origin™</h3>
-              </div>
-              <p class="font-['Inter'] text-sm text-[#735234] leading-relaxed mt-4">
-                Zero-preservative natural electrolyte beverage infrastructure harvested from sustainable coastal groves.
-              </p>
-            </div>
-            <a href="contact.html?inquiry=coco-origin" class="font-['Inter'] text-xs font-semibold text-[#5E3F24] hover:underline flex items-center gap-1.5 mt-6">
-              Explore COCO Origin™ <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
 
-          <!-- Card 6: RAS Aquaculture (Soft Water Blue - Large Spanned) -->
-          <div class="solution-card-hover bg-[#E6F0FA] border border-[#D0E2F3] rounded-[22px] md:rounded-[28px] p-6 md:p-8 flex flex-col justify-between shadow-sm col-span-2 lg:col-start-2 lg:col-span-2 lg:row-start-2 lg:row-span-2 lg:h-full">
-            <div>
-              <div class="flex flex-row items-center gap-3 md:gap-4">
-                <div class="w-12 h-12 rounded-2xl bg-[#1D3B58]/5 border border-[#1D3B58]/10 flex items-center justify-center text-[#1D3B58]" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M168,76a12,12,0,1,1-12-12A12,12,0,0,1,168,76Zm48.72,67.64c-19.37,34.9-55.44,53.76-107.24,56.1l-22,51.41A8,8,0,0,1,80.1,256l-.51,0a8,8,0,0,1-7.19-5.78L57.6,198.39,5.8,183.56a8,8,0,0,1-1-15.05l51.41-22c2.35-51.78,21.21-87.84,56.09-107.22,24.75-13.74,52.74-15.84,71.88-15.18,18.64.64,36,4.27,38.86,6a8,8,0,0,1,2.83,2.83c1.69,2.85,5.33,20.21,6,38.85C232.55,90.89,230.46,118.89,216.72,143.64Zm-55.18,29a52.11,52.11,0,0,1-33.4-44.78A52.09,52.09,0,0,1,83.37,94.47q-10.45,23.79-11.3,57.59a8,8,0,0,1-4.85,7.17L31.83,174.37l34.45,9.86a8,8,0,0,1,5.49,5.5l9.84,34.44,15.16-35.4a8,8,0,0,1,7.17-4.84Q137.71,183.12,161.54,172.64ZM212.42,43.57c-14.15-3-64.1-11-100.3,14.75a81.21,81.21,0,0,0-16,15.07,36,36,0,0,0,39.35,38.44,80.81,80.81,0,0,1,8.73,8.73,36,36,0,0,0,38.47,39.34,80.81,80.81,0,0,0,15-16C223.42,107.73,215.42,57.74,212.42,43.57Z"/>
-                  </svg>
+                <p class="font-['Inter'] text-[#5D4679] text-xs leading-relaxed mb-4">
+                  Precision nutrient film channels continuously recirculating micro-layer moisture feeds for high-density crops.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-[#E0D7ED] flex items-center justify-between">
+                <span class="text-[11px] font-semibold text-[#55387D]">Explore Channels</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#55387D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            </a>
+
+            <!-- Card 5: Vireon™ (Lime Dew Theme) -->
+            <a href="contact.html?inquiry=vireon" class="scroll-3d-card group relative bg-[#F4F8F1] border border-[#DAE8D0] rounded-2xl p-7 flex flex-col justify-between shadow-sm hover:shadow-xl hover:shadow-[#3F6627]/10 hover:border-[#3F6627]/40 transition-all duration-500">
+              <div>
+                <div class="flex items-center gap-3 mb-3.5">
+                  <div class="w-10 h-10 rounded-xl bg-[#E9F3DF] border border-[#CFE4BE] flex items-center justify-center text-[#3F6627] group-hover:bg-[#3F6627] group-hover:text-white transition-all duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <g clip-path="url(#clip0_3261_13020)">
+                        <path d="M12.68 19.13C12.6 18.95 12.47 18.8 12.28 18.72C12.19 18.68 12.09 18.66 11.99 18.66C6.25999 18.66 2.73999 16.83 2.73999 15.59C2.78999 15.09 3.06999 14.65 3.48999 14.39C3.83999 14.18 3.95999 13.72 3.73999 13.36C3.52999 13 3.05999 12.89 2.70999 13.11C1.87999 13.61 1.32999 14.48 1.23999 15.52C1.23999 18.2 5.60999 19.78 10.24 20.1L10.13 20.21C9.83999 20.5 9.83999 20.98 10.13 21.27C10.28 21.42 10.47 21.49 10.66 21.49C10.85 21.49 11.04 21.42 11.19 21.27L12.52 19.94C12.59 19.87 12.64 19.79 12.68 19.7C12.76 19.52 12.76 19.31 12.68 19.13Z"/>
+                        <path d="M21.28 13.11C20.92 12.9 20.46 13.01 20.25 13.36C20.04 13.72 20.15 14.18 20.5 14.39C20.92 14.64 21.2 15.09 21.25 15.52C21.25 16.5 19.31 17.8 15.6 18.39C15.19 18.45 14.91 18.84 14.98 19.25C15.04 19.62 15.36 19.88 15.72 19.88C15.76 19.88 15.8 19.88 15.84 19.88C20.1 19.21 22.75 17.54 22.75 15.46C22.66 14.49 22.11 13.62 21.28 13.12V13.11Z"/>
+                        <path d="M16.5 10.52C15.89 10.52 15.39 10.14 15.23 9.53999L14.97 8.56999C14.83 8.06999 14.45 7.68999 13.95 7.54999L12.97 7.27999C12.4 7.11999 12.01 6.61999 12.01 6.00999C12.01 5.39999 12.39 4.89999 12.99 4.72999L13.53 4.58999L13.31 4.32999C12.99 3.95999 12.51 3.73999 12.01 3.73999C11.51 3.73999 11.04 3.94999 10.71 4.32999L8.34 7.06999C6.72 8.92999 6.72 11.7 8.34 13.56H8.32C9.25 14.63 10.59 15.24 12 15.24C13.41 15.24 14.76 14.63 15.68 13.56C16.46 12.67 16.85 11.57 16.88 10.46C16.76 10.49 16.64 10.52 16.5 10.52Z"/>
+                        <path d="M20.01 6.03C20.01 6.1 19.97 6.26 19.78 6.32L18.8 6.59C17.95 6.82 17.31 7.46 17.08 8.31L16.82 9.27C16.76 9.49 16.59 9.51 16.51 9.51C16.43 9.51 16.26 9.49 16.2 9.27L15.94 8.3C15.71 7.46 15.06 6.82 14.22 6.59L13.25 6.33C13.04 6.27 13.02 6.09 13.02 6.02C13.02 5.94 13.04 5.76 13.25 5.7L14.23 5.44C15.07 5.2 15.71 4.56 15.94 3.72L16.22 2.7C16.29 2.53 16.45 2.5 16.51 2.5C16.57 2.5 16.74 2.52 16.8 2.68L17.08 3.71C17.31 4.55 17.96 5.19 18.8 5.43L19.8 5.71C20 5.79 20.01 5.97 20.01 6.03Z"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_3261_13020">
+                          <rect width="24" height="24" fill="currentColor"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <h3 class="font-['Fraunces'] text-base sm:text-lg lg:text-xl font-bold text-[#244015] group-hover:text-[#3F6627] transition-colors duration-300 whitespace-nowrap">
+                    Vireon
+                  </h3>
                 </div>
-                <h3 class="font-['Fraunces'] text-xl md:text-2xl font-semibold text-[#1D3B58]">RAS (Recirculating Aquaculture System)</h3>
-              </div>
-              <p class="font-['Inter'] text-sm text-[#425C76] leading-relaxed mt-4">
-                Standardized biological water loop systems producing high-purity sustainable fish and seafood crops.
-              </p>
-            </div>
-            <a href="Technology/RAS.html" class="font-['Inter'] text-xs font-semibold text-[#1D3B58] hover:underline flex items-center gap-1.5 mt-6">
-              View RAS system design <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>    </a>
-          </div>
 
+                <p class="font-['Inter'] text-[#4D6D38] text-xs leading-relaxed mb-4">
+                  Structured ionic mineral water technology refined through vortex cavitation for peak cellular bioavailability.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-[#DAE8D0] flex items-center justify-between">
+                <span class="text-[11px] font-semibold text-[#3F6627]">Learn More</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3F6627" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            </a>
+
+            <!-- Card 6: COCO Origin™ (Warm Coconut Grove Theme) -->
+            <a href="contact.html?inquiry=coco-origin" class="scroll-3d-card group relative bg-[#FAF5EE] border border-[#EFE1CE] rounded-2xl p-7 flex flex-col justify-between shadow-sm hover:shadow-xl hover:shadow-[#6E4F28]/10 hover:border-[#6E4F28]/40 transition-all duration-500">
+              <div>
+                <div class="flex items-center gap-3 mb-3.5">
+                  <div class="w-10 h-10 rounded-xl bg-[#F6ECDD] border border-[#E7D6BC] flex items-center justify-center text-[#6E4F28] group-hover:bg-[#6E4F28] group-hover:text-white transition-all duration-300 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <g clip-path="url(#clip0_655_9403)">
+                        <path d="M12.0496 14.22C8.04957 14.22 5.04957 10.55 5.93957 6.65999L6.68957 3.52999C6.89957 2.62999 7.70957 1.98999 8.63957 1.98999H15.4396C16.3796 1.98999 17.1996 2.64999 17.3996 3.56999L18.0596 6.65999C18.9496 10.55 16.0596 14.22 12.0596 14.22H12.0496Z"/>
+                        <path d="M11.2998 18.0003V14.22C11.2998 13.8058 11.6356 13.47 12.0498 13.47C12.464 13.47 12.7998 13.8058 12.7998 14.22V18.0003C12.7997 18.4144 12.4639 18.7503 12.0498 18.7503C11.6357 18.7503 11.3 18.4144 11.2998 18.0003Z"/>
+                        <path d="M11.1296 18.5L9.97955 20.5C9.59955 21.17 10.0796 22 10.8496 22H13.1596C13.9296 22 14.4096 21.17 14.0296 20.5L12.8796 18.5C12.4996 17.83 11.5296 17.83 11.1496 18.5H11.1296Z"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_655_9403">
+                          <rect width="24" height="24" fill="currentColor"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <h3 class="font-['Fraunces'] text-base sm:text-lg lg:text-xl font-bold text-[#452F15] group-hover:text-[#6E4F28] transition-colors duration-300 whitespace-nowrap">
+                    COCO Origin
+                  </h3>
+                </div>
+
+                <p class="font-['Inter'] text-[#6B553B] text-xs leading-relaxed mb-4">
+                  Zero-preservative natural electrolyte beverage harvesting infrastructure sourced from sustainable groves.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-[#EFE1CE] flex items-center justify-between">
+                <span class="text-[11px] font-semibold text-[#6E4F28]">Explore Origin</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6E4F28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+            </a>
+
+          </div>
         </div>
+
       </div>
     </section>
 
     <!-- ─── WHO WE ARE SECTION ─── -->
-    <section id="home-who-we-are" class="relative py-24 lg:py-36 bg-white overflow-hidden text-[#22301F]">
+    <section id="home-who-we-are" class="relative py-20 lg:py-28 bg-white overflow-hidden text-[#22301F]">
       <div class="max-w-6xl mx-auto px-6">
         
         <!-- Header Part -->
@@ -593,14 +703,23 @@
 
         </div>
 
-        <!-- Bottom Statement -->
-        <div class="mt-20 lg:mt-28 border-t border-[#EAF0EB] pt-12 md:pt-16 max-w-4xl mx-auto" data-aos="fade-up">
-          <p class="font-['Fraunces'] text-xl sm:text-2xl lg:text-3xl text-center text-[#22301F]/90 italic leading-relaxed font-light">
-            "The future depends on systems capable of producing more with fewer resources while creating lasting value for people and the environment."
-          </p>
+        <!-- Corporate Quote Banner -->
+        <div class="mt-16 lg:mt-24 max-w-4xl mx-auto px-4 sm:px-6" data-aos="fade-up">
+          <div class="relative bg-gradient-to-br from-[#F3F8F4] via-[#F8FAF7] to-[#EDF4EE] border border-[#D2E3D5] rounded-3xl p-6 sm:p-10 md:p-12 text-center shadow-sm overflow-hidden">
+            <!-- Subtle Ambient Light Glows -->
+            <div class="absolute -top-20 -right-20 w-48 h-48 bg-[#006B5E]/8 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-20 -left-20 w-48 h-48 bg-[#2D5A27]/8 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Main Corporate Quote Statement -->
+            <blockquote class="relative z-10 font-['Fraunces'] text-lg sm:text-2xl lg:text-[28px] font-semibold text-[#1B2B1A] tracking-tight leading-relaxed max-w-3xl mx-auto">
+              "The future depends on systems capable of producing more with fewer resources while creating lasting value for people and the environment."
+            </blockquote>
+          </div>
         </div>
 
       </div>
+    </section>
+
     <!-- ─── FAQ SECTION ─── -->
     <section id="faq" class="py-20 lg:py-28 bg-[#F4F6F3]">
       <div class="max-w-4xl mx-auto px-6">
@@ -716,6 +835,31 @@
   </script>
 
 
+
+
+  <!-- 3D Scroll Reveal Observer (Desktop & Mobile) -->
+  <script>
+    (function() {
+      var cards = document.querySelectorAll('.scroll-3d-card');
+      if (!cards.length) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      cards.forEach(function(card, idx) {
+        card.style.transitionDelay = (idx * 0.08) + 's';
+        observer.observe(card);
+      });
+    })();
+  </script>
 
 </body>
 </html>
