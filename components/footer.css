@@ -579,72 +579,107 @@
   .footer-newsletter {
     flex-direction: column;
     align-items: stretch;
-    gap: 22px;
-    padding: 32px 24px;
-    margin: 0 20px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+    gap: 24px;
+    padding: 32px 20px;
+    margin: 0 16px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
   }
 
   .f-news-title {
-    font-size: 20px;
+    font-size: 22px;
+    letter-spacing: -0.01em;
   }
 
   .f-news-desc {
-    font-size: 13.5px;
-    line-height: 1.55;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #A0AEC0;
   }
 
   .f-news-form {
     flex-direction: row;
     max-width: 100%;
-    gap: 6px;
-    padding: 5px;
-    border-radius: 14px;
-    background: rgba(15, 23, 42, 0.7);
+    gap: 8px;
+    padding: 6px;
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .f-news-form:focus-within {
+    border-color: #00D9B5;
+    background: rgba(15, 23, 42, 0.95);
+    box-shadow: 0 0 0 4px rgba(0, 217, 181, 0.2), 0 8px 25px rgba(0, 0, 0, 0.4);
   }
 
   .f-news-input {
-    height: 44px;
-    padding: 0 12px;
-    font-size: 13.5px;
+    height: 52px;
+    padding: 0 16px;
+    font-size: 15px;
+    color: #FFFFFF;
+  }
+
+  .f-news-input::placeholder {
+    color: #718096;
+    font-size: 14px;
   }
 
   .f-news-btn {
-    height: 44px;
-    padding: 0 18px;
-    font-size: 13.5px;
-    border-radius: 10px;
+    height: 52px;
+    padding: 0 22px;
+    font-size: 14.5px;
+    font-weight: 600;
+    border-radius: 14px;
+    letter-spacing: 0.01em;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 520px) {
     .footer-newsletter {
       margin: 0 12px;
-      padding: 24px 16px;
-      border-radius: 18px;
+      padding: 28px 18px;
+      border-radius: 20px;
     }
     .f-news-form {
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       background: transparent;
       border: none;
       box-shadow: none;
       padding: 0;
     }
+    .f-news-form:focus-within {
+      background: transparent;
+      box-shadow: none;
+      border-color: transparent;
+    }
     .f-news-input {
       width: 100%;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 12px;
-      height: 48px;
-      padding: 0 16px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 16px;
+      height: 52px;
+      padding: 0 18px;
+      font-size: 15px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      transition: all 200ms ease;
+    }
+    .f-news-input:focus {
+      border-color: #00D9B5;
+      background: rgba(15, 23, 42, 0.95);
+      box-shadow: 0 0 0 3px rgba(0, 217, 181, 0.22);
     }
     .f-news-btn {
       width: 100%;
-      height: 48px;
-      border-radius: 12px;
+      height: 52px;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0, 107, 94, 0.4);
     }
   }
 
