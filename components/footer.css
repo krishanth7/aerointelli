@@ -272,8 +272,8 @@
 }
 
 .f-news-title {
-  font-family: 'Outfit', 'Fraunces', sans-serif;
-  font-size: 24px;
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-size: 28px;
   font-weight: 700;
   color: #FFFFFF;
   letter-spacing: -0.02em;
@@ -317,6 +317,7 @@
   font-size: 14px;
   color: #FFFFFF;
   outline: none;
+  width: 100%;
 }
 
 .f-news-input::placeholder {
@@ -579,77 +580,124 @@
   .footer-newsletter {
     flex-direction: column;
     align-items: stretch;
-    gap: 24px;
-    padding: 32px 20px;
+    gap: 20px;
+    padding: 32px 22px;
     margin: 0 16px;
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(160deg, #09120E 0%, #050A08 100%);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45);
+  }
+
+  .f-news-badge {
+    padding: 6px 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
   }
 
   .f-news-title {
-    font-size: 22px;
-    letter-spacing: -0.01em;
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    color: #FFFFFF;
   }
 
   .f-news-desc {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #A0AEC0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #94A3B8;
+    margin-bottom: 4px;
   }
 
-  .f-news-form {
-    flex-direction: column;
+  .f-news-form.input-wrapper {
     width: 100%;
-    max-width: 100%;
-    gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     background: transparent;
     border: none;
     box-shadow: none;
     padding: 0;
   }
 
-  .f-news-form:focus-within {
-    background: transparent;
+  .f-news-input.input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+    outline: none;
+    padding: 0 15px;
+    font-size: 14px;
+    background-color: #fafaf7;
+    color: #1c1917;
+    border-radius: 6px;
+    border: 1px solid #d0d7e1;
     box-shadow: none;
-    border-color: transparent;
   }
 
-  .f-news-input {
-    width: 100%;
-    height: 54px;
-    padding: 0 20px;
-    font-size: 16px;
-    color: #FFFFFF;
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-    transition: all 200ms ease;
+  .f-news-input.input::placeholder {
+    color: #8a8a8a;
   }
 
-  .f-news-input::placeholder {
-    color: #8A99AD;
-    font-size: 15px;
-  }
-
-  .f-news-input:focus {
-    border-color: #00D9B5;
-    background: rgba(15, 23, 42, 0.98);
-    box-shadow: 0 0 0 4px rgba(0, 217, 181, 0.22);
-  }
-
-  .f-news-btn {
-    width: 100%;
-    height: 54px;
-    padding: 0 24px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 16px;
-    letter-spacing: 0.01em;
+  .f-news-btn.Subscribe-btn {
+    display: flex !important;
+    height: 40px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 6px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    background-color: #292524;
+    transition: all 0.3s;
+    font-size: 13px;
+    font-weight: 500;
+    align-items: center;
     justify-content: center;
-    box-shadow: 0 6px 20px rgba(0, 107, 94, 0.4);
+    gap: 6px;
+    white-space: nowrap;
+    box-shadow: none;
+  }
+
+  .f-news-btn.Subscribe-btn:hover {
+    color: white;
+  }
+
+  .f-news-btn.Subscribe-btn:hover .arrow {
+    margin-right: 0;
+    animation: jello-vertical 0.9s both;
+    transform-origin: left;
+  }
+
+  .f-news-btn.Subscribe-btn:active {
+    transform: scale(0.9);
+  }
+
+  @keyframes jello-vertical {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+    30% {
+      transform: scale3d(0.75, 1.25, 1);
+    }
+    40% {
+      transform: scale3d(1.25, 0.75, 1);
+    }
+    50% {
+      transform: scale3d(0.85, 1.15, 1);
+    }
+    65% {
+      transform: scale3d(1.05, 0.95, 1);
+    }
+    75% {
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
   }
 
   .footer-divider {
