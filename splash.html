@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aero Intelli — Unveiling Next-Gen Sustainable Intelligence</title>
+  <meta name="description" content="Aero Intelli is preparing to unveil an integrated ecosystem combining AI-powered agriculture, precision aquaculture, aeroponics, hydroponics, and sustainable infrastructure.">
+  <meta name="theme-color" content="#FAFBF8">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aero Intelli — Unveiling Next-Gen Sustainable Intelligence">
+  <meta property="og:description" content="An integrated ecosystem combining AI-powered agriculture, precision aquaculture, aeroponics, hydroponics, and sustainable infrastructure.">
+  <meta property="og:image" content="assets/logo.png">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts: Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Splash Screen Styles -->
+  <link rel="stylesheet" href="splash.css">
+</head>
+<body>
+
+  <!-- Fullscreen Viewport Canvas -->
+  <main class="splash-viewport" id="splash-main">
+
+    <!-- Ambient Gradient Lighting Orbs -->
+    <div class="bg-ambient-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-ambient-orb orb-2" aria-hidden="true"></div>
+    <div class="bg-ambient-orb orb-3" aria-hidden="true"></div>
+
+    <!-- Topographic & Network Contour Grid -->
+    <div class="bg-topographic-overlay" aria-hidden="true"></div>
+
+    <!-- Floating Particles Canvas -->
+    <div class="particles-container" id="particles-container" aria-hidden="true"></div>
+
+    <!-- Central Ultra-Premium Glass Card -->
+    <div class="splash-glass-card">
+
+      <!-- Branding Lockup -->
+      <header class="splash-brand-lockup">
+        <img src="assets/logo.png" alt="Aero Intelli Logo" class="splash-logo-img">
+        <p class="splash-eyebrow">ADVANCED AGRICULTURE • AI • AQUACULTURE • SUSTAINABILITY</p>
+      </header>
+
+      <!-- Main Headline -->
+      <h1 class="splash-headline">The Future of Sustainable Intelligence Is Almost Here</h1>
+
+      <!-- Supporting Narrative -->
+      <p class="splash-description">
+        Aero Intelli is preparing to unveil an integrated ecosystem combining AI-powered agriculture, precision aquaculture, aeroponics, hydroponics, organic food systems, sustainability solutions, and future-ready infrastructure. Launching soon.
+      </p>
+
+      <!-- Real-Time Countdown Hero Element -->
+      <section class="splash-timer-grid" aria-label="Official Launch Countdown">
+        
+        <!-- Days -->
+        <div class="timer-block">
+          <span class="timer-number" id="days">000</span>
+          <span class="timer-label">DAYS</span>
+        </div>
+
+        <!-- Hours -->
+        <div class="timer-block">
+          <span class="timer-number" id="hours">00</span>
+          <span class="timer-label">HOURS</span>
+        </div>
+
+        <!-- Minutes -->
+        <div class="timer-block">
+          <span class="timer-number" id="minutes">00</span>
+          <span class="timer-label">MINUTES</span>
+        </div>
+
+        <!-- Seconds -->
+        <div class="timer-block">
+          <span class="timer-number" id="seconds">00</span>
+          <span class="timer-label">SECONDS</span>
+        </div>
+
+      </section>
+
+      <!-- Launch Schedule Tag -->
+      <footer class="splash-launch-info">
+        <span class="launch-badge-dot" aria-hidden="true"></span>
+        <span class="launch-text">Official Launch • 08 August 2026 • 10:30 AM IST</span>
+      </footer>
+
+    </div>
+
+  </main>
+
+  <!-- Real-Time Countdown & Ambient Particle Script -->
+  <script>
+    (function() {
+      // 1. Target Launch Date: 8 August 2026 - 10:30 AM (IST)
+      const targetDate = new Date('2026-08-08T10:30:00+05:30').getTime();
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance <= 0) {
+          setTimerValue('days', '000');
+          setTimerValue('hours', '00');
+          setTimerValue('minutes', '00');
+          setTimerValue('seconds', '00');
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        setTimerValue('days', String(days).padStart(3, '0'));
+        setTimerValue('hours', String(hours).padStart(2, '0'));
+        setTimerValue('minutes', String(minutes).padStart(2, '0'));
+        setTimerValue('seconds', String(seconds).padStart(2, '0'));
+      }
+
+      function setTimerValue(id, val) {
+        const el = document.getElementById(id);
+        if (el && el.innerText !== val) {
+          el.innerText = val;
+          el.classList.add('number-changed');
+          setTimeout(() => el.classList.remove('number-changed'), 200);
+        }
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+
+      // 2. Microscopic Ambient Floating Dust Particles
+      const particlesContainer = document.getElementById('particles-container');
+      const particleCount = 18;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 3.5 + 1.5; // 1.5px to 5px
+        const left = Math.random() * 100; // 0% to 100%
+        const duration = Math.random() * 18 + 14; // 14s to 32s
+        const delay = Math.random() * 12; // 0s to 12s
+        const opacity = Math.random() * 0.25 + 0.15;
+
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = left + '%';
+        particle.style.animationDuration = duration + 's';
+        particle.style.animationDelay = delay + 's';
+        particle.style.background = `rgba(46, 94, 78, ${opacity})`;
+
+        particlesContainer.appendChild(particle);
+      }
+    })();
+  </script>
+
+</body>
+</html>
