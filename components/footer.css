@@ -489,7 +489,7 @@
   font-size: 13px;
   font-weight: 500;
   color: #94A3B8;
-  text-align: center;
+  text-align: left;
   text-decoration: none;
   white-space: nowrap;
   transition: background 200ms ease, color 200ms ease;
@@ -718,15 +718,26 @@
   }
 
   .f-bottom-links {
+    position: relative;
     justify-content: center;
     gap: 20px;
   }
 
-  .f-bottom-links a {
-    font-size: 13px;
+  .f-more-menu-wrapper {
+    position: static;
   }
 
+  .f-more-dropdown {
+    left: 50px;
+    right: 50px;
+    width: auto;
+    transform: translateY(12px) scale(0.92);
+    transform-origin: bottom center;
+  }
 
+  .f-more-dropdown.show {
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Accessibility: prefers-reduced-motion */
