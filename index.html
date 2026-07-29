@@ -159,6 +159,7 @@
   <link rel="stylesheet" href="components/header.css?v=1">
   <link rel="stylesheet" href="components/footer.css?v=1">
   <link rel="stylesheet" href="components/cookie-notice.css">
+  <link rel="stylesheet" href="components/splash-screen.css?v=1">
 
   <!-- Custom Styles for Home Page Elements -->
   <style>
@@ -350,6 +351,131 @@
   <link rel="apple-touch-icon" href="assets/logo.png">
 </head>
 <body class="bg-[#FAFAF7]">
+  <!-- ─── ENTRANCE LAUNCH SPLASH SCREEN ─── -->
+  <div id="launch-splash-screen" class="splash-overlay" aria-label="Official Launch Splash Screen">
+    <div class="splash-backdrop"></div>
+    <div class="splash-ambient-glow"></div>
+    
+    <div class="splash-container">
+      <!-- Top Brand Pill Badge -->
+      <div class="splash-badge">
+        <span class="splash-badge-dot"></span>
+        <span class="splash-badge-text">OFFICIAL LAUNCH COUNTDOWN</span>
+      </div>
+
+      <!-- Logo & Title -->
+      <div class="splash-brand-wrapper">
+        <img src="assets/logo.png" alt="Aero Intelli Logo" class="splash-logo">
+        <h1 class="splash-title">AERO INTELLI</h1>
+      </div>
+
+      <!-- Sub-headline -->
+      <div class="splash-headline-box">
+        <h2 class="splash-subheading">LAUNCHING SOON</h2>
+        <p class="splash-target-date">Official Launch Target: <strong>August 7, 2026</strong></p>
+      </div>
+
+      <!-- Live Countdown Grid -->
+      <div class="splash-timer-grid">
+        <div class="splash-time-card">
+          <span class="splash-time-number" id="splash-days">00</span>
+          <span class="splash-time-label">DAYS</span>
+        </div>
+        <div class="splash-time-colon">:</div>
+        <div class="splash-time-card">
+          <span class="splash-time-number" id="splash-hours">00</span>
+          <span class="splash-time-label">HOURS</span>
+        </div>
+        <div class="splash-time-colon">:</div>
+        <div class="splash-time-card">
+          <span class="splash-time-number" id="splash-mins">00</span>
+          <span class="splash-time-label">MINUTES</span>
+        </div>
+        <div class="splash-time-colon">:</div>
+        <div class="splash-time-card">
+          <span class="splash-time-number" id="splash-secs">00</span>
+          <span class="splash-time-label">SECONDS</span>
+        </div>
+      </div>
+
+      <!-- Detail Date / Month Display Bar -->
+      <div class="splash-date-strip">
+        <div class="splash-date-item">
+          <span class="splash-date-key">LAUNCH DATE:</span>
+          <span class="splash-date-val">AUGUST 7, 2026</span>
+        </div>
+        <div class="splash-date-divider">•</div>
+        <div class="splash-date-item">
+          <span class="splash-date-key">VISION:</span>
+          <span class="splash-date-val">CLEAN AEROPONICS &amp; AGRITECH</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="splash-actions">
+        <button id="splash-enter-btn" class="splash-enter-btn">
+          <span>Explore Aero Intelli</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Target Date: August 7, 2026 00:00:00 UTC
+      const launchDate = new Date('2026-08-07T00:00:00Z').getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = launchDate - now;
+
+        if (diff <= 0) {
+          document.getElementById('splash-days').innerText = '00';
+          document.getElementById('splash-hours').innerText = '00';
+          document.getElementById('splash-mins').innerText = '00';
+          document.getElementById('splash-secs').innerText = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const daysElem = document.getElementById('splash-days');
+        const hoursElem = document.getElementById('splash-hours');
+        const minsElem = document.getElementById('splash-mins');
+        const secsElem = document.getElementById('splash-secs');
+
+        if (daysElem) daysElem.innerText = String(days).padStart(2, '0');
+        if (hoursElem) hoursElem.innerText = String(hours).padStart(2, '0');
+        if (minsElem) minsElem.innerText = String(mins).padStart(2, '0');
+        if (secsElem) secsElem.innerText = String(secs).padStart(2, '0');
+      }
+
+      updateCountdown();
+      const timerInterval = setInterval(updateCountdown, 1000);
+
+      // Dismissal / Entrance Button Logic
+      const splashElem = document.getElementById('launch-splash-screen');
+      const enterBtn = document.getElementById('splash-enter-btn');
+
+      if (enterBtn && splashElem) {
+        enterBtn.addEventListener('click', function() {
+          splashElem.classList.add('is-closing');
+          clearInterval(timerInterval);
+          setTimeout(function() {
+            splashElem.style.display = 'none';
+          }, 600);
+        });
+      }
+    })();
+  </script>
+
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCLBPXPB"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

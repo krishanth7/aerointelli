@@ -1,0 +1,359 @@
+/* ──────────────────────────────────────────────
+   AERO INTELLI — ENTRANCE LAUNCH SPLASH SCREEN
+   ────────────────────────────────────────────── */
+
+.splash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #06100C;
+  font-family: 'Inter', sans-serif;
+  color: #FFFFFF;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.splash-overlay.is-closing {
+  opacity: 0;
+  transform: scale(1.03);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Background Atmosphere */
+.splash-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, #00362E 0%, #06100C 75%);
+  z-index: 1;
+}
+
+.splash-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0, 217, 181, 0.18) 0%, rgba(228, 254, 170, 0.08) 40%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(60px);
+  z-index: 2;
+  animation: splashPulse 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes splashPulse {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+/* Central Card */
+.splash-container {
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 640px;
+  background: rgba(13, 27, 21, 0.75);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(228, 254, 170, 0.2);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  padding: 44px 36px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Badge */
+.splash-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(0, 217, 181, 0.12);
+  border: 1px solid rgba(0, 217, 181, 0.3);
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.splash-badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00D9B5;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00D9B5;
+  animation: splashDotPulse 1.8s infinite;
+}
+
+@keyframes splashDotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.splash-badge-text {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #00D9B5;
+  text-transform: uppercase;
+}
+
+/* Brand Header */
+.splash-brand-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.splash-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 217, 181, 0.3));
+}
+
+.splash-title {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* Headline */
+.splash-headline-box {
+  margin-bottom: 32px;
+}
+
+.splash-subheading {
+  font-family: 'Outfit', 'Fraunces', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #FFFFFF 30%, #E4FEAA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px 0;
+}
+
+.splash-target-date {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.splash-target-date strong {
+  color: #E4FEAA;
+  font-weight: 600;
+}
+
+/* Countdown Grid */
+.splash-timer-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+.splash-time-card {
+  flex: 1;
+  max-width: 100px;
+  background: rgba(6, 16, 12, 0.65);
+  border: 1px solid rgba(228, 254, 170, 0.25);
+  border-radius: 16px;
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: border-color 0.3s ease;
+}
+
+.splash-time-card:hover {
+  border-color: #00D9B5;
+}
+
+.splash-time-number {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: #E4FEAA;
+  line-height: 1;
+  margin-bottom: 6px;
+  text-shadow: 0 0 16px rgba(228, 254, 170, 0.35);
+}
+
+.splash-time-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+}
+
+.splash-time-colon {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: rgba(228, 254, 170, 0.5);
+  margin-top: -14px;
+}
+
+/* Date & Details Strip */
+.splash-date-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  padding: 10px 20px;
+  margin-bottom: 32px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.splash-date-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.splash-date-key {
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.splash-date-val {
+  color: #00D9B5;
+  font-weight: 700;
+}
+
+.splash-date-divider {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 10px;
+}
+
+/* Button */
+.splash-actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.splash-enter-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #006B5E 0%, #004D43 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(0, 217, 181, 0.4);
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 107, 94, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  width: fit-content;
+}
+
+.splash-enter-btn:hover {
+  background: linear-gradient(135deg, #008777 0%, #006B5E 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 217, 181, 0.4);
+  border-color: #00D9B5;
+}
+
+.splash-enter-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.splash-enter-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 640px) {
+  .splash-container {
+    padding: 32px 20px;
+    border-radius: 22px;
+  }
+
+  .splash-subheading {
+    font-size: 30px;
+  }
+
+  .splash-brand-wrapper {
+    gap: 10px;
+  }
+
+  .splash-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .splash-title {
+    font-size: 20px;
+  }
+
+  .splash-timer-grid {
+    gap: 6px;
+  }
+
+  .splash-time-card {
+    padding: 12px 4px;
+    border-radius: 12px;
+  }
+
+  .splash-time-number {
+    font-size: 24px;
+  }
+
+  .splash-time-label {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+
+  .splash-time-colon {
+    font-size: 20px;
+    margin-top: -10px;
+  }
+
+  .splash-date-strip {
+    flex-direction: column;
+    gap: 4px;
+    border-radius: 16px;
+    padding: 10px 16px;
+  }
+
+  .splash-date-divider {
+    display: none;
+  }
+
+  .splash-enter-btn {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+}
