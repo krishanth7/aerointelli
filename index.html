@@ -375,8 +375,13 @@
         <p class="splash-target-date">Official Launch Target: <strong>August 7, 2026</strong></p>
       </div>
 
-      <!-- Live Countdown Grid -->
+      <!-- Live 5-Unit Countdown Grid -->
       <div class="splash-timer-grid">
+        <div class="splash-time-card">
+          <span class="splash-time-number" id="splash-months">00</span>
+          <span class="splash-time-label">MONTHS</span>
+        </div>
+        <div class="splash-time-colon">:</div>
         <div class="splash-time-card">
           <span class="splash-time-number" id="splash-days">00</span>
           <span class="splash-time-label">DAYS</span>
@@ -426,31 +431,47 @@
 
   <script>
     (function() {
-      // Target Date: August 7, 2026 00:00:00 UTC
-      const launchDate = new Date('2026-08-07T00:00:00Z').getTime();
+      // Lock scroll while splash is active so no header/footer bleed through
+      document.body.classList.add('splash-active');
+
+      const target = new Date('2026-08-07T00:00:00Z');
 
       function updateCountdown() {
-        const now = new Date().getTime();
-        const diff = launchDate - now;
+        const now = new Date();
+        const diffMs = target.getTime() - now.getTime();
 
-        if (diff <= 0) {
-          document.getElementById('splash-days').innerText = '00';
-          document.getElementById('splash-hours').innerText = '00';
-          document.getElementById('splash-mins').innerText = '00';
-          document.getElementById('splash-secs').innerText = '00';
-          return;
-        }
-
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
+        const monthsElem = document.getElementById('splash-months');
         const daysElem = document.getElementById('splash-days');
         const hoursElem = document.getElementById('splash-hours');
         const minsElem = document.getElementById('splash-mins');
         const secsElem = document.getElementById('splash-secs');
 
+        if (diffMs <= 0) {
+          if (monthsElem) monthsElem.innerText = '00';
+          if (daysElem) daysElem.innerText = '00';
+          if (hoursElem) hoursElem.innerText = '00';
+          if (minsElem) minsElem.innerText = '00';
+          if (secsElem) secsElem.innerText = '00';
+          return;
+        }
+
+        let months = (target.getUTCFullYear() - now.getUTCFullYear()) * 12 + (target.getUTCMonth() - now.getUTCMonth());
+        let tempDate = new Date(now);
+        tempDate.setUTCMonth(tempDate.getUTCMonth() + months);
+
+        if (tempDate > target) {
+          months--;
+          tempDate = new Date(now);
+          tempDate.setUTCMonth(tempDate.getUTCMonth() + months);
+        }
+
+        const remMsAfterMonths = target.getTime() - tempDate.getTime();
+        const days = Math.floor(remMsAfterMonths / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+        if (monthsElem) monthsElem.innerText = String(months).padStart(2, '0');
         if (daysElem) daysElem.innerText = String(days).padStart(2, '0');
         if (hoursElem) hoursElem.innerText = String(hours).padStart(2, '0');
         if (minsElem) minsElem.innerText = String(mins).padStart(2, '0');
@@ -467,6 +488,7 @@
       if (enterBtn && splashElem) {
         enterBtn.addEventListener('click', function() {
           splashElem.classList.add('is-closing');
+          document.body.classList.remove('splash-active');
           clearInterval(timerInterval);
           setTimeout(function() {
             splashElem.style.display = 'none';
