@@ -27,7 +27,7 @@
       if (!this.root) return;
 
       const path = window.location.pathname.toLowerCase();
-      this.isHomepage = path.endsWith('/index.html') || path === '/' || path === '' || (!path.includes('.html') && !path.includes('/legal/') && !path.includes('/resources/'));
+      this.isHomepage = path.endsWith('/home.html') || path.endsWith('/index.html') || path === '/' || path === '' || (!path.includes('.html') && !path.includes('/legal/') && !path.includes('/resources/'));
 
       // Check if we are in a subdirectory (like /resources/ or /legal/ or /technology/)
       this.pathPrefix = '';
@@ -41,7 +41,7 @@
 
     getLink(href) {
       if (href.startsWith('#')) {
-        return this.isHomepage ? href : this.pathPrefix + 'index.html' + href;
+        return this.isHomepage ? href : this.pathPrefix + 'home.html' + href;
       }
       if (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:') || href.startsWith('tel:')) {
         return href;
@@ -61,7 +61,7 @@
             <div class="footer-top">
               <!-- Left Column (Brand & Socials) -->
               <div class="footer-brand">
-                <a href="${this.getLink('index.html')}" class="f-logo" aria-label="Aero Intelli — Home">
+                <a href="${this.getLink('home.html')}" class="f-logo" aria-label="Aero Intelli — Home">
                   <img src="${this.pathPrefix}assets/logo.png" alt="Aero Intelli logo" width="52" height="52">
                   <span class="f-logo-name">Aero Intelli</span>
                 </a>

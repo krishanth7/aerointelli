@@ -84,7 +84,7 @@
       if (!this.root) return;
 
       const path = window.location.pathname.toLowerCase();
-      this.isHomepage = path.endsWith('/index.html') || path === '/' || path === '' || (!path.includes('.html') && !path.includes('/legal/') && !path.includes('/resources/'));
+      this.isHomepage = path.endsWith('/home.html') || path.endsWith('/index.html') || path === '/' || path === '' || (!path.includes('.html') && !path.includes('/legal/') && !path.includes('/resources/'));
 
       // Check if we are in a subdirectory (like /resources/ or /legal/ or /technology/)
       this.pathPrefix = '';
@@ -102,7 +102,7 @@
 
     getLink(href) {
       if (href.startsWith('#')) {
-        return this.isHomepage ? href : this.pathPrefix + 'index.html' + href;
+        return this.isHomepage ? href : this.pathPrefix + 'home.html' + href;
       }
       if (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:') || href.startsWith('tel:')) {
         return href;
@@ -205,7 +205,7 @@
     render() {
       this.root.innerHTML = `
         <header class="header" id="site-header" role="banner">
-          <a href="${this.getLink('index.html')}" class="h-logo" aria-label="Aero Intelli — Home">
+          <a href="${this.getLink('home.html')}" class="h-logo" aria-label="Aero Intelli — Home">
             <img src="${this.pathPrefix}assets/logo.png" alt="" width="42" height="42">
             <div class="h-logo-txt">
               <span class="h-logo-name">Aero Intelli</span>
@@ -230,7 +230,7 @@
         <aside class="mob-drawer" id="mob-drawer"
                role="dialog" aria-modal="true" aria-label="Mobile menu">
           <div class="mob-top">
-            <a href="${this.getLink('index.html')}" class="h-logo">
+            <a href="${this.getLink('home.html')}" class="h-logo">
               <img src="${this.pathPrefix}assets/logo.png" alt="" width="32" height="32">
               <span class="h-logo-name">Aero Intelli</span>
             </a>
