@@ -36,6 +36,10 @@ yarn-error.log*
 # record of which variables the app needs in order to run. It carries variable
 # names and placeholder values, never a real secret.
 !.env.example
+# Also committed. It holds only NEXT_PUBLIC_ values, which Next inlines into the
+# browser bundle and which are therefore public whatever we do with them. See
+# the header of the file itself.
+!.env.production
 
 # vercel
 .vercel
