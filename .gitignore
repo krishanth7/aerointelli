@@ -32,6 +32,10 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# The template is the one exception, and has to be committed: it is the only
+# record of which variables the app needs in order to run. It carries variable
+# names and placeholder values, never a real secret.
+!.env.example
 
 # vercel
 .vercel

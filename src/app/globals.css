@@ -1,26 +1,260 @@
 @import "tailwindcss";
 
+@theme {
+  --color-surface: #ffffff;
+  --color-surface-muted: #fafaf7;
+  --color-ink: #16191b;
+  --color-ink-soft: #5b6367;
+  --color-accent: #e4feaa;
+  --color-accent-deep: #c9ef77;
+  --color-hairline: rgba(20, 20, 20, 0.08);
+  --color-hairline-strong: rgba(20, 20, 20, 0.14);
+
+  --radius-header: 24px;
+  --radius-header-sm: 20px;
+  --radius-cta: 14px;
+  --radius-panel: 22px;
+
+  --shadow-float: 0 1px 2px rgba(16, 24, 28, 0.04), 0 12px 32px -12px rgba(16, 24, 28, 0.14);
+  --shadow-float-scrolled:
+    0 1px 2px rgba(16, 24, 28, 0.05), 0 18px 44px -14px rgba(16, 24, 28, 0.2);
+  --shadow-panel: 0 2px 4px rgba(16, 24, 28, 0.04), 0 24px 56px -20px rgba(16, 24, 28, 0.22);
+
+  --color-footer: #121412;
+  --color-footer-text: #f4f5f1;
+  --color-footer-secondary: rgba(244, 245, 241, 0.68);
+  --color-footer-muted: rgba(244, 245, 241, 0.42);
+  --color-footer-border: rgba(255, 255, 255, 0.08);
+
+  --color-legal-bg: #f7f8f4;
+  --color-legal-ink: #20241f;
+  --color-legal-heading: #20241f;
+  --color-legal-secondary: #60675e;
+  --color-legal-muted: #858c83;
+  --color-legal-surface: #f0f3ea;
+  --color-legal-border: rgba(32, 36, 31, 0.1);
+  --color-legal-border-light: rgba(32, 36, 31, 0.06);
+  --color-legal-link: #3e4c3b;
+  --color-legal-link-hover: #566c4f;
+  --color-legal-focus: #b8d87a;
+  --color-legal-dark: #171a17;
+  --color-legal-dark-secondary: #252a24;
+  --color-legal-dark-muted: #b9c0b7;
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  --z-header: 100;
+  --z-header-overlay: 90;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --header-height: 78px;
+  --header-height-scrolled: 68px;
+  --header-height-mobile: 62px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
+@keyframes footer-signal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(500%);
+  }
+}
+
+.footer-signal {
+  animation: footer-signal 11s linear infinite;
+}
+
+@keyframes contact-node {
+  0%,
+  100% {
+    opacity: 0.32;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* Slow, low-contrast pulse. Suppressed entirely by the reduced-motion block. */
+.contact-node {
+  animation: contact-node 5.5s ease-in-out infinite;
+}
+
+@keyframes loop-pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+/* Ring expanding out of the selected loop stage. `transform-box: fill-box` is
+   required because an SVG shape otherwise scales from the user-space origin. */
+.loop-pulse {
+  animation: loop-pulse 2.4s ease-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar replaces the default system chrome on every scroll surface. */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(29, 33, 28, 0.28) transparent;
+  scrollbar-gutter: stable;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(29, 33, 28, 0.22);
+  border-radius: 999px;
+  transition: background-color 200ms ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(29, 33, 28, 0.42);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Touch devices use overlay scrollbars, so give the thumb a lighter footprint. */
+@media (pointer: coarse) {
+  html {
+    scrollbar-gutter: auto;
+  }
+
+  *::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(29, 33, 28, 0.18);
+  }
+}
+
+/* Dark surfaces need an inverted thumb. */
+.bg-footer,
+.bg-footer * {
+  scrollbar-color: rgba(244, 245, 241, 0.28) transparent;
+}
+
+.bg-footer ::-webkit-scrollbar-thumb {
+  background-color: rgba(244, 245, 241, 0.24);
+}
+
+.legal-article {
+  max-width: 760px;
+}
+
+/* Document nav stays scrollable on short screens, but never shows a scrollbar. */
+.legal-toc-scroll {
+  scrollbar-width: none;
+}
+
+.legal-toc-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.legal-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  padding-bottom: 2px;
+}
+
+.group:hover .legal-underline,
+a:hover > .legal-underline,
+a:focus-visible > .legal-underline {
+  background-size: 100% 1px;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface-muted);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+@media print {
+  header,
+  footer,
+  .print-hidden {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .legal-page {
+    background: #ffffff;
+    padding: 0;
+  }
+
+  .legal-page * {
+    position: static !important;
+    animation: none !important;
+    transition: none !important;
+    color: #000000 !important;
+    background: transparent !important;
+  }
+
+  /* Animated-in content must always print, even if it never entered the viewport. */
+  .legal-page [data-reveal],
+  .legal-page [data-contact-content],
+  .legal-page [data-contact-rule] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .legal-page a::after {
+    content: " (" attr(href) ")";
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
