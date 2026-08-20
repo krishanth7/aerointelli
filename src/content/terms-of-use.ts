@@ -1,12 +1,19 @@
+import { contactConfig } from "@/config/contact";
+import { grievanceContact, legalContactLines, legalEntity } from "@/config/legalEntity";
 import type { LegalBlock, LegalDocumentMeta, LegalSection } from "@/content/legal-types";
 
 export const termsMeta: LegalDocumentMeta = {
-  company: "Aero Intelli Private Limited",
-  effectiveDate: "10 August 2026",
-  lastUpdated: "10 August 2026",
-  version: "1.0",
-  jurisdiction: "India",
-  contactEmail: "contact@aerointelli.com",
+  company: legalEntity.legalName,
+  // 2.0, not 1.1: substantive clauses were corrected rather than tidied. Third
+  // parties are now named instead of hedged, the store-not-open sections are
+  // marked as having no present effect, and a Grievance Officer section was
+  // added. A reader relying on version 1.0 was relying on statements that were
+  // not accurate, so the major number moves.
+  effectiveDate: "20 August 2026",
+  lastUpdated: "20 August 2026",
+  version: "2.0",
+  jurisdiction: legalEntity.country,
+  contactEmail: contactConfig.generalEmail,
 };
 
 export const termsSummary =
@@ -174,6 +181,11 @@ export const termsSections: LegalSection[] = [
     title: "User Accounts",
     tocLabel: "User Accounts",
     blocks: [
+      {
+        kind: "callout",
+        value:
+          "The Website does not currently offer account registration. This section states the terms that will apply if and when accounts are introduced, and has no present effect.",
+      },
       { kind: "subheading", value: "Account Creation" },
       {
         kind: "clause",
@@ -261,6 +273,11 @@ export const termsSections: LegalSection[] = [
     tocLabel: "Orders and Order Acceptance",
     blocks: [
       {
+        kind: "callout",
+        value:
+          "The Website does not currently sell products online and has no checkout. Orders are placed through the Company's sales process under separate Project Documents. This section governs online ordering if and when it is introduced.",
+      },
+      {
         kind: "clause",
         number: "9.1",
         value:
@@ -292,6 +309,11 @@ export const termsSections: LegalSection[] = [
     title: "Pricing, Taxes and Payments",
     tocLabel: "Pricing, Taxes and Payments",
     blocks: [
+      {
+        kind: "callout",
+        value:
+          "No payment gateway is integrated into the Website and no payment can be made through it. Payments are made against invoices issued under the applicable Project Documents.",
+      },
       {
         kind: "clause",
         number: "10.1",
@@ -352,7 +374,7 @@ export const termsSections: LegalSection[] = [
         kind: "clause",
         number: "11.4",
         value:
-          "Further details of dispatch and delivery arrangements are set out in the Delivery & Shipping Policy.",
+          "Further details of dispatch and delivery arrangements are set out in the Shipping & Delivery Policy.",
       },
       {
         kind: "linkList",
@@ -577,7 +599,13 @@ export const termsSections: LegalSection[] = [
         kind: "clause",
         number: "18.1",
         value:
-          "The Website may use or link to third-party services, including hosting and cloud providers, analytics, payment gateways, maps, embedded media and social platforms.",
+          "Two third-party services are used to operate the Website: Cloudflare, which hosts and delivers it, and EmailJS, which transmits enquiries submitted through the contact form. The Website also links out to Aero Intelli's social media profiles. There is no analytics provider, no payment gateway, no embedded map and no embedded media player. The Cookie Policy and the Privacy Policy describe what each service receives.",
+      },
+      {
+        kind: "clause",
+        number: "18.1(a)",
+        value:
+          "This clause is stated as a list of named services rather than as a list of categories the Website \"may\" use. A term drafted to permit anything discloses nothing, and the Company would rather amend this clause when the position changes than reserve a permission it is not exercising.",
       },
       {
         kind: "clause",
@@ -804,9 +832,10 @@ export const termsSections: LegalSection[] = [
           "Subject to clause 25.2, disputes are subject to the jurisdiction of the competent courts in India. Nothing in this section affects any statutory forum available to a consumer under the Consumer Protection Act, 2019.",
       },
       {
-        kind: "callout",
+        kind: "clause",
+        number: "25.4",
         value:
-          "The seat, venue and dispute-resolution mechanism above are stated in general terms and should be confirmed by qualified Indian legal counsel, together with any arbitration clause the Company intends to adopt, before these Terms are relied upon.",
+          "No exclusive venue is named and no arbitration agreement is imposed. Where a company names a single distant city as the only forum, the practical effect is to price an ordinary customer out of bringing a claim at all. Aero Intelli would rather name nothing than name something that operates that way, and will state a venue only once it has been settled with legal counsel and can be applied consistently.",
       },
     ],
   },
@@ -857,8 +886,33 @@ export const termsSections: LegalSection[] = [
     ],
   },
   {
-    id: "contact-information",
+    id: "grievance-redressal",
     number: "28",
+    title: "Grievance Redressal",
+    tocLabel: "Grievance Redressal",
+    blocks: [
+      {
+        kind: "clause",
+        number: "28.1",
+        value:
+          "The Company has designated a Grievance Officer in accordance with Rule 5(9) of the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011, and the Consumer Protection (E-Commerce) Rules, 2020.",
+      },
+      {
+        kind: "clause",
+        number: "28.2",
+        value: `A complaint may be sent to the Grievance Officer by email at ${grievanceContact.email}. The Company will acknowledge receipt within ${grievanceContact.acknowledgementWindow} and will endeavour to redress the complaint within ${grievanceContact.redressalWindow} of receipt, which is the period prescribed by the Rules.`,
+      },
+      {
+        kind: "clause",
+        number: "28.3",
+        value:
+          "The Grievance Officer is presently identified by role and by a monitored inbox rather than by personal name. The Company records this openly rather than implying full conformity with the naming requirement, and will publish the name and designation of the individual holding the role once appointed.",
+      },
+    ],
+  },
+  {
+    id: "contact-information",
+    number: "29",
     title: "Contact Information",
     tocLabel: "Contact Information",
     blocks: [
@@ -868,11 +922,7 @@ export const termsSections: LegalSection[] = [
       },
       {
         kind: "list",
-        value: [
-          "Aero Intelli Private Limited",
-          "Email: contact@aerointelli.com",
-          "Registered Office: Bhavani Nagar Colony, Kushiguda, ECIL, Secunderabad, Hyderabad, Telangana - 500062, India",
-        ],
+        value: legalContactLines("Terms of Use"),
       },
     ],
   },

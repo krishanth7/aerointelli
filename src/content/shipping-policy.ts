@@ -1,52 +1,66 @@
+import { contactConfig } from "@/config/contact";
+import { grievanceContact, legalContactLines, legalEntity } from "@/config/legalEntity";
+
 import type { LegalBlock, LegalDocumentMeta, LegalSection } from "@/content/legal-types";
 
+/**
+ * Shipping & Delivery Policy.
+ *
+ * Rewritten from a template that described a shop this company does not
+ * operate. The previous version promised order processing "within 1–3 business
+ * days", organic-food delivery "within 24 to 48 hours" to metro cities, a
+ * 35–60 day RAS window, SMS and WhatsApp tracking, and shipping charges shown
+ * "during checkout". There is no checkout, no logistics partner, no dispatch
+ * operation and no product catalogue. Every one of those was a representation
+ * to a consumer about a service that does not exist, which is precisely the
+ * kind of statement the Consumer Protection Act, 2019 treats as misleading.
+ *
+ * The policy is now forward-looking: it states the framework that will govern
+ * delivery, and says plainly that online purchasing is not open. Specific
+ * timelines belong in a quotation or a purchase order for a specific project,
+ * where they can actually be honoured — not on a public page as a blanket
+ * promise.
+ *
+ * The contact email was `support@aerointelli.com`, an alias that appears
+ * nowhere else in the codebase and is not a verified inbox. It now reads from
+ * `contactConfig` like every other page.
+ */
+
 export const shippingMeta: LegalDocumentMeta = {
-  company: "Aero Intelli Private Limited",
-  effectiveDate: "10 August 2026",
-  lastUpdated: "10 August 2026",
-  version: "1.0",
-  jurisdiction: "India",
-  contactEmail: "support@aerointelli.com",
+  company: legalEntity.legalName,
+  effectiveDate: "20 August 2026",
+  lastUpdated: "20 August 2026",
+  version: "2.0",
+  jurisdiction: legalEntity.country,
+  contactEmail: contactConfig.generalEmail,
 };
 
 export const shippingSummary =
-  "Clear information about order processing, shipping locations, delivery timelines, project-based equipment delivery, tracking, and delivery requirements.";
+  "How Aero Intelli handles dispatch, delivery, site readiness and acceptance for engineered systems supplied under a quotation or project agreement.";
 
 export const shippingIntro: LegalBlock[] = [
   {
     kind: "text",
     value:
-      "This Shipping & Delivery Policy outlines how Aero Intelli processes, ships, and delivers products purchased through our website and associated sales channels.",
+      "This Shipping & Delivery Policy sets out the basis on which Aero Intelli Private Limited dispatches and delivers the products and engineered systems it supplies.",
+  },
+  {
+    kind: "callout",
+    value:
+      "This website does not currently sell products online. It has no catalogue, no cart, no checkout and no payment gateway. Supply is arranged through a quotation, purchase order or project agreement, and the delivery terms for a given supply are the ones recorded in those documents.",
+  },
+  {
+    kind: "text",
+    value:
+      "This Policy is therefore a statement of framework rather than a schedule of transit times. It is written this way deliberately: a published delivery window that no operating dispatch process stands behind is a promise a buyer could rely on and we could not keep.",
   },
 ];
 
 /**
- * Delivery windows are quoted from the approved policy text and must not be
- * altered here. The at-a-glance strip and the timelines read from the same
- * constants so the summary can never drift from the policy body.
+ * The physical preconditions for delivering an engineered system to a site.
+ * These are genuine engineering requirements, not commitments about timing, so
+ * they survive the rewrite unchanged.
  */
-export const DELIVERY_WINDOWS = {
-  processing: "1–3 business days",
-  standard: "2–15 business days depending on category and destination",
-  organic: "24 hours to 7 business days depending on location",
-  ras: "35–60 days after site readiness approval",
-} as const;
-
-export const deliveryMatrix = [
-  {
-    category: "General Hardware & Agricultural Equipment",
-    metro: "2–7 business days",
-    tier23: "3–10 business days",
-    remote: "5–15 business days",
-  },
-  {
-    category: "Organic Food Products & Consumer Goods",
-    metro: "Within 24 to 48 hours",
-    tier23: "Within 2 to 3 business days",
-    remote: "Within 3 to 7 business days",
-  },
-];
-
 export const siteReadinessRequirements = [
   "Civil and site preparation work completed.",
   "Adequate water supply available at the installation location.",
@@ -57,6 +71,7 @@ export const siteReadinessRequirements = [
   "Site access available for transportation and installation activities.",
 ];
 
+/** Sequence of stages, without attached durations. */
 export const rasStages = [
   "Site ready",
   "Verification",
@@ -66,15 +81,7 @@ export const rasStages = [
   "Delivery",
 ];
 
-export const trackingStages = [
-  "Order confirmed",
-  "Dispatched",
-  "Tracking active",
-  "In transit",
-  "Delivered",
-];
-
-export const confirmationStages = ["Shipment", "Delivery", "Received", "Confirmed"];
+export const confirmationStages = ["Dispatch", "Delivery", "Inspection", "Acceptance"];
 
 export const projectCategories = [
   "Recirculating Aquaculture Systems (RAS)",
@@ -88,229 +95,317 @@ export const projectCategories = [
 
 export const shippingSections: LegalSection[] = [
   {
-    id: "overview",
+    id: "scope",
     number: "1",
-    title: "Overview",
-    tocLabel: "Overview",
+    title: "Scope and Status",
+    tocLabel: "Scope and Status",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "1.1",
         value:
-          "Aero Intelli is committed to delivering products in a timely and efficient manner. Delivery timelines may vary depending on product availability, shipping location, logistics partner operations, weather conditions, and other external factors.",
+          "This Policy applies to the dispatch and delivery of products and engineered systems supplied by Aero Intelli Private Limited (the \"Company\") in India.",
+      },
+      {
+        kind: "clause",
+        number: "1.2",
+        value:
+          "Online purchasing is not presently available. No order can be placed, and no payment can be made, through this website. Where you wish to procure a system, please contact the Company and a quotation will be issued for the specific scope.",
+      },
+      {
+        kind: "clause",
+        number: "1.3",
+        value:
+          "Where a quotation, purchase order or project agreement (together, the \"Project Documents\") records delivery terms for a particular supply, those terms govern that supply. This Policy applies to the extent the Project Documents are silent.",
+      },
+      {
+        kind: "clause",
+        number: "1.4",
+        value:
+          "This Policy is published as part of the Company's disclosures under the Consumer Protection (E-Commerce) Rules, 2020, and should be read together with the Terms of Use.",
+      },
+      {
+        kind: "linkList",
+        value: [{ label: "Terms of Use", href: "/legal/terms-of-use" }],
       },
     ],
   },
   {
-    id: "processing",
+    id: "delivery-locations",
     number: "2",
-    title: "Order Processing",
-    tocLabel: "Order Processing",
+    title: "Delivery Locations",
+    tocLabel: "Delivery Locations",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "2.1",
         value:
-          "All orders are subject to verification and acceptance. Orders are typically processed within 1–3 business days after successful payment confirmation unless otherwise stated on the product page.",
+          "The Company supplies to locations within India. Whether a particular site can be served depends on access, transport route and the nature of the equipment, and is confirmed at quotation stage rather than assumed.",
       },
       {
-        kind: "text",
+        kind: "clause",
+        number: "2.2",
         value:
-          "Orders placed on weekends, public holidays, or non-working days may be processed on the next business day.",
-      },
-    ],
-  },
-  {
-    id: "locations",
-    number: "3",
-    title: "Shipping Locations",
-    tocLabel: "Shipping Locations",
-    blocks: [
-      {
-        kind: "text",
-        value:
-          "Aero Intelli currently delivers to eligible locations within India. Availability of shipping services may vary based on the delivery address and logistics coverage.",
-      },
-      {
-        kind: "text",
-        value:
-          "International shipping, if offered in the future, will be governed by separate terms and conditions.",
+          "Supply outside India is not offered. If it is offered in future, it will be governed by separate terms addressing export documentation, customs clearance and incoterms, and this Policy will be updated before any such supply is accepted.",
       },
     ],
   },
   {
     id: "delivery-time",
-    number: "4",
-    title: "Standard Delivery Timelines",
-    tocLabel: "Standard Delivery Timelines",
+    number: "3",
+    title: "Delivery Schedules",
+    tocLabel: "Delivery Schedules",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "3.1",
         value:
-          "Aero Intelli offers tailored transit periods based on the category of product purchased. Typical delivery windows are detailed below:",
+          "The Company does not publish standard transit windows. The equipment it supplies is engineered to a site, and a period that is realistic for one configuration is misleading for another.",
+      },
+      {
+        kind: "clause",
+        number: "3.2",
+        value:
+          "The delivery schedule for a supply is stated in the applicable Project Documents, agreed before the order is accepted, and is calculated from a defined starting point recorded in those documents rather than from the date of enquiry.",
+      },
+      {
+        kind: "clause",
+        number: "3.3",
+        value:
+          "Where a schedule is agreed, the Company will notify you of any material change to it, together with the revised dates and the reason, as soon as the change is known.",
       },
     ],
   },
   {
     id: "ras-delivery",
-    number: "5",
-    title: "Recirculating Aquaculture System (RAS) Machinery Delivery",
-    tocLabel: "RAS Machinery Delivery",
+    number: "4",
+    title: "Site Readiness for Engineered Systems",
+    tocLabel: "Site Readiness",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "4.1",
         value:
-          "Orders involving Recirculating Aquaculture System (RAS) machinery, aquaculture equipment, custom-engineered systems, or project-based installations are subject to site readiness requirements.",
+          "Recirculating Aquaculture Systems, water treatment systems, hydroponic and aeroponic systems and comparable engineered installations cannot be delivered to a site that is not physically ready to receive them.",
       },
       {
-        kind: "text",
+        kind: "clause",
+        number: "4.2",
         value:
-          "The estimated delivery timeline for RAS machinery is 35 to 60 days from the date all required site preparations have been completed and verified by Aero Intelli.",
+          "Unless the Project Documents allocate the responsibility to the Company, site readiness is the customer's responsibility, and the agreed delivery period begins only once the Company has verified that the requirements below have been met.",
+      },
+      {
+        kind: "clause",
+        number: "4.3",
+        value:
+          "Delay in achieving site readiness moves the delivery schedule by a corresponding period. The Company will confirm the revised dates in writing.",
       },
     ],
   },
   {
     id: "charges",
-    number: "6",
-    title: "Shipping Charges",
-    tocLabel: "Shipping Charges",
+    number: "5",
+    title: "Freight, Handling and Taxes",
+    tocLabel: "Freight and Taxes",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "5.1",
         value:
-          "Shipping charges, if applicable, will be displayed during checkout before order confirmation.",
+          "Freight, handling, insurance, unloading and any special lifting or access arrangements are quoted as part of the applicable Project Documents. There is no checkout at which charges are displayed, because no online purchase is possible.",
       },
       {
-        kind: "text",
+        kind: "clause",
+        number: "5.2",
         value:
-          "Aero Intelli may offer free shipping on selected products, promotional campaigns, or minimum order values at its sole discretion.",
+          "Prices are exclusive of Goods and Services Tax and other statutory levies unless the quotation states otherwise. Applicable taxes are charged at the rate in force on the date of invoice.",
+      },
+      {
+        kind: "clause",
+        number: "5.3",
+        value:
+          "Where a site requires access arrangements that were not disclosed at quotation stage and that materially change the cost of delivery, the Company will inform you before incurring the cost and will not charge it without your agreement.",
       },
     ],
   },
   {
     id: "tracking",
-    number: "7",
-    title: "Order Tracking",
-    tocLabel: "Order Tracking",
+    number: "6",
+    title: "Dispatch Notification",
+    tocLabel: "Dispatch Notification",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "6.1",
         value:
-          "Where available, customers will receive shipment tracking details through email, SMS, WhatsApp, or other communication channels after dispatch.",
+          "The Company does not operate an automated tracking portal and does not send SMS or messaging-application notifications.",
       },
       {
-        kind: "text",
-        value:
-          "Tracking information may take up to 24 hours to become active after shipment creation.",
+        kind: "clause",
+        number: "6.2",
+        value: `Dispatch is confirmed by email to the address recorded in the Project Documents, together with the carrier's reference where one exists. Enquiries about a consignment in transit may be sent to ${contactConfig.generalEmail}.`,
       },
     ],
   },
   {
     id: "attempts",
-    number: "8",
-    title: "Delivery Attempts",
-    tocLabel: "Delivery Attempts",
+    number: "7",
+    title: "Delivery, Access and Address Accuracy",
+    tocLabel: "Delivery and Access",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "7.1",
         value:
-          "Delivery partners may make multiple attempts to deliver an order. If delivery cannot be completed due to an incorrect address, customer unavailability, refusal to accept delivery, or other customer-related reasons, additional shipping charges may apply for re-delivery.",
+          "You are responsible for providing an accurate delivery address, for ensuring that a person authorised to take delivery is present at the agreed time, and for ensuring that the site is accessible to the transport required.",
       },
-    ],
-  },
-  {
-    id: "address-accuracy",
-    number: "9",
-    title: "Address Accuracy",
-    tocLabel: "Address Accuracy",
-    blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "7.2",
         value:
-          "Customers are responsible for providing accurate and complete shipping information. Aero Intelli shall not be responsible for delays, losses, or failed deliveries resulting from incorrect, incomplete, or outdated address information provided by the customer.",
+          "Where delivery cannot be completed for a reason attributable to you, the Company will contact you to arrange a further attempt. Demurrage, storage or re-delivery costs actually incurred may be charged, and will be evidenced before they are invoiced.",
       },
     ],
   },
   {
     id: "delays",
-    number: "10",
-    title: "Delays Beyond Our Control",
-    tocLabel: "Delays Beyond Our Control",
+    number: "8",
+    title: "Delays Beyond Reasonable Control",
+    tocLabel: "Delays",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "8.1",
         value:
-          "Delivery timelines may be affected by circumstances beyond Aero Intelli's reasonable control, including but not limited to natural disasters, floods, cyclones, government restrictions, public emergencies, transportation disruptions, labor shortages, technical failures, and force majeure events. In such cases, delivery schedules may be extended without liability.",
+          "Delivery may be affected by events outside the Company's reasonable control, including natural events, flooding, cyclone, government restriction, public emergency, transport disruption, supplier failure and industrial action.",
+      },
+      {
+        kind: "clause",
+        number: "8.2",
+        value:
+          "In such circumstances the schedule is extended by a period corresponding to the disruption. This clause does not excuse the Company from telling you what has happened, nor does it limit any right you have under the Consumer Protection Act, 2019.",
       },
     ],
   },
   {
     id: "damaged-missing",
-    number: "11",
-    title: "Damaged or Missing Shipments",
-    tocLabel: "Damaged or Missing Shipments",
+    number: "9",
+    title: "Damaged, Short or Tampered Consignments",
+    tocLabel: "Damaged Consignments",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "9.1",
         value:
-          "Customers are advised to inspect packages upon delivery. If a shipment arrives visibly damaged, incomplete, or appears tampered with, customers should notify Aero Intelli within 48 hours of delivery.",
+          "Please inspect a consignment on delivery. Where packaging is visibly damaged, a consignment is short, or a seal appears to have been broken, record it on the carrier's delivery documentation before signing and notify the Company promptly.",
       },
       {
-        kind: "text",
-        value: "Supporting photographs and order details may be required for investigation.",
+        kind: "clause",
+        number: "9.2",
+        value:
+          "Prompt notice matters because a carrier's own liability window is short, and a claim made late may be refused by the carrier regardless of its merits. Photographs of the packaging and of the goods as received assist the investigation.",
+      },
+      {
+        kind: "clause",
+        number: "9.3",
+        value:
+          "Damage that is not apparent on inspection should be reported as soon as it is discovered. Nothing in this section limits your statutory rights in respect of goods that do not conform to the contract.",
       },
     ],
   },
   {
     id: "large-equipment",
-    number: "12",
-    title: "Large Equipment and Custom Orders",
-    tocLabel: "Large Equipment & Custom Orders",
+    number: "10",
+    title: "Engineered and Custom Supply",
+    tocLabel: "Engineered Supply",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "10.1",
         value:
-          "Products including Recirculating Aquaculture Systems (RAS), Water Treatment Systems, Hydroponic Systems, Aeroponic Systems, Industrial Equipment, Custom Manufacturing Orders, and Project-Based Installations may require manufacturing, quality testing, engineering validation, logistics planning, and installation scheduling before dispatch.",
+          "The following categories are manufactured, tested and scheduled against a specific project rather than held as stock, and are supplied only under Project Documents:",
       },
       {
-        kind: "text",
+        kind: "clause",
+        number: "10.2",
         value:
-          "Specific delivery timelines for such products will be communicated during the quotation, purchase order, or project agreement process.",
-      },
-      {
-        kind: "text",
-        value:
-          "For RAS machinery, the standard delivery period is generally 35 to 60 days after site readiness approval by Aero Intelli.",
+          "Because each is built to a specification, these categories are not returnable as a change of mind once manufacture has begun. The cancellation and refund position for a given supply is set out in Section 12 of the Terms of Use and in the applicable Project Documents.",
       },
     ],
   },
   {
     id: "confirmation",
-    number: "13",
-    title: "Delivery Confirmation",
+    number: "11",
+    title: "Delivery Confirmation and Acceptance",
     tocLabel: "Delivery Confirmation",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "11.1",
         value:
-          "An order shall be deemed delivered when received at the shipping address provided by the customer or when confirmed by the designated logistics partner.",
+          "Delivery is complete when the goods are received at the agreed address and the delivery documentation is signed, or when the carrier records delivery in accordance with the Project Documents.",
+      },
+      {
+        kind: "clause",
+        number: "11.2",
+        value:
+          "Delivery is distinct from acceptance. Where the Project Documents provide for commissioning or an acceptance test, acceptance occurs on completion of that test, and signing for a consignment is not an acknowledgement that the system performs to specification.",
+      },
+    ],
+  },
+  {
+    id: "grievance",
+    number: "12",
+    title: "Grievance Redressal",
+    tocLabel: "Grievance Redressal",
+    blocks: [
+      {
+        kind: "clause",
+        number: "12.1",
+        value:
+          "A complaint concerning dispatch or delivery may be sent to the Grievance Officer designated under the Consumer Protection (E-Commerce) Rules, 2020.",
+      },
+      {
+        kind: "list",
+        value: [`Role: ${grievanceContact.role}`, `Email: ${grievanceContact.email}`],
+      },
+      {
+        kind: "clause",
+        number: "12.2",
+        value: `The Company will acknowledge a complaint within ${grievanceContact.acknowledgementWindow} and will endeavour to resolve it within ${grievanceContact.redressalWindow} of receipt.`,
+      },
+      {
+        kind: "clause",
+        number: "12.3",
+        value:
+          "The Officer is presently identified by role and monitored inbox rather than by personal name. The Company states this openly and will publish the name and designation of the individual holding the role once appointed.",
       },
     ],
   },
   {
     id: "updates",
-    number: "14",
-    title: "Policy Updates",
-    tocLabel: "Policy Updates",
+    number: "13",
+    title: "Changes to this Policy",
+    tocLabel: "Changes",
     blocks: [
       {
-        kind: "text",
+        kind: "clause",
+        number: "13.1",
         value:
-          "Aero Intelli reserves the right to modify, update, or revise this Shipping & Delivery Policy at any time without prior notice. Any changes will become effective upon publication on the website.",
+          "This Policy will be revised when the Company's delivery arrangements change, and in particular before online purchasing is enabled. The version and date below identify the text currently in force.",
+      },
+      {
+        kind: "clause",
+        number: "13.2",
+        value:
+          "A supply already accepted is governed by the version of this Policy in force when it was accepted, together with the applicable Project Documents.",
       },
       {
         kind: "list",
         value: [
-          `Current policy: Shipping & Delivery Policy`,
+          "Current policy: Shipping & Delivery Policy",
           `Version: ${shippingMeta.version}`,
+          `Effective Date: ${shippingMeta.effectiveDate}`,
           `Last Updated: ${shippingMeta.lastUpdated}`,
         ],
       },
@@ -318,17 +413,17 @@ export const shippingSections: LegalSection[] = [
   },
   {
     id: "contact",
-    number: "15",
+    number: "14",
     title: "Contact Information",
     tocLabel: "Contact Information",
     blocks: [
       {
         kind: "text",
-        value: "For shipping or delivery-related inquiries, please contact us:",
+        value: "For questions about dispatch or delivery, please contact:",
       },
       {
         kind: "list",
-        value: ["Aero Intelli", "Email: support@aerointelli.com", "Website: aerointelli.com"],
+        value: legalContactLines("Shipping and Delivery"),
       },
     ],
   },

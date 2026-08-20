@@ -6,11 +6,26 @@
  * preference centre all read from this file, so an entry added here is a
  * public legal statement.
  *
- * Verified against the codebase on 10 August 2026: the website is a static
- * Next.js marketing/legal site with no analytics SDK, no tag manager, no
- * advertising pixel, no authentication, no payment gateway, no third-party
- * embed (map, video or social widget) and no use of document.cookie,
- * localStorage, sessionStorage or IndexedDB. The registry is therefore empty.
+ * Scope: this file covers cookies and browser storage only. It does not cover
+ * third parties that receive data by other means — for those see `processors`
+ * in `src/config/legalEntity.ts`. Keeping the two separate is what allows both
+ * to be stated absolutely instead of hedged.
+ *
+ * Verified against the codebase on 20 August 2026: no analytics SDK, no tag
+ * manager, no advertising pixel, no authentication, no payment gateway, no
+ * third-party embed (map, video or social widget), and no use of
+ * document.cookie, localStorage, sessionStorage or IndexedDB. The registry is
+ * therefore empty.
+ *
+ * Correction to the previous verification note, dated 10 August 2026, which
+ * additionally claimed "no third-party embed" as a blanket statement about the
+ * site: that was too broad and it was wrong. The contact form loads
+ * `@emailjs/browser` and posts the enquiry to `api.emailjs.com` from the
+ * visitor's own browser. It sets no cookie and writes no browser storage, so
+ * this registry stays empty and correct — but the Cookie Policy sections that
+ * relied on the wider claim were false and have been rewritten. The lesson is
+ * recorded rather than quietly patched: a negative claim is only as good as its
+ * stated scope.
  */
 
 export type CookieCategoryId = "essential" | "preferences" | "analytics" | "marketing";

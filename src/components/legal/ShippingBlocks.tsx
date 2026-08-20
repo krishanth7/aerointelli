@@ -1,17 +1,19 @@
-import {
-  DELIVERY_WINDOWS,
-  deliveryMatrix,
-  projectCategories,
-  siteReadinessRequirements,
-} from "@/content/shipping-policy";
+import { projectCategories, siteReadinessRequirements } from "@/content/shipping-policy";
 
-/** Four-item summary strip. Values are read from the policy constants. */
+/**
+ * Four-item summary strip.
+ *
+ * Previously quoted `DELIVERY_WINDOWS` — "1–3 business days", "within 24 to 48
+ * hours" and so on. Those constants described a dispatch operation that does
+ * not exist, so both they and the numbers here are gone. What remains is the
+ * shape of the arrangement, which is true.
+ */
 export function ShippingGlance() {
   const items = [
-    { label: "Order processing", value: DELIVERY_WINDOWS.processing },
-    { label: "Standard products", value: DELIVERY_WINDOWS.standard },
-    { label: "Organic products", value: DELIVERY_WINDOWS.organic },
-    { label: "RAS machinery", value: DELIVERY_WINDOWS.ras },
+    { label: "Online purchase", value: "Not currently available. There is no cart or checkout." },
+    { label: "How supply is arranged", value: "By quotation, purchase order or project agreement." },
+    { label: "Delivery schedule", value: "Agreed per project, in writing, before an order is accepted." },
+    { label: "Coverage", value: "Sites within India, confirmed at quotation stage." },
   ];
 
   return (
@@ -39,83 +41,12 @@ export function ShippingGlance() {
           Project-based delivery
         </p>
         <p className="mt-3 text-[15.5px] leading-[1.8] text-legal-ink md:text-[16.5px]">
-          RAS machinery and other engineered systems are subject to site-readiness requirements. The
-          applicable 35–60 day period begins only after Aero Intelli confirms that required site
-          preparations have been completed.
+          Engineered systems are subject to site-readiness requirements. The agreed delivery period
+          begins only after Aero Intelli confirms that the required site preparations have been
+          completed — not from the date an enquiry or order is placed.
         </p>
       </div>
     </section>
-  );
-}
-
-/** Delivery matrix: table on desktop, stacked blocks on mobile. */
-export function DeliveryMatrix() {
-  return (
-    <div className="mt-6">
-      <table className="hidden w-full border-collapse text-left md:table">
-        <thead>
-          <tr className="border-b border-legal-border">
-            {["Product category", "Metro cities", "Tier 2 & Tier 3", "Remote locations"].map(
-              (column) => (
-                <th
-                  key={column}
-                  scope="col"
-                  className="py-3 pr-4 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-legal-muted"
-                >
-                  {column}
-                </th>
-              ),
-            )}
-          </tr>
-        </thead>
-        <tbody>
-          {deliveryMatrix.map((row) => (
-            <tr key={row.category} className="border-b border-legal-border">
-              <th
-                scope="row"
-                className="py-4 pr-4 text-left align-top text-[14.5px] font-medium text-legal-heading"
-              >
-                {row.category}
-              </th>
-              <td className="py-4 pr-4 align-top text-[14.5px] text-legal-secondary">{row.metro}</td>
-              <td className="py-4 pr-4 align-top text-[14.5px] text-legal-secondary">
-                {row.tier23}
-              </td>
-              <td className="py-4 align-top text-[14.5px] text-legal-secondary">{row.remote}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <ul className="space-y-4 md:hidden">
-        {deliveryMatrix.map((row) => (
-          <li key={row.category} className="rounded-[10px] border border-legal-border p-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-legal-heading">
-              {row.category}
-            </p>
-            <dl className="mt-3 space-y-2 text-[14px]">
-              {[
-                ["Metro", row.metro],
-                ["Tier 2 & 3", row.tier23],
-                ["Remote", row.remote],
-              ].map(([label, value]) => (
-                <div key={label} className="flex gap-3">
-                  <dt className="w-[86px] shrink-0 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-legal-muted">
-                    {label}
-                  </dt>
-                  <dd className="min-w-0 leading-[1.6] text-legal-secondary">{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </li>
-        ))}
-      </ul>
-
-      <p className="mt-5 text-[15.5px] leading-[1.8] text-legal-ink md:text-[16.5px]">
-        Actual delivery periods may vary based on product availability, seasonal volume, logistics
-        partners, and localized transit conditions.
-      </p>
-    </div>
   );
 }
 
@@ -148,29 +79,40 @@ export function SiteReadinessChecklist() {
         ))}
       </ul>
       <p className="mt-5 text-[15px] leading-[1.8] text-legal-ink">
-        The 35 to 60 day manufacturing, testing, logistics, and delivery period shall commence only
-        after Aero Intelli confirms that all site readiness requirements have been fulfilled.
+        The manufacturing, testing, logistics and delivery period agreed in the project documents
+        commences only after Aero Intelli confirms that all site readiness requirements have been
+        fulfilled.
       </p>
       <p className="mt-4 text-[15px] leading-[1.8] text-legal-ink">
-        Delivery timelines may vary depending on project scope, equipment specifications, logistics
-        conditions, regulatory requirements, and force majeure events.
+        Schedules depend on project scope, equipment specification, logistics conditions, regulatory
+        requirements and events outside reasonable control.
       </p>
     </div>
   );
 }
 
-/** Emphasis for the 48-hour notification window. Informational, not a countdown. */
+/**
+ * Guidance for a damaged consignment.
+ *
+ * Previously displayed "48 hours" at display size. No carrier contract exists
+ * that makes forty-eight hours the operative window, and a large number reads
+ * as a deadline after which a buyer might believe their claim is dead. Replaced
+ * with the action that actually protects the claim.
+ */
 export function DamagedShipmentNotice() {
   return (
     <div className="mt-6 rounded-[10px] border border-legal-border border-l-2 border-l-accent bg-legal-surface p-5 md:p-6">
       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-legal-heading">
-        Received a damaged or tampered shipment?
+        Received a damaged or tampered consignment?
       </p>
-      <p className="mt-4 text-[30px] font-medium leading-none tracking-[-0.02em] text-legal-heading md:text-[36px]">
-        48 hours
+      <p className="mt-4 text-[15.5px] leading-[1.8] text-legal-ink md:text-[16.5px]">
+        Record the damage on the carrier&rsquo;s delivery documentation before you sign, photograph
+        the packaging and the goods as received, and tell us promptly. A carrier&rsquo;s own
+        liability window is short, and a late claim can be refused on that basis alone.
       </p>
       <p className="mt-3 text-[14.5px] leading-[1.7] text-legal-secondary">
-        Recommended notification period for visibly damaged, incomplete, or tampered shipments.
+        Reporting late does not remove your statutory rights in respect of goods that do not conform
+        to the contract.
       </p>
     </div>
   );

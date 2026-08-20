@@ -10,7 +10,6 @@ import { MobileTOC } from "@/components/legal/MobileTOC";
 import { ProcessTimeline } from "@/components/legal/ProcessTimeline";
 import {
   DamagedShipmentNotice,
-  DeliveryMatrix,
   ProjectCategoryGrid,
   ShippingGlance,
   SiteReadinessChecklist,
@@ -22,13 +21,12 @@ import {
   shippingMeta,
   shippingSections,
   shippingSummary,
-  trackingStages,
 } from "@/content/shipping-policy";
 
 export const metadata: Metadata = {
   title: "Shipping & Delivery Policy",
   description:
-    "Learn about Aero Intelli's order processing, shipping locations, delivery timelines, RAS machinery delivery requirements, tracking, and delivery procedures.",
+    "How Aero Intelli handles dispatch, delivery, site readiness and acceptance for engineered systems supplied under a quotation or project agreement.",
   alternates: { canonical: "/legal/shipping-policy" },
 };
 
@@ -42,35 +40,20 @@ const tocItems = shippingSections.map((section) => ({
 function SectionExtras({ id }: { id: string }) {
   if (id === "delivery-time") {
     return (
-      <>
-        <ProcessTimeline
-          label="Order to delivery"
-          stages={["Order", "Processing", "Dispatch", "Transit", "Delivery"]}
-        />
-        <DeliveryMatrix />
-      </>
+      <ProcessTimeline
+        label="Quotation to delivery"
+        stages={["Enquiry", "Quotation", "Order accepted", "Manufacture", "Dispatch", "Delivery"]}
+      />
     );
   }
 
   if (id === "ras-delivery") {
     return (
       <>
-        <ProcessTimeline
-          label="Site readiness → manufacturing → testing → logistics → delivery"
-          stages={rasStages}
-          highlight={{
-            value: "35–60 days",
-            caption:
-              "Measured from Aero Intelli's confirmation that all site readiness requirements have been fulfilled — not from the date an order is placed.",
-          }}
-        />
+        <ProcessTimeline label="Site readiness to delivery" stages={rasStages} />
         <SiteReadinessChecklist />
       </>
     );
-  }
-
-  if (id === "tracking") {
-    return <ProcessTimeline label="Shipment stages" stages={trackingStages} />;
   }
 
   if (id === "damaged-missing") {

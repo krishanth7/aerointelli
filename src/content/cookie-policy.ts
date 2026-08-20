@@ -1,10 +1,14 @@
+import { legalContactLines } from "@/config/legalEntity";
 import type { LegalBlock, LegalDocumentMeta, LegalSection } from "@/content/legal-types";
 
 export const cookieMeta: LegalDocumentMeta = {
   company: "Aero Intelli Private Limited",
-  effectiveDate: "10 August 2026",
-  lastUpdated: "10 August 2026",
-  version: "1.0",
+  effectiveDate: "20 August 2026",
+  lastUpdated: "20 August 2026",
+  // 2.0, not 1.1. Section 10 was factually wrong about third parties, and a
+  // correction to a statement a reader may have relied on is a new version of
+  // the document, not a revision of the old one.
+  version: "2.0",
   jurisdiction: "India",
   contactEmail: "contact@aerointelli.com",
 };
@@ -22,6 +26,11 @@ export const cookieIntro: LegalBlock[] = [
     kind: "callout",
     value:
       "As at the date of this policy, the Aero Intelli website does not set cookies and does not use browser storage such as localStorage, sessionStorage or IndexedDB. No analytics, advertising, tag-management or tracking technology is deployed. There is therefore nothing for you to accept, reject or configure at present, and no consent banner is shown.",
+  },
+  {
+    kind: "text",
+    value:
+      "That statement is about cookies and browser storage, and it is limited to them on purpose. It is not a claim that no third party is involved in operating the website. Two are: the website is hosted and served by Cloudflare, and an enquiry submitted through the contact form is transmitted by EmailJS. Neither sets a cookie, but both necessarily receive data, and Section 10 sets out exactly what. An earlier version of this policy stated more broadly that no third-party service was embedded in these pages. That was inaccurate, and it has been corrected here rather than removed quietly.",
   },
 ];
 
@@ -76,6 +85,12 @@ export const cookieSections: LegalSection[] = [
         value:
           "If cookies or similar technologies are introduced in future — for example to support an account area, an enquiry workflow, a payment process or website analytics — this policy will be updated before or at the time those technologies are deployed, and an appropriate consent mechanism will be provided where required.",
       },
+      {
+        kind: "clause",
+        number: "2.4",
+        value:
+          "India has no standalone cookie legislation. Where a cookie or similar technology processes personal data, the relevant framework is the Digital Personal Data Protection Act, 2023, together with the Information Technology Act, 2000 and the rules made under it. Consent under that framework must be free, specific, informed, unconditional and unambiguous, and must be as easy to withdraw as to give. Aero Intelli's position is that no optional technology will be loaded before that standard is met.",
+      },
     ],
   },
   {
@@ -100,7 +115,13 @@ export const cookieSections: LegalSection[] = [
         kind: "clause",
         number: "3.3",
         value:
-          "The Aero Intelli website does not currently use any of these technologies. It also does not use fingerprinting of any kind.",
+          "The Aero Intelli website does not store or read information on your device using any of these technologies, and does not use fingerprinting of any kind.",
+      },
+      {
+        kind: "clause",
+        number: "3.4",
+        value:
+          "One qualification is required, because a software development kit is named above. The contact form loads a component supplied by EmailJS in order to transmit your enquiry, and that component runs in your browser. It does not store anything on your device and does not track you across websites, but it does mean your enquiry and your IP address reach EmailJS directly. It is described in Section 10.",
       },
     ],
   },
@@ -238,19 +259,37 @@ export const cookieSections: LegalSection[] = [
         kind: "clause",
         number: "10.2",
         value:
-          "Status on this website: no third-party service is embedded in these pages. There is no map, no embedded video player, no social media widget, no chat tool, no payment gateway and no authentication provider.",
+          "Status on this website: no third party sets a cookie or writes browser storage here. There is no map, no embedded video player, no social media widget, no chat tool, no payment gateway, no authentication provider, no analytics product and no advertising technology.",
       },
       {
         kind: "clause",
         number: "10.3",
         value:
-          "Links to Aero Intelli's social media profiles are ordinary outbound links. They do not load third-party content into this website and set nothing on your device unless you choose to follow the link, at which point the destination platform's own policies apply.",
+          "Two third parties are nevertheless involved in operating the website, and are named here in full because a policy that describes them only as \"service providers\" tells you nothing you can act on.",
+      },
+      {
+        kind: "clause",
+        number: "10.3(a)",
+        value:
+          "EmailJS transmits enquiries submitted through the contact form. The submission is sent from your browser directly to EmailJS, which means the service receives what you typed into the form and can also see your IP address. It is used only when you actively submit the form. If you never submit it, no data reaches EmailJS. It sets no cookie and stores nothing on your device.",
+      },
+      {
+        kind: "clause",
+        number: "10.3(b)",
+        value:
+          "Cloudflare hosts and serves this website. Every request for a page necessarily passes through it, so it processes technical request information including your IP address, your browser's user-agent string and the address of the page requested, in order to deliver the page and protect the site against attack. This happens on the server side and sets nothing on your device.",
       },
       {
         kind: "clause",
         number: "10.4",
         value:
-          "The website is served by a hosting and content-delivery infrastructure. Such infrastructure processes technical request information, including internet protocol addresses, in order to deliver pages and maintain security. This is described in the Privacy Policy and is distinct from the use of cookies.",
+          "Both services are located outside India, so using this website involves a transfer of that data outside India. The Privacy Policy sets out what each service receives and why.",
+      },
+      {
+        kind: "clause",
+        number: "10.5",
+        value:
+          "Links to Aero Intelli's social media profiles are ordinary outbound links. They do not load third-party content into this website and set nothing on your device unless you choose to follow the link, at which point the destination platform's own policies apply.",
       },
     ],
   },
@@ -428,11 +467,7 @@ export const cookieSections: LegalSection[] = [
       },
       {
         kind: "list",
-        value: [
-          "Aero Intelli Private Limited",
-          "Email: contact@aerointelli.com",
-          "Registered Office: Bhavani Nagar Colony, Kushiguda, ECIL, Secunderabad, Hyderabad, Telangana - 500062, India",
-        ],
+        value: legalContactLines("Cookies and Website Technologies"),
       },
     ],
   },
