@@ -1,0 +1,56 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // MUST stay "aerointelli", with no hyphen.
+  //
+  // This is the name of the Worker in the Cloudflare account, and it is also
+  // what `WORKER_SELF_REFERENCE` below points at. The npm package is called
+  // "aero-intelli", and when this file is absent the adapter's `migrate` step
+  // generates one using the package name — which produced a self-reference to a
+  // Worker "aero-intelli" that does not exist, and the deploy failed with
+  // "Service binding 'WORKER_SELF_REFERENCE' references Worker 'aero-intelli'
+  // which was not found [code: 10143]".
+  //
+  // Committing this file is the actual fix: the build no longer regenerates
+  // config on every run, so the name cannot drift again.
+  "name": "aerointelli",
+
+  "main": ".open-next/worker.js",
+
+  // Matches the workerd version the adapter builds against. Bump this
+  // deliberately, together with the wrangler dependency — never independently.
+  "compatibility_date": "2026-08-15",
+
+  // `nodejs_compat` is required: the Next.js server touches Node built-ins.
+  // `global_fetch_strictly_public` makes `fetch` inside the Worker go out to the
+  // public internet rather than looping back internally, which is what Next's
+  // own data fetching assumes.
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  // Lets the Worker call itself, which the adapter needs for cache revalidation.
+  // The service name has to equal "name" above.
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "aerointelli"
+    }
+  ],
+
+  // Incremental cache. The bucket already exists in the account — the failed
+  // deploy populated it with 42 entries before erroring on the binding.
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "aero-intelli-opennext-cache"
+    }
+  ],
+
+  "observability": {
+    "enabled": true
+  }
+}

@@ -40,6 +40,17 @@ yarn-error.log*
 # vercel
 .vercel
 
+# cloudflare — build output and local wrangler state. `wrangler.jsonc` and
+# `open-next.config.ts` are deliberately NOT ignored: they are the deployment
+# contract and have to be in the repo, or CI regenerates them and the Worker
+# name drifts.
+.open-next
+.wrangler
+cloudflare-env.d.ts
+# Local Worker secrets. Same rule as `.env.local` — never committed.
+.dev.vars
+.dev.vars.*
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

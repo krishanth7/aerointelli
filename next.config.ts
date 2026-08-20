@@ -1,3 +1,4 @@
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -66,3 +67,13 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+/**
+ * Makes the Cloudflare bindings declared in `wrangler.jsonc` — R2, assets, the
+ * self-reference — available during `next dev`, so local development runs
+ * against the same shapes production does instead of discovering the difference
+ * at deploy time.
+ *
+ * Called at module scope on purpose, and it is a no-op outside `next dev`.
+ */
+initOpenNextCloudflareForDev();
