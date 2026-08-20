@@ -67,25 +67,6 @@ export default function Page() {
 
               <LegalContactBlock email={privacyMeta.contactEmail} />
 
-              <aside className="mt-10 rounded-[10px] border border-legal-border border-l-2 border-l-accent bg-legal-surface p-6">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-legal-heading">
-                  Important
-                </p>
-                <p className="mt-3 text-[14.5px] leading-[1.75] text-legal-secondary">
-                  This Privacy Policy is a website-ready corporate draft and is not a substitute for
-                  legal advice. Before publishing, Aero Intelli Private Limited should verify and
-                  complete the registered office address, official privacy email, designated
-                  grievance contact, actual cookies used, analytics providers, cloud providers,
-                  payment providers, recruitment systems, data retention periods, international data
-                  transfers, categories of personal data collected, consent mechanisms, and
-                  applicable legal requirements at the time of launch.
-                </p>
-                <p className="mt-3 text-[14.5px] leading-[1.75] text-legal-secondary">
-                  The final policy should be reviewed by qualified Indian legal counsel before it is
-                  treated as Aero Intelli&rsquo;s definitive legal privacy notice.
-                </p>
-              </aside>
-
               <LegalNavigation currentHref="/privacy-policy" />
             </article>
           </main>

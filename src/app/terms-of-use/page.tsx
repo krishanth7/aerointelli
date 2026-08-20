@@ -68,24 +68,6 @@ export default function Page() {
                 email={termsMeta.contactEmail}
               />
 
-              <aside className="mt-10 rounded-[10px] border border-legal-border border-l-2 border-l-accent bg-legal-surface p-6">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-legal-heading">
-                  Legal review notice
-                </p>
-                <p className="mt-3 text-[14.5px] leading-[1.75] text-legal-secondary">
-                  This document is a corporate draft prepared for the Aero Intelli website. It should
-                  be reviewed and approved by qualified Indian legal counsel before it is treated as
-                  Aero Intelli&rsquo;s definitive contractual terms.
-                </p>
-                <p className="mt-3 text-[14.5px] leading-[1.75] text-legal-secondary">
-                  Counsel should confirm, in particular, the governing law and dispute-resolution
-                  clause, the liability and disclaimer provisions against the Consumer Protection Act,
-                  2019, the cancellation and refund arrangements against Aero Intelli&rsquo;s actual
-                  commercial model, and the relationship between these Terms and project-specific
-                  engineering, supply and warranty documents.
-                </p>
-              </aside>
-
               <LegalNavigation currentHref="/terms-of-use" />
             </article>
           </main>

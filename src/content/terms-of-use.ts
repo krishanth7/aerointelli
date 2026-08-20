@@ -835,7 +835,7 @@ export const termsSections: LegalSection[] = [
         kind: "clause",
         number: "25.4",
         value:
-          "No exclusive venue is named and no arbitration agreement is imposed. Where a company names a single distant city as the only forum, the practical effect is to price an ordinary customer out of bringing a claim at all. Aero Intelli would rather name nothing than name something that operates that way, and will state a venue only once it has been settled with legal counsel and can be applied consistently.",
+          "No exclusive venue is named and no arbitration agreement is imposed. Where a company names a single distant city as the only forum, the practical effect is to price an ordinary customer out of bringing a claim at all. Aero Intelli would rather name nothing than name something that operates that way, and will name a venue only when it can be applied consistently.",
       },
     ],
   },

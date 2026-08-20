@@ -80,24 +80,6 @@ export default function Page() {
                 email={cookieMeta.contactEmail}
               />
 
-              <aside className="mt-10 rounded-[10px] border border-legal-border border-l-2 border-l-accent bg-legal-surface p-6">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-legal-heading">
-                  Legal review notice
-                </p>
-                <p className="mt-3 text-[14.5px] leading-[1.75] text-legal-secondary">
-                  The statements in this policy describe the Aero Intelli website as verified on the
-                  effective date above: no cookies, no browser storage, no analytics, advertising or
-                  third-party embeds. This policy must be revised before any such technology is added
-                  to the website.
-                </p>
-                <p className="mt-3 text-[14.5px] leading-[1.75] text-legal-secondary">
-                  The final wording should be reviewed by qualified Indian legal counsel against the
-                  Digital Personal Data Protection Act, 2023 and the Digital Personal Data Protection
-                  Rules, 2025, taking into account the commencement dates applicable to each
-                  provision.
-                </p>
-              </aside>
-
               <LegalNavigation currentHref="/cookie-policy" />
             </article>
           </main>
