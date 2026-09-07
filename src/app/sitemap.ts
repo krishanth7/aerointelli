@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import { articles } from "@/content/knowledge/articles";
+import { rasCategories } from "@/content/knowledge/categories";
 import { isUnindexed } from "@/config/launchStatus";
 import { siteUrl } from "@/config/site";
 
@@ -65,6 +67,11 @@ const routes = [
   "/knowledge/aquaculture",
   "/knowledge/hydroponics",
   "/knowledge/ras",
+  // The Knowledge Center is the one tree generated rather than listed. It is
+  // meant to keep growing, and a hand-maintained copy of it here would be
+  // out of date by the second article.
+  ...rasCategories.map((category) => `/knowledge/ras/${category.slug}`),
+  ...articles.map((article) => `/knowledge/ras/${article.category}/${article.slug}`),
   "/products",
   "/products/aeroponic-systems",
   "/products/automation-systems",
