@@ -40,6 +40,7 @@ const LABELS: Record<string, string> = {
   "nft-hydroponics": "NFT Hydroponics",
   "ai-monitoring": "AI Monitoring",
   "ai-intelligence": "AI Intelligence",
+  ras: "RAS",
   faqs: "FAQs",
   "cookie-policy": "Cookie Policy",
   "privacy-policy": "Privacy Policy",

@@ -56,7 +56,9 @@ export const footerNavigation: FooterSection[] = [
       { label: "Aquaculture", href: "/knowledge/aquaculture" },
       { label: "Hydroponics", href: "/knowledge/hydroponics" },
       { label: "Aeroponics", href: "/knowledge/aeroponics" },
-      { label: "Calculators", href: "/knowledge/calculators" },
+      // Lives at the root, not under /knowledge: that whole prefix is held out
+      // of search while the section is unreviewed, and the calculators are live.
+      { label: "Calculators", href: "/calculators" },
     ],
   },
   {
