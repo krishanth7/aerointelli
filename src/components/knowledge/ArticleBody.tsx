@@ -33,6 +33,14 @@ function BlockView({ block }: { block: Block }) {
     return <p className="text-[16px] leading-[1.75] text-ink-soft">{block.value}</p>;
   }
 
+  if (block.kind === "subheading") {
+    return (
+      <h3 className="pt-2 text-[18px] font-semibold tracking-[-0.01em] text-ink md:text-[20px]">
+        {block.value}
+      </h3>
+    );
+  }
+
   if (block.kind === "list") {
     const items = block.items.map((item, index) => (
       <li key={index} className="pl-1 text-[16px] leading-[1.75] text-ink-soft">
@@ -91,6 +99,32 @@ function BlockView({ block }: { block: Block }) {
           {block.limitations}
         </p>
       </div>
+    );
+  }
+
+  if (block.kind === "flow") {
+    return (
+      <figure className="rounded-[16px] border border-hairline-strong p-5">
+        <ol className="space-y-4">
+          {block.steps.map((step, index) => (
+            <li key={step.label} className="flex gap-4">
+              <span
+                aria-hidden="true"
+                className="mt-[3px] flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-hairline-strong text-[11px] font-medium text-ink-soft"
+              >
+                {index + 1}
+              </span>
+              <div className="min-w-0">
+                <p className="text-[15.5px] font-medium text-ink">{step.label}</p>
+                <p className="mt-1 text-[14.5px] leading-[1.7] text-ink-soft">{step.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <figcaption className="mt-4 border-t border-hairline pt-3 text-[13px] leading-relaxed text-ink-soft">
+          {block.caption}
+        </figcaption>
+      </figure>
     );
   }
 

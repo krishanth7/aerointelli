@@ -6,11 +6,9 @@
  * an article's structure without rendering it. A markdown blob would force
  * every one of those to parse prose to find out what an article is about.
  *
- * The fields that look like bureaucracy — `status`, `reviewedAt`,
- * `technicalReviewer`, `sources` — are the point of the whole system. A
- * technical claim on this site should be traceable to the person who checked it
- * and the reference it came from, and an article that has not been reviewed
- * should not be able to pretend that it has.
+ * One knowledge area, one article. The thirty areas are the navigation and the
+ * content at the same time, so there is no category page that exists only to
+ * list a single link.
  */
 
 /** How much a reader is expected to already know. */
@@ -23,27 +21,11 @@ export const difficultyLabel: Record<Difficulty, string> = {
 };
 
 /**
- * Editorial state.
- *
- * Only `reviewed` earns the "Aero Intelli technical guide" label. Everything
- * else says what it is, in the open, at the top of the article.
- */
-export type ArticleStatus = "draft" | "in-review" | "reviewed" | "archived";
-
-export const statusLabel: Record<ArticleStatus, string> = {
-  draft: "Draft",
-  "in-review": "Under technical review",
-  reviewed: "Technically reviewed",
-  archived: "Archived",
-};
-
-/**
  * What kind of claim a passage is making.
  *
- * The spec's most important instruction is that verified fact, industry
- * practice, engineering assumption and research direction must never blur into
- * one another. Blocks carry that distinction so the reader sees it inline
- * rather than having to infer it from tone.
+ * Verified fact, industry practice, engineering assumption and research
+ * direction must never blur into one another. Callouts carry that distinction
+ * so a reader sees it inline rather than inferring it from tone.
  */
 export type ClaimKind = "established" | "practice" | "assumption" | "research";
 
@@ -54,20 +36,22 @@ export const claimLabel: Record<ClaimKind, string> = {
   research: "Research direction",
 };
 
-export type Source = {
-  id: string;
-  title: string;
-  publisher: string;
-  author?: string;
-  year?: string;
+/**
+ * Further reading.
+ *
+ * Organisations and publication programmes rather than specific papers with
+ * invented identifiers. Naming a real body a reader can search is honest;
+ * fabricating a title, year and DOI to look rigorous is not.
+ */
+export type Reading = {
+  organisation: string;
+  description: string;
   url?: string;
-  /** Primary research, a standard, a textbook, or a manufacturer's data sheet. */
-  type: "research" | "government" | "standard" | "textbook" | "manufacturer" | "industry";
-  note?: string;
 };
 
 export type Block =
   | { kind: "text"; value: string }
+  | { kind: "subheading"; value: string }
   | { kind: "list"; ordered?: boolean; items: string[] }
   | { kind: "callout"; tone: ClaimKind; title: string; value: string }
   | {
@@ -84,8 +68,14 @@ export type Block =
       caption: string;
       columns: string[];
       rows: string[][];
-      /** Where the figures came from. A table without this does not get published. */
+      /** Where the figures came from, or what they depend on. */
       basis: string;
+    }
+  | {
+      kind: "flow";
+      caption: string;
+      /** A process chain, rendered as a vertical diagram. */
+      steps: { label: string; detail: string }[];
     };
 
 export type Section = {
@@ -94,48 +84,62 @@ export type Section = {
   blocks: Block[];
 };
 
-export type Article = {
+/** Topics used by the filter strip on the Knowledge Center index. */
+export type Topic =
+  | "water"
+  | "fish"
+  | "filtration"
+  | "engineering"
+  | "operations"
+  | "automation"
+  | "economics";
+
+export const topicLabel: Record<Topic, string> = {
+  water: "Water",
+  fish: "Fish",
+  filtration: "Filtration",
+  engineering: "Engineering",
+  operations: "Operations",
+  automation: "Automation",
+  economics: "Economics",
+};
+
+export type KnowledgeArea = {
+  /** Two-digit ordinal, used for the navigation index. */
+  number: string;
   slug: string;
   title: string;
-  /** The two-to-four sentence answer, shown before anything else. */
-  quickAnswer: string;
+  /** Short line shown on the index card. */
+  navSummary: string;
+  /** Metadata description and article standfirst. */
   summary: string;
-  category: string;
   difficulty: Difficulty;
-  status: ArticleStatus;
+  topics: Topic[];
   tags: string[];
   species?: string[];
   author: string;
-  technicalReviewer?: string;
   publishedAt: string;
   updatedAt: string;
-  reviewedAt?: string;
   version: string;
+  /** Plain-language answer for a farmer, before any engineering. */
+  quickUnderstanding: string;
   sections: Section[];
-  /**
-   * Optional, and currently unused by any published article.
-   *
-   * The field stays in the model because the review process still needs
-   * somewhere to record what an article was checked against — but a reference
-   * list is only worth printing when it is the reference list an engineer
-   * actually worked from, so nothing is rendered until that is true.
-   */
-  sources?: Source[];
-  /** Slugs of other articles. Resolved at render so a typo cannot ship silently. */
+  keyTakeaways: string[];
+  /** Slugs of related areas. Resolved at render, so a typo cannot ship silently. */
   related: string[];
-  /** What the article cannot tell you. Rendered at the foot, always. */
-  engineeringNote: string;
+  furtherReading?: Reading[];
 };
 
-/** Rough reading time. Stated as an estimate because that is what it is. */
-export function readingMinutes(article: Article): number {
-  const words = article.sections
+/** Rough reading time. */
+export function readingMinutes(area: KnowledgeArea): number {
+  const words = area.sections
     .flatMap((section) =>
       section.blocks.map((block) => {
-        if (block.kind === "text") return block.value;
+        if (block.kind === "text" || block.kind === "subheading") return block.value;
         if (block.kind === "list") return block.items.join(" ");
         if (block.kind === "callout") return block.value;
         if (block.kind === "formula") return `${block.expression} ${block.limitations}`;
+        if (block.kind === "flow") return block.steps.map((step) => step.detail).join(" ");
         return block.rows.flat().join(" ");
       }),
     )
