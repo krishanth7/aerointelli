@@ -21,6 +21,7 @@ export const unreleasedSections: UnreleasedSection[] = [
   { prefix: "/solutions", name: "Solutions" },
   { prefix: "/sustainability", name: "Sustainability" },
   { prefix: "/research", name: "Research" },
+  { prefix: "/knowledge", name: "Knowledge" },
 ];
 
 /**
