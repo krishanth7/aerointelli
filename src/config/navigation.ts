@@ -172,18 +172,6 @@ export const navigationItems: NavItem[] = [
           },
         ],
       },
-      {
-        title: "Tools",
-        items: [
-          {
-            label: "Calculators",
-            // Root-level, not under /knowledge. The Knowledge tree is held out
-            // of search while it is unreviewed; these tools are live.
-            href: "/calculators",
-            description: "Sizing and load calculations for planning a system.",
-          },
-        ],
-      },
     ],
   },
   { type: "link", label: "About", href: "/about" },

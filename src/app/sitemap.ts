@@ -63,8 +63,6 @@ const routes = [
   "/knowledge",
   "/knowledge/aeroponics",
   "/knowledge/aquaculture",
-  "/calculators",
-  "/calculators/ras",
   "/knowledge/hydroponics",
   "/knowledge/ras",
   "/products",
