@@ -13,7 +13,7 @@ export function FooterNavigation() {
         Explore
       </p>
       <div
-        className="mt-6 grid grid-cols-2 gap-x-8 gap-y-8 lg:grid-cols-4"
+        className="mt-6 grid grid-cols-2 gap-x-8 gap-y-8 md:grid-cols-3 lg:grid-cols-5"
         onMouseLeave={() => setHovered(null)}
       >
         {footerNavigation.map((section) => (
