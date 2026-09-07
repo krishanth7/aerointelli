@@ -55,7 +55,18 @@ export default function KnowledgePage() {
           economics of controlled growing systems.
         </p>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
+        {/* Two by two, and only on a desktop.
+            Four disciplines divide evenly into a two-column grid, which reads
+            as a deliberate arrangement rather than a list that happened to
+            wrap. Below the large breakpoint they stack: at tablet width two
+            columns squeeze the summary line into three or four ragged lines,
+            which looks worse than one clean column. */}
+        {/* `auto-rows-fr` so both rows take the height of the tallest card in
+            the grid rather than each row sizing to its own contents. Without
+            it the first row is taller than the second, because only the linked
+            card carries an action line, and the block reads as two mismatched
+            pairs instead of one square. */}
+        <div className="mt-12 grid grid-cols-1 gap-5 lg:auto-rows-fr lg:grid-cols-2 lg:gap-6">
           {disciplines.map((discipline) =>
             discipline.href ? (
               <Link
