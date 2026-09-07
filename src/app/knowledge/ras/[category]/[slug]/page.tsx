@@ -124,35 +124,6 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
               <p className="mt-3 text-[15.5px] leading-[1.7] text-ink">{article.engineeringNote}</p>
             </section>
 
-            <section className="mt-12 border-t border-hairline pt-8">
-              <h2 className="text-[13px] font-medium uppercase tracking-[0.14em] text-ink-soft">
-                Sources
-              </h2>
-              <ul className="mt-4 space-y-4">
-                {article.sources.map((source) => (
-                  <li key={source.id} className="text-[14.5px] leading-relaxed">
-                    <span className="font-medium text-ink">{source.title}</span>
-                    <span className="block text-ink-soft">
-                      {[source.author, source.publisher, source.year].filter(Boolean).join(" · ")}
-                    </span>
-                    {source.note ? (
-                      <span className="mt-1 block text-ink-soft">{source.note}</span>
-                    ) : null}
-                    {source.url ? (
-                      <a
-                        href={source.url}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        className="mt-1 inline-block text-ink underline underline-offset-4"
-                      >
-                        {source.url}
-                      </a>
-                    ) : null}
-                  </li>
-                ))}
-              </ul>
-            </section>
-
             {related.length > 0 ? (
               <section className="mt-12 border-t border-hairline pt-8">
                 <h2 className="text-[13px] font-medium uppercase tracking-[0.14em] text-ink-soft">

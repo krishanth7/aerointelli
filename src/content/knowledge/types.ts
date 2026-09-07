@@ -112,7 +112,15 @@ export type Article = {
   reviewedAt?: string;
   version: string;
   sections: Section[];
-  sources: Source[];
+  /**
+   * Optional, and currently unused by any published article.
+   *
+   * The field stays in the model because the review process still needs
+   * somewhere to record what an article was checked against — but a reference
+   * list is only worth printing when it is the reference list an engineer
+   * actually worked from, so nothing is rendered until that is true.
+   */
+  sources?: Source[];
   /** Slugs of other articles. Resolved at render so a typo cannot ship silently. */
   related: string[];
   /** What the article cannot tell you. Rendered at the foot, always. */

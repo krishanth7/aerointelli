@@ -9,27 +9,10 @@ import type { Article } from "./types";
  * be the thing an engineer bookmarks. These two establish the template and the
  * standard the rest have to meet.
  *
- * Sources are named without invented DOIs or page numbers. Where a figure is a
- * design range rather than a published constant, the block says so.
+ * No reference lists are carried. Where a figure is a design range rather than
+ * a published constant, the block containing it says so in place — which is
+ * where a reader needs to be told, rather than in a bibliography at the foot.
  */
-
-const timmons = {
-  id: "timmons-ebeling",
-  title: "Recirculating Aquaculture",
-  author: "M. B. Timmons and J. M. Ebeling",
-  publisher: "Ithaca Publishing Company",
-  type: "textbook" as const,
-  note: "The standard engineering reference for recirculating system design. Figures quoted from it here are design ranges, not fixed constants.",
-};
-
-const fao = {
-  id: "fao-ras",
-  title: "Recirculating aquaculture systems: technical guidance",
-  publisher: "Food and Agriculture Organization of the United Nations",
-  type: "government" as const,
-  url: "https://www.fao.org/fishery/en/aquaculture",
-  note: "Consult the current FAO publication for the species and region in question; guidance is revised periodically.",
-};
 
 export const articles: Article[] = [
   {
@@ -50,7 +33,6 @@ export const articles: Article[] = [
     related: ["what-is-tan"],
     engineeringNote:
       "This article describes how the loop works. It does not size anything. Turnover rates, filter capacities and oxygen supply all depend on species, feed loading, temperature and site water chemistry, and a system built from the general description here would be a system built without a design.",
-    sources: [timmons, fao],
     sections: [
       {
         id: "why-it-matters",
@@ -189,7 +171,6 @@ export const articles: Article[] = [
     related: ["what-is-ras"],
     engineeringNote:
       "No safe TAN limit is given here on purpose. A limit is only meaningful alongside a species, a pH, a temperature and an exposure duration, and a single number quoted without those is the most common way this subject is got wrong. Establish limits against the species being cultured and confirm them with an aquatic animal health professional.",
-    sources: [timmons, fao],
     sections: [
       {
         id: "two-forms",
