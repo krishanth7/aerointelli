@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { SHELL } from "@/components/shared/shell";
 import {
   areasByRecency,
@@ -41,7 +40,6 @@ export default function RasKnowledgePage() {
   return (
     <>
       <section className="bg-surface pt-[calc(var(--header-height-mobile)+1rem)] md:pt-[calc(var(--header-height)+2rem)]">
-        <Breadcrumbs />
         <div className={SHELL}>
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-ink-soft">
             Knowledge

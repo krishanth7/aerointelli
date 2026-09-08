@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/knowledge/ArticleBody";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { SHELL } from "@/components/shared/shell";
 import { knowledgeAreas, findArea, relatedAreas } from "@/content/knowledge/areas";
 import {
@@ -66,8 +65,6 @@ export default async function AreaPage({ params }: { params: Promise<Params> }) 
 
   return (
     <article className="bg-surface pb-20 pt-[calc(var(--header-height-mobile)+1rem)] md:pb-28 md:pt-[calc(var(--header-height)+2rem)]">
-      <Breadcrumbs />
-
       <div className={SHELL}>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_220px] lg:gap-16">
           <div className="min-w-0">

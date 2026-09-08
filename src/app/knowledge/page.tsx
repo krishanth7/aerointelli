@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { SHELL } from "@/components/shared/shell";
 
 export const metadata: Metadata = {
@@ -42,7 +41,6 @@ const disciplines = [
 export default function KnowledgePage() {
   return (
     <section className="bg-surface pb-20 pt-[calc(var(--header-height-mobile)+1rem)] md:pb-28 md:pt-[calc(var(--header-height)+2rem)]">
-      <Breadcrumbs />
       <div className={SHELL}>
         <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-ink-soft">
           Knowledge
