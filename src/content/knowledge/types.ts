@@ -92,7 +92,18 @@ export type Topic =
   | "engineering"
   | "operations"
   | "automation"
-  | "economics";
+  | "economics"
+  // Added for the Aquaculture Knowledge Center. Shared with the RAS tree rather
+  // than duplicated, because both index pages derive their filter strip from
+  // the topics their own areas actually use — a topic no RAS area carries never
+  // appears there, so widening the union costs that page nothing.
+  | "biology"
+  | "production"
+  | "health"
+  | "systems"
+  | "environment"
+  | "sustainability"
+  | "research";
 
 export const topicLabel: Record<Topic, string> = {
   water: "Water",
@@ -102,6 +113,13 @@ export const topicLabel: Record<Topic, string> = {
   operations: "Operations",
   automation: "Automation",
   economics: "Economics",
+  biology: "Biology",
+  production: "Production",
+  health: "Health",
+  systems: "Systems",
+  environment: "Environment",
+  sustainability: "Sustainability",
+  research: "Research",
 };
 
 export type KnowledgeArea = {

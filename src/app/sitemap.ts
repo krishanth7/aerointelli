@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { knowledgeAreas } from "@/content/knowledge/areas";
+import { aquacultureSections } from "@/content/knowledge/aquaculture";
 import { isUnindexed } from "@/config/launchStatus";
 import { siteUrl } from "@/config/site";
 
@@ -64,6 +65,9 @@ const routes = [
   "/knowledge",
   "/knowledge/aeroponics",
   "/knowledge/aquaculture",
+  // Generated for the same reason as the RAS tree below: the section list is
+  // the content, and a second hand-written copy of it here would rot.
+  ...aquacultureSections.map((section) => `/knowledge/aquaculture/${section.slug}`),
   "/knowledge/hydroponics",
   "/knowledge/ras",
   // The Knowledge Center is the one tree generated rather than listed. It is

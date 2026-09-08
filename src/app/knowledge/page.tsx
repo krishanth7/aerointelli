@@ -13,9 +13,10 @@ export const metadata: Metadata = {
  * The knowledge index.
  *
  * A real page rather than a placeholder, because `/knowledge` is now a parent
- * of the live RAS Knowledge Center and a breadcrumb points at it. Only the RAS
- * discipline is written; the other three are named without being linked, since
- * the routes behind them are still placeholders held out of search.
+ * of the live RAS and Aquaculture Knowledge Centers and a breadcrumb points at
+ * it. Those two disciplines are written; the other two are named without being
+ * linked, since the routes behind them are still placeholders held out of
+ * search.
  */
 const disciplines = [
   {
@@ -27,6 +28,7 @@ const disciplines = [
   {
     title: "Aquaculture",
     summary: "Species biology, health, stocking and production management across culture systems.",
+    href: "/knowledge/aquaculture",
   },
   {
     title: "Hydroponics",

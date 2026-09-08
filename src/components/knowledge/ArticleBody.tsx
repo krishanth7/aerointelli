@@ -30,7 +30,11 @@ export function ArticleBody({ sections }: { sections: Section[] }) {
 
 function BlockView({ block }: { block: Block }) {
   if (block.kind === "text") {
-    return <p className="text-[16px] leading-[1.75] text-ink-soft">{block.value}</p>;
+    return (
+      <p className="text-[16.5px] leading-[1.72] text-ink-soft md:text-[17.5px] md:leading-[1.75]">
+        {block.value}
+      </p>
+    );
   }
 
   if (block.kind === "subheading") {
@@ -43,7 +47,10 @@ function BlockView({ block }: { block: Block }) {
 
   if (block.kind === "list") {
     const items = block.items.map((item, index) => (
-      <li key={index} className="pl-1 text-[16px] leading-[1.75] text-ink-soft">
+      <li
+        key={index}
+        className="pl-1 text-[16.5px] leading-[1.72] text-ink-soft md:text-[17.5px] md:leading-[1.75]"
+      >
         {item}
       </li>
     ));

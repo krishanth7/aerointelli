@@ -44,6 +44,18 @@ const LABELS: Record<string, string> = {
   "tan-ammonia": "TAN and Ammonia",
   "tss-solids": "TSS and Solids",
   "ai-aquaculture": "AI in Aquaculture",
+  // Aquaculture Knowledge Center sections whose slug does not title-case into
+  // the section's real name. The single-word ones ("Hatchery", "Nursery",
+  // "Biosecurity", "Shrimp") already do, and are left to the fallback. Only
+  // hyphenated slugs are listed, because a bare word like "research" would also
+  // rewrite the unrelated top-level `/research` crumb.
+  "fish-biology": "Fish Biology",
+  "grow-out": "Grow-Out Farming",
+  "feed-nutrition": "Feed and Nutrition",
+  "water-quality": "Water Quality",
+  "fish-health": "Fish Health and Disease",
+  "breeding-genetics": "Breeding and Genetics",
+  "automation-ai": "Automation and AI",
   faqs: "FAQs",
   "cookie-policy": "Cookie Policy",
   "privacy-policy": "Privacy Policy",
