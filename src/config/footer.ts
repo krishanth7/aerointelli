@@ -19,27 +19,6 @@ export type FooterSection = {
  */
 export const footerNavigation: FooterSection[] = [
   {
-    title: "Technology",
-    links: [
-      { label: "Intelligence RAS", href: "/technology/intelligence-ras" },
-      { label: "Hydroponics", href: "/technology/hydroponics" },
-      { label: "Farm AI", href: "/technology/farm-ai" },
-      { label: "Automation", href: "/technology/automation" },
-    ],
-  },
-  {
-    title: "Solutions",
-    links: [
-      { label: "Precision Aquaculture", href: "/solutions/precision-aquaculture" },
-      {
-        label: "Controlled Environment Farming",
-        href: "/solutions/controlled-environment-farming",
-      },
-      { label: "Commercial Farm", href: "/solutions/commercial-farm" },
-      { label: "Smart Agriculture", href: "/solutions/smart-agriculture" },
-    ],
-  },
-  {
     title: "Knowledge",
     links: [
       { label: "RAS Knowledge", href: "/knowledge/ras" },
