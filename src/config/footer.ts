@@ -40,15 +40,6 @@ export const footerNavigation: FooterSection[] = [
     ],
   },
   {
-    title: "Research",
-    links: [
-      { label: "R&D", href: "/research/r-and-d" },
-      { label: "Publications", href: "/research/publications" },
-      { label: "Intelligence Engine", href: "/research/intelligence-engine" },
-      { label: "Future Technologies", href: "/research/future-technologies" },
-    ],
-  },
-  {
     title: "Knowledge",
     links: [
       { label: "RAS Knowledge", href: "/knowledge/ras" },

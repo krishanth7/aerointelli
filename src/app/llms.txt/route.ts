@@ -58,7 +58,6 @@ const pages: Entry[] = [
     title: "Sustainability",
     note: "Resource-efficiency themes the engineering work is organised around.",
   },
-  { path: "/research", title: "Research", note: "Active lines of work, stated as directions rather than results." },
   { path: "/products", title: "Products", note: "Equipment and systems catalogue." },
 ];
 

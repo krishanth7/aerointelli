@@ -665,10 +665,10 @@ export default function Page() {
             </ul>
 
             <Link
-              href="/research"
+              href="/technology"
               className="mt-10 inline-flex items-center gap-2 text-[14.5px] font-medium underline-offset-4 hover:underline"
             >
-              Research &amp; development
+              Technology &amp; systems
               <span aria-hidden="true">→</span>
             </Link>
           </div>

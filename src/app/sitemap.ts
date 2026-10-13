@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { knowledgeAreas } from "@/content/knowledge/areas";
 import { aquacultureSections } from "@/content/knowledge/aquaculture";
 import { hydroponicsSections } from "@/content/knowledge/hydroponics";
-import { featuredProjects } from "@/content/research/data";
 import { isUnindexed } from "@/config/launchStatus";
 import { siteUrl } from "@/config/site";
 
@@ -59,12 +58,6 @@ const routes = [
   "/solutions/smart-agriculture",
   "/solutions/water-technology",
   "/sustainability",
-  "/research",
-  "/research/future-technologies",
-  "/research/intelligence-engine",
-  "/research/publications",
-  "/research/r-and-d",
-  ...featuredProjects.map((p) => `/research/projects/${p.relatedSlug || p.id}`),
   "/knowledge",
   "/knowledge/aeroponics",
   "/knowledge/aquaculture",

@@ -765,8 +765,8 @@ export default function Page() {
               />
 
               <div className="mt-7">
-                <SecondaryLink href="/research" tone="dark">
-                  Explore research
+                <SecondaryLink href="/knowledge" tone="dark">
+                  Explore knowledge
                 </SecondaryLink>
               </div>
             </div>

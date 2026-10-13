@@ -102,43 +102,6 @@ export const navigationItems: NavItem[] = [
   },
   {
     type: "menu",
-    label: "Research",
-    href: "/research",
-    groups: [
-      {
-        title: "Programme",
-        items: [
-          {
-            label: "R&D",
-            href: "/research/r-and-d",
-            description: "What we are building and testing.",
-          },
-          {
-            label: "Publications",
-            href: "/research/publications",
-            description: "Written work released for outside scrutiny.",
-          },
-        ],
-      },
-      {
-        title: "Direction",
-        items: [
-          {
-            label: "Intelligence Engine",
-            href: "/research/intelligence-engine",
-            description: "The reasoning layer beneath the products.",
-          },
-          {
-            label: "Future Technologies",
-            href: "/research/future-technologies",
-            description: "Lines of enquiry not yet in a product.",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    type: "menu",
     label: "Knowledge",
     href: "/knowledge",
     groups: [
