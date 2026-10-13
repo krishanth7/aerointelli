@@ -56,6 +56,23 @@ const LABELS: Record<string, string> = {
   "fish-health": "Fish Health and Disease",
   "breeding-genetics": "Breeding and Genetics",
   "automation-ai": "Automation and AI",
+  // Hydroponics Knowledge Center sections, on the same rule: hyphenated slugs
+  // only, plus the two acronyms that would otherwise title-case to "Nft" and
+  // "Dwc". Neither acronym collides with a segment anywhere else on the site.
+  "crop-knowledge": "Crop Knowledge",
+  "plant-biology": "Plant Biology",
+  "root-zone": "Root-Zone Management",
+  "water-management": "Water Management",
+  "ph-ec": "pH and EC Management",
+  nft: "NFT",
+  dwc: "Deep Water Culture",
+  "drip-systems": "Drip and Substrate Systems",
+  "climate-control": "Climate and Environmental Control",
+  "indoor-farming": "Indoor Farming",
+  "plant-health": "Plant Health and Disease",
+  "pest-management": "Pest Management and Biosecurity",
+  "pollination-training": "Pollination and Crop Training",
+  "farm-design": "Commercial Farm Design",
   faqs: "FAQs",
   "cookie-policy": "Cookie Policy",
   "privacy-policy": "Privacy Policy",

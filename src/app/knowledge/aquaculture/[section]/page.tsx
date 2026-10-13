@@ -11,6 +11,7 @@ import {
   aquacultureSections,
   domainOf,
   findSection,
+  navGroups,
   neighbours,
   relatedSections,
 } from "@/content/knowledge/aquaculture";
@@ -83,13 +84,23 @@ export default async function SectionPage({ params }: { params: Promise<Params> 
         <div className="grid gap-10 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-12 xl:grid-cols-[240px_minmax(0,1fr)_220px] xl:gap-14">
           <aside className="hidden lg:block">
             <div className="sticky top-[calc(var(--header-height)+2rem)]">
-              <KnowledgeSidebar />
+              <KnowledgeSidebar
+                groups={navGroups}
+                base="/knowledge/aquaculture"
+                label="Aquaculture sections"
+                title="Explore aquaculture"
+              />
             </div>
           </aside>
 
           <div className="min-w-0">
             <div className="lg:hidden">
-              <KnowledgeMobileNavigation />
+              <KnowledgeMobileNavigation
+                groups={navGroups}
+                base="/knowledge/aquaculture"
+                title="Explore aquaculture"
+                countLabel="Thirty sections"
+              />
             </div>
 
             <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.18em] text-ink-soft lg:mt-0">

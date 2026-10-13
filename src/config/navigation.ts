@@ -44,11 +44,6 @@ export const navigationItems: NavItem[] = [
             href: "/technology/hydroponics",
             description: "Soil-free cultivation with managed nutrient delivery.",
           },
-          {
-            label: "Aeroponics",
-            href: "/technology/aeroponics",
-            description: "Root-zone misting for crops grown without a substrate.",
-          },
         ],
       },
       {
@@ -164,11 +159,6 @@ export const navigationItems: NavItem[] = [
             label: "Hydroponics",
             href: "/knowledge/hydroponics",
             description: "Nutrient solution, media and system types.",
-          },
-          {
-            label: "Aeroponics",
-            href: "/knowledge/aeroponics",
-            description: "Misting cycles, root-zone conditions and equipment.",
           },
         ],
       },

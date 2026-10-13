@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { KnowledgeSearch } from "@/components/knowledge/KnowledgeSearch";
 import { KnowledgeSectionCard } from "@/components/knowledge/KnowledgeSectionCard";
 import { SHELL } from "@/components/shared/shell";
-import { domains, sectionsIn } from "@/content/knowledge/aquaculture";
+import { domains, searchIndex, sectionsIn } from "@/content/knowledge/aquaculture";
 
 export const metadata: Metadata = {
   title: "Aquaculture Knowledge",
@@ -37,7 +37,12 @@ export default function AquacultureKnowledgePage() {
           </p>
 
           <div className="mt-9 max-w-[560px]">
-            <KnowledgeSearch />
+            <KnowledgeSearch
+              entries={searchIndex}
+              base="/knowledge/aquaculture"
+              label="Search the aquaculture knowledge base"
+              placeholder="Search species, water chemistry, systems"
+            />
           </div>
         </div>
       </section>

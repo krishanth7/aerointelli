@@ -1,11 +1,19 @@
-﻿import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/PagePlaceholder";
+import type { Metadata } from "next";
+import { ResearchPageClient } from "@/components/research/ResearchPageClient";
 
 export const metadata: Metadata = {
-  title: "R&D",
+  title: "Research & Development | Aero Intelli",
+  description:
+    "Explore Aero Intelli's research interests in aquaculture, controlled cultivation, water engineering, artificial intelligence, automation, and sustainable production technologies.",
   alternates: { canonical: "/research/r-and-d" },
+  openGraph: {
+    title: "Research & Development | Aero Intelli",
+    description:
+      "Explore Aero Intelli's research interests in aquaculture, controlled cultivation, water engineering, artificial intelligence, automation, and sustainable production technologies.",
+    type: "website",
+  },
 };
 
-export default function Page() {
-  return <PagePlaceholder title="R&D" kicker="Research" />;
+export default function ResearchAndDevelopmentPage() {
+  return <ResearchPageClient />;
 }

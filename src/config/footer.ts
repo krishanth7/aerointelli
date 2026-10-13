@@ -23,7 +23,6 @@ export const footerNavigation: FooterSection[] = [
     links: [
       { label: "Intelligence RAS", href: "/technology/intelligence-ras" },
       { label: "Hydroponics", href: "/technology/hydroponics" },
-      { label: "Aeroponics", href: "/technology/aeroponics" },
       { label: "Farm AI", href: "/technology/farm-ai" },
       { label: "Automation", href: "/technology/automation" },
     ],
@@ -55,7 +54,6 @@ export const footerNavigation: FooterSection[] = [
       { label: "RAS Knowledge", href: "/knowledge/ras" },
       { label: "Aquaculture", href: "/knowledge/aquaculture" },
       { label: "Hydroponics", href: "/knowledge/hydroponics" },
-      { label: "Aeroponics", href: "/knowledge/aeroponics" },
     ],
   },
   {

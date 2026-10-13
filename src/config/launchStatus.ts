@@ -20,11 +20,9 @@ export const unreleasedSections: UnreleasedSection[] = [
   { prefix: "/technology", name: "Technology" },
   { prefix: "/solutions", name: "Solutions" },
   { prefix: "/sustainability", name: "Sustainability" },
-  { prefix: "/research", name: "Research" },
-  // Not `/knowledge` wholesale: the RAS and Aquaculture Knowledge Centers under
-  // it are live, and a prefix entry here would intercept every link into them.
-  // The two disciplines that are still placeholders are named individually.
-  { prefix: "/knowledge/hydroponics", name: "Hydroponics Knowledge" },
+  // Not `/knowledge` wholesale: the RAS, Aquaculture and Hydroponics Knowledge
+  // Centers under it are live, and a prefix entry here would intercept every
+  // link into them. The one discipline still a placeholder is named on its own.
   { prefix: "/knowledge/aeroponics", name: "Aeroponics Knowledge" },
 ];
 

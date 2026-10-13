@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { knowledgeAreas } from "@/content/knowledge/areas";
 import { aquacultureSections } from "@/content/knowledge/aquaculture";
+import { hydroponicsSections } from "@/content/knowledge/hydroponics";
+import { featuredProjects } from "@/content/research/data";
 import { isUnindexed } from "@/config/launchStatus";
 import { siteUrl } from "@/config/site";
 
@@ -62,6 +64,7 @@ const routes = [
   "/research/intelligence-engine",
   "/research/publications",
   "/research/r-and-d",
+  ...featuredProjects.map((p) => `/research/projects/${p.relatedSlug || p.id}`),
   "/knowledge",
   "/knowledge/aeroponics",
   "/knowledge/aquaculture",
@@ -69,6 +72,7 @@ const routes = [
   // the content, and a second hand-written copy of it here would rot.
   ...aquacultureSections.map((section) => `/knowledge/aquaculture/${section.slug}`),
   "/knowledge/hydroponics",
+  ...hydroponicsSections.map((section) => `/knowledge/hydroponics/${section.slug}`),
   "/knowledge/ras",
   // The Knowledge Center is the one tree generated rather than listed. It is
   // meant to keep growing, and a hand-maintained copy of it here would be

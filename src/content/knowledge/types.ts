@@ -103,7 +103,13 @@ export type Topic =
   | "systems"
   | "environment"
   | "sustainability"
-  | "research";
+  | "research"
+  // Added for the Hydroponics Knowledge Center, on the same reasoning.
+  | "crops"
+  | "nutrition"
+  | "lighting"
+  | "climate"
+  | "substrate";
 
 export const topicLabel: Record<Topic, string> = {
   water: "Water",
@@ -120,6 +126,11 @@ export const topicLabel: Record<Topic, string> = {
   environment: "Environment",
   sustainability: "Sustainability",
   research: "Research",
+  crops: "Crops",
+  nutrition: "Nutrition",
+  lighting: "Lighting",
+  climate: "Climate",
+  substrate: "Substrate",
 };
 
 export type KnowledgeArea = {

@@ -1,4 +1,11 @@
 import type { KnowledgeArea, Topic } from "../types";
+import {
+  buildNavGroups,
+  buildSearchIndex,
+  neighboursOf,
+  type NavGroup,
+  type SearchEntry,
+} from "../navigation";
 import { domains, domainOf, sectionOrder, type Domain, type DomainId } from "./domains";
 import { fundamentals } from "./01-fundamentals";
 import { systems } from "./02-systems";
@@ -96,17 +103,8 @@ export function relatedSections(section: KnowledgeArea): KnowledgeArea[] {
  * Ordering comes from `sectionOrder`, which is derived from the domain list, so
  * the pagination and the sidebar can never disagree about what follows what.
  */
-export function neighbours(slug: string): {
-  previous?: KnowledgeArea;
-  next?: KnowledgeArea;
-} {
-  const index = sectionOrder.indexOf(slug);
-  if (index === -1) return {};
-
-  return {
-    previous: index > 0 ? findSection(sectionOrder[index - 1]) : undefined,
-    next: index < sectionOrder.length - 1 ? findSection(sectionOrder[index + 1]) : undefined,
-  };
+export function neighbours(slug: string) {
+  return neighboursOf(sectionOrder, aquacultureSections, slug);
 }
 
 export const aquacultureTopics: Topic[] = Array.from(
@@ -114,44 +112,18 @@ export const aquacultureTopics: Topic[] = Array.from(
 );
 
 /**
- * The flattened index the client-side search reads.
+ * Navigation groups and the search index, built once at module scope.
  *
- * Built once at module scope and shipped as data rather than being derived in
- * the browser, because the alternative is sending thirty full articles to the
- * client so it can throw away everything but the titles. Species, tags and
- * topics are folded into one lowercase haystack so a query for "murrel",
- * "ammonia" or "biofilter" matches without three separate passes.
+ * Shipped to the client as plain data rather than derived in the browser: the
+ * alternative is sending thirty complete articles so the page can render thirty
+ * titles.
  */
-export type SearchEntry = {
-  slug: string;
-  number: string;
-  title: string;
-  category: string;
-  description: string;
-  haystack: string;
-};
+export const navGroups: NavGroup[] = buildNavGroups(domains, aquacultureSections);
 
-export const searchIndex: SearchEntry[] = aquacultureSections.map((section) => {
-  const domain = domainOf(section.slug);
-  const headings = section.sections.map((part) => part.heading).join(" ");
+export const searchIndex: SearchEntry[] = buildSearchIndex(
+  domains,
+  aquacultureSections,
+  "Aquaculture",
+);
 
-  return {
-    slug: section.slug,
-    number: section.number,
-    title: section.title,
-    category: domain ? domain.title : "Aquaculture",
-    description: section.navSummary,
-    haystack: [
-      section.title,
-      section.navSummary,
-      section.summary,
-      section.tags.join(" "),
-      section.topics.join(" "),
-      (section.species ?? []).join(" "),
-      headings,
-      domain?.title ?? "",
-    ]
-      .join(" ")
-      .toLowerCase(),
-  };
-});
+export type { NavGroup, SearchEntry };

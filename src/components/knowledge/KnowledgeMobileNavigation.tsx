@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { domains } from "@/content/knowledge/aquaculture/domains";
-import { findSection } from "@/content/knowledge/aquaculture";
+import type { NavGroup } from "@/content/knowledge/navigation";
 
 /**
  * Section navigation for phones.
@@ -15,17 +14,33 @@ import { findSection } from "@/content/knowledge/aquaculture";
  * open it is the full list, grouped by domain so the reader can see the shape
  * of the subject rather than a flat run of thirty titles.
  *
- * Rendered as a sheet anchored to the bottom of the viewport because that is
- * where a thumb is. The domain groups collapse independently, and the group
- * containing the current page opens on mount.
+ * Anchored to the bottom of the viewport because that is where a thumb is. The
+ * groups collapse independently, and the group containing the current page
+ * opens on mount.
  */
-export function KnowledgeMobileNavigation() {
+export function KnowledgeMobileNavigation({
+  groups,
+  base,
+  title,
+  countLabel,
+}: {
+  groups: NavGroup[];
+  base: string;
+  /** The control's label, e.g. "Explore hydroponics". */
+  title: string;
+  /** Secondary line on the closed control, e.g. "Thirty sections". */
+  countLabel: string;
+}) {
   const pathname = usePathname();
   const currentSlug = pathname.split("/").filter(Boolean).at(-1) ?? "";
-  const currentDomain = domains.find((domain) => domain.sections.includes(currentSlug));
+  const currentGroup = groups.find((group) =>
+    group.items.some((item) => item.slug === currentSlug),
+  );
 
   const [open, setOpen] = useState(false);
-  const [expanded, setExpanded] = useState<string | null>(currentDomain?.id ?? domains[0].id);
+  const [expanded, setExpanded] = useState<string | null>(
+    currentGroup?.id ?? groups[0]?.id ?? null,
+  );
 
   // Close on navigation. Without this the sheet survives the route change and
   // the reader lands on the new article behind a panel they already dismissed
@@ -53,18 +68,20 @@ export function KnowledgeMobileNavigation() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  const sheetId = `${base.replace(/\W+/g, "-")}-section-sheet`;
+
   return (
     <div className="lg:hidden">
       <button
         type="button"
         onClick={() => setOpen(true)}
         aria-expanded={open}
-        aria-controls="aquaculture-section-sheet"
+        aria-controls={sheetId}
         className="flex min-h-[44px] w-full items-center justify-between rounded-[14px] border border-hairline-strong bg-surface px-4 text-[14.5px] font-medium text-ink outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-accent-deep"
       >
-        Explore aquaculture
+        {title}
         <span aria-hidden="true" className="text-[12px] text-ink-soft">
-          Thirty sections
+          {countLabel}
         </span>
       </button>
 
@@ -78,14 +95,14 @@ export function KnowledgeMobileNavigation() {
           />
 
           <div
-            id="aquaculture-section-sheet"
+            id={sheetId}
             role="dialog"
             aria-modal="true"
-            aria-label="Aquaculture sections"
+            aria-label={title}
             className="relative flex max-h-[85vh] flex-col rounded-t-[22px] border-t border-hairline-strong bg-surface"
           >
             <div className="flex items-center justify-between border-b border-hairline px-5 py-4">
-              <p className="text-[15px] font-medium text-ink">Explore aquaculture</p>
+              <p className="text-[15px] font-medium text-ink">{title}</p>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
@@ -97,19 +114,19 @@ export function KnowledgeMobileNavigation() {
 
             <div className="min-h-0 flex-1 overflow-y-auto px-5 pb-8 pt-2">
               <ul className="divide-y divide-hairline">
-                {domains.map((domain) => {
-                  const isExpanded = expanded === domain.id;
+                {groups.map((group) => {
+                  const isExpanded = expanded === group.id;
 
                   return (
-                    <li key={domain.id}>
+                    <li key={group.id}>
                       <button
                         type="button"
-                        onClick={() => setExpanded(isExpanded ? null : domain.id)}
+                        onClick={() => setExpanded(isExpanded ? null : group.id)}
                         aria-expanded={isExpanded}
                         className="flex min-h-[52px] w-full items-center justify-between gap-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-accent-deep"
                       >
                         <span className="text-[14.5px] font-medium text-ink">
-                          <span className="text-ink-soft">{domain.number}</span> {domain.title}
+                          <span className="text-ink-soft">{group.number}</span> {group.title}
                         </span>
                         <span aria-hidden="true" className="text-[13px] text-ink-soft">
                           {isExpanded ? "−" : "+"}
@@ -118,14 +135,12 @@ export function KnowledgeMobileNavigation() {
 
                       {isExpanded ? (
                         <ul className="pb-3">
-                          {domain.sections.map((slug) => {
-                            const section = findSection(slug);
-                            if (!section) return null;
-                            const href = `/knowledge/aquaculture/${slug}`;
+                          {group.items.map((item) => {
+                            const href = `${base}/${item.slug}`;
                             const active = pathname === href;
 
                             return (
-                              <li key={slug}>
+                              <li key={item.slug}>
                                 <Link
                                   href={href}
                                   {...(active ? { "aria-current": "page" as const } : {})}
@@ -133,7 +148,7 @@ export function KnowledgeMobileNavigation() {
                                     active ? "font-medium text-ink" : "text-ink-soft"
                                   }`}
                                 >
-                                  {section.title}
+                                  {item.title}
                                 </Link>
                               </li>
                             );
