@@ -108,6 +108,7 @@ export function Breadcrumbs() {
   if (
     segments.length === 0 ||
     pathname === "/about" ||
+    pathname.startsWith("/contact") ||
     pathname.startsWith("/knowledge")
   ) {
     return null;
