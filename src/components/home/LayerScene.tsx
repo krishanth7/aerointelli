@@ -69,8 +69,8 @@ export function LayerScene() {
       media.add(
         "(prefers-reduced-motion: no-preference) and (pointer: fine) and (min-width: 1024px)",
         () => {
-          const rotateX = gsap.quickTo(plane, "rotateX", { duration: 0.6, ease: "power3.out" });
-          const rotateY = gsap.quickTo(plane, "rotateY", { duration: 0.6, ease: "power3.out" });
+          const rotateX = gsap.quickTo(plane, "rotationX", { duration: 0.6, ease: "power3.out" });
+          const rotateY = gsap.quickTo(plane, "rotationY", { duration: 0.6, ease: "power3.out" });
 
           function handleMove(event: PointerEvent) {
             const rect = scene!.getBoundingClientRect();
@@ -93,7 +93,7 @@ export function LayerScene() {
           return () => {
             scene!.removeEventListener("pointermove", handleMove);
             scene!.removeEventListener("pointerleave", handleLeave);
-            gsap.set(plane!, { rotateX: 0, rotateY: 0 });
+            gsap.set(plane!, { rotationX: 0, rotationY: 0 });
           };
         },
       );
@@ -134,17 +134,17 @@ export function LayerScene() {
               style={{
                 transform: `translateZ(${(heroLayers.length - 1 - index) * 28}px)`,
               }}
-              className="rounded-[16px] border border-hairline bg-surface p-4 md:p-5"
+              className="rounded-[18px] border border-white/15 bg-black/45 p-4 md:p-5 backdrop-blur-md shadow-panel transition-all hover:border-white/30"
             >
               <div className="flex items-baseline justify-between gap-4">
-                <span className="text-[14.5px] font-medium tracking-[-0.01em] md:text-[15px]">
+                <span className="text-[14.5px] font-medium tracking-[-0.01em] text-white md:text-[15px]">
                   {layer.label}
                 </span>
-                <span className="text-[10px] font-semibold tabular-nums tracking-[0.12em] text-ink-soft/50">
+                <span className="font-mono text-[10px] font-semibold tabular-nums tracking-[0.12em] text-accent">
                   {String(heroLayers.length - index).padStart(2, "0")}
                 </span>
               </div>
-              <p className="mt-1.5 text-[13px] leading-[1.55] text-ink-soft">
+              <p className="mt-1.5 text-[13px] leading-[1.55] text-white/70">
                 {layer.description}
               </p>
             </div>

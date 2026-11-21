@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { HomeScaffold } from "@/components/home/HomeScaffold";
+import { HomeHeroVideo } from "@/components/home/HomeHeroVideo";
 import { LayerScene } from "@/components/home/LayerScene";
 import { TiltCard } from "@/components/home/TiltCard";
 import { MagneticButton, RevealText, SectionLabel } from "@/components/shared/primitives";
@@ -83,12 +84,25 @@ function SectionHeader({
   );
 }
 
-function PrimaryLink({ href, children }: { href: string; children: string }) {
+function PrimaryLink({
+  href,
+  children,
+  tone = "light",
+}: {
+  href: string;
+  children: string;
+  tone?: "light" | "dark";
+}) {
+  const dark = tone === "dark";
   return (
     <MagneticButton>
       <Link
         href={href}
-        className="inline-flex min-h-[46px] items-center rounded-full bg-ink px-6 text-[14px] font-medium text-surface-muted transition-opacity duration-200 hover:opacity-90"
+        className={`inline-flex min-h-[46px] items-center rounded-full px-6 text-[14px] font-semibold transition-all duration-200 ${
+          dark
+            ? "bg-accent text-ink hover:brightness-105 shadow-md shadow-accent/20"
+            : "bg-ink text-surface-muted hover:opacity-90"
+        }`}
       >
         {children}
       </Link>
@@ -113,7 +127,7 @@ function SecondaryLink({
         href={href}
         className={`inline-flex min-h-[46px] items-center rounded-full border px-6 text-[14px] font-medium transition-colors duration-200 ${
           dark
-            ? "border-white/20 text-footer-text hover:border-white/40"
+            ? "border-white/20 bg-black/40 text-white backdrop-blur-md hover:border-white/40 hover:bg-black/60"
             : "border-hairline-strong hover:border-ink/40"
         }`}
       >
@@ -126,24 +140,19 @@ function SecondaryLink({
 export default function Page() {
   return (
     <HomeScaffold>
-      {/* 01 — Hero.
-
-          Columns start at `xl` for the same reason the about page's do: at 1024
-          a 440px scene leaves the headline too little width and the authored
-          three lines wrap into five, which defeats a reveal that animates per
-          authored line. */}
-      <section className="bg-surface-muted pt-[104px] md:pt-[128px] lg:pt-[146px]">
+      {/* 01 — Hero with dynamic real-time video feed backdrop */}
+      <HomeHeroVideo>
         <div className={SHELL}>
-          <div className="grid gap-12 pb-16 md:pb-20 lg:pb-24 xl:grid-cols-[minmax(0,1fr)_minmax(0,420px)] xl:items-center xl:gap-16 2xl:grid-cols-[minmax(0,1fr)_minmax(0,460px)]">
+          <div className="grid gap-12 py-8 md:py-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,420px)] xl:items-center xl:gap-16 2xl:grid-cols-[minmax(0,1fr)_minmax(0,460px)]">
             <div>
               <div className="flex items-center gap-4">
-                <p className="shrink-0 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-ink-soft">
-                  Aero Intelli
-                </p>
+                <span className="shrink-0 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
+                  Aero Intelli · Closed-Loop Systems
+                </span>
                 <span
                   aria-hidden="true"
                   data-rule
-                  className="h-px flex-1 bg-hairline-strong lg:max-w-[140px]"
+                  className="h-px flex-1 bg-white/20 lg:max-w-[140px]"
                 />
               </div>
 
@@ -151,25 +160,24 @@ export default function Page() {
                 as="h1"
                 split="letters"
                 lines={heroHeadline}
-                /* Sized so the three authored lines stay three lines at every
-                   width. A wrapped line defeats the per-line mask. */
-                className="mt-6 text-[29px] font-medium leading-[1.1] tracking-[-0.035em] min-[360px]:text-[31px] min-[414px]:text-[35px] md:mt-7 md:text-[50px] lg:text-[52px]"
+                className="mt-6 text-[29px] font-medium leading-[1.1] tracking-[-0.035em] text-white min-[360px]:text-[31px] min-[414px]:text-[35px] md:mt-7 md:text-[50px] lg:text-[52px]"
               />
 
-              <p className="mt-6 max-w-[560px] text-[15px] leading-[1.8] text-ink-soft md:mt-7 md:text-[16.5px]">
+              <p className="mt-6 max-w-[560px] text-[15px] leading-[1.8] text-white/80 md:mt-7 md:text-[16.5px]">
                 {heroLede}
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3 md:mt-9">
-                <PrimaryLink href="/contact">Talk to Aero Intelli</PrimaryLink>
-                <SecondaryLink href="/about">How we work</SecondaryLink>
+                <PrimaryLink href="/contact" tone="dark">Talk to Aero Intelli</PrimaryLink>
+                <SecondaryLink href="/about" tone="dark">How we work</SecondaryLink>
+                <SecondaryLink href="/solutions" tone="dark">Explore Systems</SecondaryLink>
               </div>
             </div>
 
             <LayerScene />
           </div>
         </div>
-      </section>
+      </HomeHeroVideo>
 
       {/* 02 — What we build. The tilt is a hover affordance and lives in the
           card component; the entrance is scroll-driven and lives in the scroll
