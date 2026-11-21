@@ -6,10 +6,13 @@ import { navigationItems } from "@/config/navigation";
 import { isActive } from "./isActive";
 import { NavDropdown } from "./NavDropdown";
 
-const itemClass =
-  "relative flex h-9 items-center gap-1 whitespace-nowrap rounded-[11px] px-2 text-[13.5px] font-medium text-ink-soft outline-none transition-colors duration-200 hover:bg-surface-muted hover:text-ink focus-visible:ring-2 focus-visible:ring-ink/25 2xl:px-3 2xl:text-[14px]";
-
-export function DesktopNav({ pathname }: { pathname: string }) {
+export function DesktopNav({
+  pathname,
+  dark = false,
+}: {
+  pathname: string;
+  dark?: boolean;
+}) {
   const [openLabel, setOpenLabel] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
@@ -40,6 +43,10 @@ export function DesktopNav({ pathname }: { pathname: string }) {
     return () => document.removeEventListener("keydown", onKey);
   }, [openLabel]);
 
+  const itemClass = dark
+    ? "relative flex h-9 items-center gap-1 whitespace-nowrap rounded-[11px] px-2 text-[13.5px] font-medium text-white/80 outline-none transition-colors duration-200 hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-white/25 2xl:px-3 2xl:text-[14px]"
+    : "relative flex h-9 items-center gap-1 whitespace-nowrap rounded-[11px] px-2 text-[13.5px] font-medium text-ink-soft outline-none transition-colors duration-200 hover:bg-surface-muted hover:text-ink focus-visible:ring-2 focus-visible:ring-ink/25 2xl:px-3 2xl:text-[14px]";
+
   return (
     <nav
       ref={navRef}
@@ -52,9 +59,10 @@ export function DesktopNav({ pathname }: { pathname: string }) {
       <ul className="flex items-center gap-0.5 2xl:gap-1.5">
         {navigationItems.map((item) => {
           const active = isActive(item.href, pathname);
-          // Active state is a thin accent rule, not a filled pill.
           const activeClass = active
-            ? "text-ink after:absolute after:inset-x-2 after:bottom-[3px] after:h-[2px] after:rounded-full after:bg-accent-deep"
+            ? dark
+              ? "text-white after:absolute after:inset-x-2 after:bottom-[3px] after:h-[2px] after:rounded-full after:bg-accent"
+              : "text-ink after:absolute after:inset-x-2 after:bottom-[3px] after:h-[2px] after:rounded-full after:bg-accent-deep"
             : "";
 
           if (item.type === "link") {
@@ -89,13 +97,17 @@ export function DesktopNav({ pathname }: { pathname: string }) {
                 aria-controls={`nav-menu-${item.label.toLowerCase()}`}
                 aria-current={active ? "page" : undefined}
                 onClick={() => setOpenLabel(open ? null : item.label)}
-                className={`${itemClass} ${activeClass} ${open ? "bg-surface-muted text-ink" : ""}`}
+                className={`${itemClass} ${activeClass} ${
+                  open ? (dark ? "bg-white/10 text-white" : "bg-surface-muted text-ink") : ""
+                }`}
               >
-                {item.label}
+                <span>{item.label}</span>
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 12 12"
-                  className={`h-3 w-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+                  className={`h-3 w-3 transition-transform duration-200 ${
+                    open ? "rotate-180" : ""
+                  } ${dark ? "text-white/60" : "text-ink-soft/75"}`}
                 >
                   <path
                     d="M3 4.75 6 7.75l3-3"

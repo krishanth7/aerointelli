@@ -1,7 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function Logo({ compact = false }: { compact?: boolean }) {
+export function Logo({
+  compact = false,
+  dark = false,
+}: {
+  compact?: boolean;
+  dark?: boolean;
+}) {
   return (
     <Link
       href="/"
@@ -17,9 +23,9 @@ export function Logo({ compact = false }: { compact?: boolean }) {
         className={`rounded-full ${compact ? "h-7 w-7" : "h-8 w-8 xl:h-9 xl:w-9"}`}
       />
       <span
-        className={`font-semibold tracking-[-0.01em] text-ink ${
-          compact ? "text-[15px]" : "text-[16px] xl:text-[17px]"
-        }`}
+        className={`font-semibold tracking-[-0.01em] transition-colors duration-200 ${
+          dark ? "text-white" : "text-ink"
+        } ${compact ? "text-[15px]" : "text-[16px] xl:text-[17px]"}`}
       >
         Aero Intelli
       </span>
