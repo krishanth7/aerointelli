@@ -230,7 +230,7 @@ export const coreValues: Value[] = [
 ];
 
 export const founder = {
-  name: "Bunga Krishanth",
+  name: "Krishanth",
   // Matches the roster entry below verbatim. Two different titles for the same
   // person on the same page is the kind of small inconsistency that makes a
   // reader doubt everything else on it.
@@ -267,7 +267,7 @@ export type TeamMember = { name: string; role: string };
  * who was scanning for "CEO".
  */
 export const teamMembers: TeamMember[] = [
-  { name: "Bunga Krishanth", role: "Founder & Chief Executive Officer (CEO)" },
+  { name: "Krishanth", role: "Founder & Chief Executive Officer (CEO)" },
   { name: "Arunasree", role: "Co-Founder" },
   { name: "Ramesh", role: "Chief Technology Officer (CTO)" },
   { name: "Krishna Veni", role: "Managing Director (MD)" },

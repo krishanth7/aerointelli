@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { AboutScaffold } from "@/components/about/AboutScaffold";
 import {
@@ -10,6 +11,8 @@ import {
   StackDiagram,
 } from "@/components/about/diagrams";
 import { HeroDiagram } from "@/components/about/HeroDiagram";
+import { HeroVideoBackground } from "@/components/about/HeroVideoBackground";
+import { AmbientVideo } from "@/components/about/AmbientVideo";
 import { SystemStage } from "@/components/about/SystemStage";
 import { ValuesList } from "@/components/about/ValuesList";
 import { ComingSoonButton } from "@/components/shared/ComingSoonButton";
@@ -21,7 +24,6 @@ import {
   evidenceBasis,
   focusDomains,
   founder,
-  heroMeta,
   intersectionFields,
   keyFacts,
   missionPillars,
@@ -32,36 +34,19 @@ import {
   sustainabilityThemes,
   systemPressures,
   teamDisciplines,
-  teamMembers,
   visionStatement,
 } from "@/content/about";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Aero Intelli | Corporate Overview & Systems Engineering",
   description:
-    "Aero Intelli is a technology company developing intelligent systems for controlled food production, water management, aquaculture, soilless cultivation and resource-efficient infrastructure.",
+    "Aero Intelli is an enterprise deep-tech corporation engineering intelligent closed-loop systems for controlled food production, advanced aquaculture, industrial water reclamation, and autonomous resource infrastructure.",
   alternates: { canonical: "/about" },
 };
 
 /**
- * The about page.
- *
- * Structure follows the reader's questions in order: who we are, why we exist,
- * what we build, how it connects, how we think, where we are going, and how we
- * substantiate what we say. Detail belongs on the dedicated pages — this page
- * hands the reader to them rather than restating them.
- *
- * The same integrity rule as the sustainability page applies: no counts, no
- * percentages, no dates, no achievements. Section 18 states the reason in the
- * page's own words, which is the only honest way to hold a marketing page to it.
- *
- * Tone alternates light and dark so a long page never reads as one document.
- * Everything scroll-driven is a `data-*` attribute picked up by the single GSAP
- * context in `AboutScaffold`; only the hero diagram carries its own timeline,
- * because it plays on load rather than on scroll.
+ * Section Header: Refined corporate typography with clear indexing and optional dark mode.
  */
-
-/** Section heading. Title reveals a line at a time; the intro follows as a block. */
 function SectionHeader({
   index,
   label,
@@ -78,20 +63,22 @@ function SectionHeader({
   const dark = tone === "dark";
 
   return (
-    <header className="max-w-[820px]">
-      <SectionLabel index={index} label={label} tone={tone} />
+    <header className="max-w-[840px]">
+      <div className="flex items-center gap-3">
+        <SectionLabel index={index} label={label} tone={tone} />
+      </div>
 
       <RevealText
         lines={title}
         split="letters"
-        className={`mt-5 text-[27px] font-medium leading-[1.12] tracking-[-0.03em] md:text-[42px] lg:text-[48px] ${
-          dark ? "text-footer-text" : ""
+        className={`mt-5 text-[28px] font-medium leading-[1.12] tracking-[-0.03em] sm:text-[34px] md:text-[44px] lg:text-[48px] ${
+          dark ? "text-footer-text" : "text-ink"
         }`}
       />
 
       {intro ? (
         <p
-          className={`mt-5 max-w-[720px] text-[15px] leading-[1.8] md:text-[16.5px] md:leading-[1.8] ${
+          className={`mt-5 max-w-[720px] text-[15.5px] leading-[1.8] md:text-[17px] md:leading-[1.8] ${
             dark ? "text-legal-dark-muted" : "text-ink-soft"
           }`}
         >
@@ -102,20 +89,34 @@ function SectionHeader({
   );
 }
 
-/** Pill list. Used wherever a section is a set of terms rather than prose. */
-function TermList({ items, tone = "light" }: { items: string[]; tone?: "light" | "dark" }) {
+/**
+ * Pill list for technical terms and capability registers.
+ */
+function TermList({
+  items,
+  tone = "light",
+}: {
+  items: string[];
+  tone?: "light" | "dark";
+}) {
   const dark = tone === "dark";
 
   return (
-    <ul data-reveal-group className="flex flex-wrap gap-2">
+    <ul data-reveal-group className="flex flex-wrap gap-2.5">
       {items.map((item) => (
         <li
           key={item}
           data-reveal-item
-          className={`rounded-full border px-3.5 py-1.5 text-[13px] ${
-            dark ? "border-white/15 text-legal-dark-muted" : "border-hairline text-ink-soft"
+          className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-[12.5px] font-medium transition-colors ${
+            dark
+              ? "border-white/15 bg-white/[0.04] text-legal-dark-muted hover:border-white/30 hover:text-white"
+              : "border-hairline bg-surface text-ink-soft hover:border-hairline-strong hover:text-ink"
           }`}
         >
+          <span
+            aria-hidden="true"
+            className={`h-1.5 w-1.5 rounded-full ${dark ? "bg-accent" : "bg-accent-deep"}`}
+          />
           {item}
         </li>
       ))}
@@ -123,28 +124,28 @@ function TermList({ items, tone = "light" }: { items: string[]; tone?: "light" |
   );
 }
 
-/** Primary action. The magnetic lean is capped and disabled under reduced motion. */
-/**
- * Copy for a section that is not open yet.
- *
- * Written once here rather than per call site, so all four notices on this page
- * say the same thing in the same voice. No date is given, because none has been
- * committed to — a promised week that slips is worse than no week at all.
- */
 function comingSoonCopy(name: string) {
   return {
     title: `${name} is launching soon`,
-    body: `The ${name.toLowerCase()} section is being prepared and is not published yet. If there is something specific you want to know about it, ask us directly and we will answer.`,
+    body: `The ${name.toLowerCase()} section is currently being prepared for enterprise release. For detailed technical inquiries or facility dossiers, contact our systems engineering team directly.`,
   };
 }
 
-function PrimaryLink({ href, children }: { href: string; children: string }) {
-  const className =
-    "inline-flex min-h-[46px] items-center rounded-full bg-ink px-6 text-[14px] font-medium text-surface-muted transition-opacity duration-200 hover:opacity-90";
+function PrimaryLink({
+  href,
+  children,
+  tone = "light",
+}: {
+  href: string;
+  children: string;
+  tone?: "light" | "dark";
+}) {
+  const dark = tone === "dark";
 
-  // Links into an unpublished section are intercepted rather than followed.
-  // The check is on the href, so adding or removing a section in
-  // `launchStatus.ts` changes this page's behaviour without touching it.
+  const className = dark
+    ? "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-accent text-ink px-7 text-[14px] font-semibold tracking-[-0.01em] shadow-sm transition-all duration-200 hover:bg-accent-deep hover:shadow-md"
+    : "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-ink text-surface-muted px-7 text-[14px] font-medium tracking-[-0.01em] shadow-sm transition-all duration-200 hover:bg-ink/90 hover:shadow-md";
+
   const unreleased = findUnreleasedSection(href);
 
   return (
@@ -158,7 +159,20 @@ function PrimaryLink({ href, children }: { href: string; children: string }) {
         />
       ) : (
         <Link href={href} className={className}>
-          {children}
+          <span>{children}</span>
+          <svg
+            className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M3.333 8h9.334M8.667 4l4 4-4 4"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </Link>
       )}
     </MagneticButton>
@@ -176,10 +190,10 @@ function SecondaryLink({
 }) {
   const dark = tone === "dark";
 
-  const className = `inline-flex min-h-[46px] items-center rounded-full border px-6 text-[14px] font-medium transition-colors duration-200 ${
+  const className = `inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-7 text-[14px] font-medium tracking-[-0.01em] transition-all duration-200 ${
     dark
-      ? "border-white/20 text-footer-text hover:border-white/40"
-      : "border-hairline-strong hover:border-ink/40"
+      ? "border-white/20 bg-white/[0.04] text-white hover:border-white/40 hover:bg-white/[0.08]"
+      : "border-hairline-strong bg-surface text-ink hover:border-ink/40 hover:bg-surface-muted"
   }`;
 
   const unreleased = findUnreleasedSection(href);
@@ -195,7 +209,7 @@ function SecondaryLink({
         />
       ) : (
         <Link href={href} className={className}>
-          {children}
+          <span>{children}</span>
         </Link>
       )}
     </MagneticButton>
@@ -205,123 +219,174 @@ function SecondaryLink({
 export default function Page() {
   return (
     <AboutScaffold>
-      {/* Hero.
+      {/* ── 00 · Corporate Hero with Realistic Background Video ────────── */}
+      <section
+        data-hero-scrub
+        className="relative overflow-hidden bg-black text-white pt-[116px] pb-16 md:pt-[140px] md:pb-24 lg:pt-[160px] lg:pb-28"
+      >
+        {/* Background Video — Bright, vivid, clean, zero text overlaid on top of video */}
+        <HeroVideoBackground />
 
-          Three column behaviours rather than two. Below `md` the diagram sits
-          under the copy; from `md` it is a framed figure at reduced height so a
-          tablet does not hand it two thirds of the screen; from `lg` it moves
-          beside the headline. The figure is bordered and captioned at every
-          width — an unframed line drawing floating in whitespace reads as an
-          unfinished sketch rather than as a technical illustration.
-
-          The strip along the bottom is registration fact and domain, both
-          already stated elsewhere on the site. It closes the section with an
-          edge instead of letting the background simply stop. */}
-      <section data-hero-scrub className="bg-surface-muted pt-[104px] md:pt-[128px] lg:pt-[146px]">
-        <div className={SHELL}>
-          {/* Columns start at `xl`, not `lg`. At 1024 a 400px figure leaves the
-              headline about 390px, which wraps a 52px line into six. The stacked
-              layout holds until there is room for both.
-
-              There is no right-hand gutter any more. It existed to keep the
-              artwork clear of the fixed chapter rail, and the rail is gone. */}
-          <div className="grid gap-11 pb-14 md:gap-12 md:pb-16 lg:pb-20 xl:grid-cols-[minmax(0,1fr)_minmax(0,400px)] xl:items-center xl:gap-14 2xl:grid-cols-[minmax(0,1fr)_minmax(0,470px)] 2xl:gap-16">
-            <div data-hero-headline>
-              <div className="flex items-center gap-4">
-                <p className="shrink-0 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-ink-soft">
-                  About Aero Intelli
-                </p>
-                <span
-                  aria-hidden="true"
-                  data-rule
-                  className="h-px flex-1 bg-hairline-strong lg:max-w-[140px]"
-                />
+        <div className={`${SHELL} relative z-10`}>
+          <div className="grid gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,460px)] xl:items-center xl:gap-14 2xl:grid-cols-[minmax(0,1fr)_minmax(0,500px)] 2xl:gap-16">
+            <div data-hero-headline className="relative z-10">
+              {/* Executive Announcement Badge */}
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 shadow-sm backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                </span>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
+                  Closed-Loop Agritech &amp; Resource Systems
+                </span>
               </div>
 
               <RevealText
                 as="h1"
                 split="letters"
-                lines={["Engineering the future", "of food, water and", "sustainable production."]}
-                /* Sized so the three authored lines stay three lines at every
-                   width. A line that wraps defeats the mask reveal, which
-                   animates per authored line and not per rendered one. */
-                className="mt-6 text-[29px] font-medium leading-[1.1] tracking-[-0.035em] min-[360px]:text-[31px] min-[414px]:text-[35px] md:mt-7 md:text-[50px] lg:text-[52px]"
+                lines={[
+                  "Engineering the future",
+                  "of food, water and",
+                  "intelligent infrastructure.",
+                ]}
+                className="mt-6 text-[32px] font-medium leading-[1.08] tracking-[-0.035em] text-white min-[360px]:text-[36px] min-[414px]:text-[40px] md:mt-8 md:text-[54px] lg:text-[58px]"
               />
 
-              <p className="mt-6 max-w-[560px] text-[15.5px] leading-[1.75] text-ink-soft md:mt-7 md:text-[17px] md:leading-[1.8]">
-                Aero Intelli is a technology-driven company developing intelligent systems for
-                controlled food production, water management, aquaculture, soilless cultivation and
-                resource-efficient infrastructure.
+              <p className="mt-6 max-w-[620px] text-[16px] leading-[1.8] text-white/85 md:mt-7 md:text-[17.5px] md:leading-[1.85]">
+                Aero Intelli is a deep-tech systems engineering corporation developing
+                closed-loop infrastructure for controlled food cultivation, recirculating
+                aquaculture, industrial water reclamation, and telemetry-guided biological
+                intelligence.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3 md:mt-9">
-                <PrimaryLink href="/technology">Explore our technologies</PrimaryLink>
-                <SecondaryLink href="#philosophy">Our approach</SecondaryLink>
+              {/* Action buttons */}
+              <div className="mt-8 flex flex-wrap items-center gap-3.5 md:mt-10">
+                <PrimaryLink href="/technology" tone="dark">Explore our technologies</PrimaryLink>
+                <SecondaryLink href="#leadership" tone="dark">Corporate leadership</SecondaryLink>
+                <SecondaryLink href="/solutions" tone="dark">View solutions</SecondaryLink>
+              </div>
+
+              {/* Quick Jump Navigation Pill Bar */}
+              <div className="mt-10 border-t border-white/15 pt-6">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/60">
+                  Executive Briefing Directory
+                </p>
+                <nav
+                  aria-label="Section shortcuts"
+                  className="mt-3 flex flex-wrap gap-2 text-[12px] font-medium text-white/80"
+                >
+                  <a
+                    href="#who"
+                    className="rounded-full border border-white/15 bg-white/10 px-3 py-1 transition-colors hover:border-white hover:text-white"
+                  >
+                    01 Identity
+                  </a>
+                  <a
+                    href="#facilities"
+                    className="rounded-full border border-white/15 bg-white/10 px-3 py-1 transition-colors hover:border-white hover:text-white"
+                  >
+                    02 Facilities
+                  </a>
+                  <a
+                    href="#why"
+                    className="rounded-full border border-white/15 bg-white/10 px-3 py-1 transition-colors hover:border-white hover:text-white"
+                  >
+                    03 Imperatives
+                  </a>
+                  <a
+                    href="#build"
+                    className="rounded-full border border-white/15 bg-white/10 px-3 py-1 transition-colors hover:border-white hover:text-white"
+                  >
+                    04 Disciplines
+                  </a>
+                  <a
+                    href="#system"
+                    className="rounded-full border border-white/15 bg-white/10 px-3 py-1 transition-colors hover:border-white hover:text-white"
+                  >
+                    05 The Loop
+                  </a>
+                  <a
+                    href="#leadership"
+                    className="rounded-full border border-white/15 bg-white/10 px-3 py-1 transition-colors hover:border-white hover:text-white"
+                  >
+                    06 Leadership
+                  </a>
+                  <a
+                    href="#stack"
+                    className="rounded-full border border-white/15 bg-white/10 px-3 py-1 transition-colors hover:border-white hover:text-white"
+                  >
+                    07 Tech Stack
+                  </a>
+                  <a
+                    href="#evidence"
+                    className="rounded-full border border-white/15 bg-white/10 px-3 py-1 transition-colors hover:border-white hover:text-white"
+                  >
+                    08 Governance
+                  </a>
+                </nav>
               </div>
             </div>
 
+            {/* System Pipeline Architecture Figure */}
             <figure
               data-hero-visual
-              className="mx-auto w-full max-w-[520px] rounded-[18px] border border-hairline bg-surface p-4 min-[414px]:p-5 md:max-w-[560px] md:p-6 xl:mx-0 xl:max-w-none"
+              className="mx-auto w-full max-w-[540px] rounded-[22px] border border-white/20 bg-black/60 p-5 shadow-panel backdrop-blur-md min-[414px]:p-6 xl:mx-0 xl:max-w-none"
             >
-              <figcaption className="border-b border-hairline pb-3 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-soft">
-                The chain we work along
-              </figcaption>
+              <div className="flex items-center justify-between border-b border-white/15 pb-4">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex gap-1.5">
+                    <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+                  </div>
+                  <figcaption className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white">
+                    SYSTEM PIPELINE TOPOLOGY
+                  </figcaption>
+                </div>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[10.5px] font-semibold text-accent">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  CLOSED LOOP
+                </span>
+              </div>
 
-              <div className="pt-3">
+              <div className="pt-4">
                 <HeroDiagram />
               </div>
             </figure>
           </div>
         </div>
-
-        <div className="border-t border-hairline">
-          <div className={SHELL}>
-            <dl
-              data-reveal-group
-              className="grid divide-y divide-hairline md:grid-cols-3 md:divide-x md:divide-y-0"
-            >
-              {heroMeta.map((item, index) => (
-                <div
-                  key={item.term}
-                  data-reveal-item
-                  className={`py-5 md:py-6 ${index === 0 ? "md:pr-6" : "md:px-6"}`}
-                >
-                  <dt className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-soft/70">
-                    {item.term}
-                  </dt>
-                  <dd className="mt-1.5 text-[14.5px] leading-[1.55] tracking-[-0.01em] md:text-[15px]">
-                    {item.description}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
       </section>
 
-      {/* 01 — Who we are */}
+      {/* ── 01 · Strategic Positioning & Identity ──────────────────────── */}
       <section id="who" className="border-t border-hairline bg-surface py-20 md:py-28">
         <div className={SHELL}>
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,300px)] lg:gap-16">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,340px)] lg:gap-16">
             <div>
               <SectionHeader
                 index="01"
-                label="Who we are"
-                title={["A technology company building", "intelligent production systems."]}
-                intro="Aero Intelli works at the point where biological systems, physical engineering and software meet. The production systems we build — aquaculture, hydroponics, aeroponics, water treatment — are engineered together with the instrumentation and the intelligence that operate them, because a system that cannot report on itself cannot be improved."
+                label="Strategic Identity"
+                title={["A deep-tech systems corporation,", "not a conventional farm."]}
+                intro="Aero Intelli operates precisely where biological systems, physical fluid mechanics, and algorithmic intelligence converge. Every system we deploy — aquaculture, aeroponics, hydroponics, industrial water treatment — is co-engineered alongside the telemetry and sensory intelligence that govern it."
               />
 
-              <p className="mt-6 max-w-[720px] text-[15px] leading-[1.8] text-ink-soft md:text-[16.5px]">
-                That makes us a systems company rather than an agriculture company. The discipline we
-                bring is the same whether the resource being managed is water in a fish loop or
-                nutrients in a root zone: measure it, design around it, and hold the result to
-                evidence.
-              </p>
+              <div className="mt-8 space-y-4 text-[15.5px] leading-[1.8] text-ink-soft md:text-[17px]">
+                <p>
+                  Conventional agricultural technology treats farming, water treatment, and software
+                  as disjointed vendor silos. We treat them as a single thermodynamic and biological
+                  budget: measure the resource, design around its physics, and govern operations
+                  with empirical data.
+                </p>
+                <p>
+                  Whether regulating dissolved oxygen within a 500,000-litre recirculating aquaculture
+                  tank or micronutrient dosing across an aeroponic root zone, the core philosophy
+                  is uniform: instrument completely, close the loop, and automate with integrity.
+                </p>
+              </div>
 
-              <div className="mt-8">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-soft">
-                  We work across
+              {/* The Intersections Grid */}
+              <div className="mt-10 rounded-[18px] border border-hairline bg-surface-muted p-6">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                  Core Engineering Intersections
                 </p>
                 <div className="mt-4">
                   <TermList items={intersectionFields} />
@@ -329,559 +394,756 @@ export default function Page() {
               </div>
             </div>
 
-            <aside className="lg:pt-14">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-soft">
-                Focus
-              </p>
-              <ul className="mt-4 space-y-2 border-t border-hairline pt-4">
-                {focusDomains.map((domain) => (
-                  <li key={domain} className="text-[15px] font-medium tracking-[-0.01em]">
-                    {domain}
-                  </li>
-                ))}
-              </ul>
+            {/* Strategic Pillars Sidebar */}
+            <aside className="space-y-6 lg:pt-14">
+              <div className="rounded-[18px] border border-hairline-strong bg-surface p-6 shadow-sm">
+                <div className="flex items-center gap-2 border-b border-hairline pb-3">
+                  <span className="h-2 w-2 rounded-full bg-accent-deep" />
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink">
+                    Primary Operational Focus
+                  </p>
+                </div>
+                <ul className="mt-4 space-y-3">
+                  {focusDomains.map((domain, idx) => (
+                    <li
+                      key={domain}
+                      className="flex items-center justify-between text-[15px] font-medium tracking-[-0.01em] text-ink"
+                    >
+                      <span>{domain}</span>
+                      <span className="font-mono text-[11px] text-ink-soft/70">
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="rounded-[18px] border border-hairline bg-surface-muted p-6">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                  Corporate Architecture
+                </p>
+                <p className="mt-2 text-[14px] leading-[1.7] text-ink-soft">
+                  Structured as a unified engineering provider across hardware fabrication,
+                  biological cycle design, and facility automation software.
+                </p>
+                <div className="mt-4 pt-4 border-t border-hairline">
+                  <Link
+                    href="/technology"
+                    className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-ink hover:underline"
+                  >
+                    <span>Read Technology Architecture</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              </div>
             </aside>
           </div>
         </div>
       </section>
 
-      {/* 02 — Why we exist */}
-      <section id="why" className="bg-legal-dark py-20 md:py-28">
+      {/* ── 02 · Realistic Corporate Facilities & Engineering Gallery ───── */}
+      {/* Clean images with ZERO text overlay on the images */}
+      <section id="facilities" className="border-t border-hairline bg-surface-muted py-20 md:py-28">
         <div className={SHELL}>
           <SectionHeader
             index="02"
-            label="Why we exist"
-            title={["The systems that produce", "what we need most", "are changing."]}
-            tone="dark"
+            label="Facility Infrastructure & Operations"
+            title={["Physical hardware engineered for", "controlled biological performance."]}
+            intro="A visual look into our operating environments, biosecure aquaculture loops, precision root chambers, and automated instrumentation arrays."
           />
 
-          <ul data-stage-track className="mt-12 grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:mt-16">
-            {systemPressures.map((pressure) => (
-              <li
-                key={pressure}
-                data-stage
-                className="border-b border-white/10 pb-4 text-[20px] font-medium leading-[1.3] tracking-[-0.02em] text-footer-text md:text-[26px]"
-              >
-                {pressure}
-              </li>
-            ))}
-          </ul>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Card 1: Vertical Farming — Clean, no text on image */}
+            <div className="group overflow-hidden rounded-[22px] border border-hairline bg-surface shadow-sm transition-all duration-300 hover:border-hairline-strong hover:shadow-panel">
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <Image
+                  src="/images/vertical-farming.jpg"
+                  alt="Controlled-Environment Vertical Farm"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-[19px] font-medium tracking-[-0.02em] text-ink">
+                  Controlled Indoor Cultivation
+                </h3>
+                <p className="mt-2 text-[14px] leading-[1.7] text-ink-soft">
+                  Multi-tier automated vertical farming with dynamic spectral LED tuning,
+                  sub-millimeter nutrient misting, and continuous climate regulation.
+                </p>
+              </div>
+            </div>
 
-          <p className="mt-12 max-w-[760px] text-[17px] leading-[1.7] text-legal-dark-muted md:text-[20px] md:leading-[1.65]">
-            {responseStatement}
-          </p>
+            {/* Card 2: Aquaculture RAS — Clean, no text on image */}
+            <div className="group overflow-hidden rounded-[22px] border border-hairline bg-surface shadow-sm transition-all duration-300 hover:border-hairline-strong hover:shadow-panel">
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <Image
+                  src="/images/aquaculture-ras.jpg"
+                  alt="Recirculating Aquaculture Tank Systems"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-[19px] font-medium tracking-[-0.02em] text-ink">
+                  Recirculating Aquaculture (RAS)
+                </h3>
+                <p className="mt-2 text-[14px] leading-[1.7] text-ink-soft">
+                  Circular containment habitats with continuous oxygenation, hydrodynamic
+                  self-cleaning velocities, and biological nitrification loops.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3: Telemetry & Lab Engineering — Clean, no text on image */}
+            <div className="group overflow-hidden rounded-[22px] border border-hairline bg-surface shadow-sm transition-all duration-300 hover:border-hairline-strong hover:shadow-panel">
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <Image
+                  src="/images/telemetry-engineering.jpg"
+                  alt="Telemetry & Systems Engineering Laboratory"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-[19px] font-medium tracking-[-0.02em] text-ink">
+                  In-Situ Telemetry &amp; Automation
+                </h3>
+                <p className="mt-2 text-[14px] leading-[1.7] text-ink-soft">
+                  Engineers monitoring real-time chemical, electrical, and hydraulic sensor buses,
+                  feeding predictive neural networks with continuous ground truth.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 03 — Our response */}
-      <section className="bg-surface py-20 md:py-28">
+      {/* ── 03 · Global Macro Pressures & The Corporate Imperative ─────── */}
+      <section id="why" className="relative overflow-hidden bg-legal-dark py-24 md:py-32">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]"
+        />
+
         <div className={SHELL}>
           <SectionHeader
             index="03"
-            label="Our response"
-            title={["Controlled, measurable,", "connected and intelligent."]}
-            intro="The disciplines below are not a list of things we happen to do. Each one is a dependency of the next: biology sets the requirement, engineering meets it, water carries it, data records it and intelligence improves it."
+            label="Macro Pressures & Imperatives"
+            title={[
+              "The planetary systems that produce",
+              "our vital resources are reaching",
+              "critical inflection points.",
+            ]}
+            tone="dark"
+            intro="Industrial farming, open-water aquaculture, and regional municipal reservoirs operate under severe thermodynamic strain. The next decade requires moving from fragile extractive models to biosecure, closed-loop facilities."
           />
 
-          <div className="mt-10">
-            <EquationDiagram />
+          {/* Corporate Challenge & System Imperative Matrix */}
+          <div data-stage-track className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {systemPressures.map((pressure, index) => (
+              <div
+                key={pressure}
+                data-stage
+                className="group relative rounded-[18px] border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06]"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[11px] font-semibold text-accent">
+                    IMP-{String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent/60 group-hover:bg-accent" />
+                </div>
+                <h3 className="mt-4 text-[20px] font-medium leading-[1.3] tracking-[-0.02em] text-footer-text">
+                  {pressure}
+                </h3>
+                <p className="mt-3 text-[13.5px] leading-[1.65] text-legal-dark-muted">
+                  Requires systematic closed-loop redesign, rigorous sensory instrumentation,
+                  and automated multi-variable control to guarantee long-term operational resilience.
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Response Declaration Panel */}
+          <div className="mt-14 rounded-[22px] border border-white/15 bg-white/[0.04] p-8 md:p-10">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
+              Our Core Thesis
+            </p>
+            <p className="mt-4 text-[20px] font-medium leading-[1.5] text-footer-text md:text-[24px]">
+              &ldquo;{responseStatement}&rdquo;
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/10 pt-6">
+              <span className="text-[12px] font-medium text-legal-dark-muted">
+                Executive Action Strategy:
+              </span>
+              <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11.5px] text-footer-text">
+                Full Water Recirculation
+              </span>
+              <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11.5px] text-footer-text">
+                Zero Soil Leaching
+              </span>
+              <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11.5px] text-footer-text">
+                Real-Time Telemetry
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 04 — What we build */}
-      <section id="build" className="border-t border-hairline bg-surface-muted py-20 md:py-28">
+      {/* ── 04 · What We Build ─────────────────────────────────────────── */}
+      {/* "Domain Platform 01,02,03,04,05" removed as requested */}
+      {/* Clean images with zero text overlays */}
+      <section id="build" className="border-t border-hairline bg-surface-muted py-24 md:py-32">
         <div className={SHELL}>
           <SectionHeader
             index="04"
-            label="What we build"
-            title={["From production systems", "to intelligent infrastructure."]}
+            label="What We Build"
+            title={["Industrial production platforms,", "engineered from first principles."]}
+            intro="Aero Intelli engineers five foundational technology domains. Rather than standalone services, these operate as interlocking platforms that convert raw inputs into predictable biological yield."
           />
 
-          <div className="mt-14 space-y-14 md:mt-20 md:space-y-20">
-            {buildDomains.map((domain) => (
-              <article
-                key={domain.id}
-                className="grid gap-6 border-t border-hairline pt-8 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:gap-16"
-              >
-                <div>
-                  <span className="text-[11px] font-semibold tabular-nums tracking-[0.14em] text-ink-soft">
-                    {domain.index}
-                  </span>
-                  <h3 className="mt-3 text-[28px] font-medium leading-[1.12] tracking-[-0.03em] md:text-[38px]">
-                    {domain.name}
-                  </h3>
-                </div>
+          <div className="mt-14 space-y-12 md:mt-20 md:space-y-16">
+            {buildDomains.map((domain, index) => {
+              const domainImages = [
+                "/images/vertical-farming.jpg",
+                "/images/aquaculture-ras.jpg",
+                "/images/water-treatment.jpg",
+                "/images/telemetry-engineering.jpg",
+                "/images/hydroponics-facility.jpg",
+              ];
+              const domainImg = domainImages[index] || "/images/vertical-farming.jpg";
 
-                <div>
-                  <p className="max-w-[620px] text-[15px] leading-[1.8] text-ink-soft md:text-[16.5px]">
-                    {domain.summary}
-                  </p>
-                  <ul data-reveal-group className="mt-6 grid gap-x-10 gap-y-3 sm:grid-cols-2">
-                    {domain.capabilities.map((capability) => (
-                      <li
-                        key={capability}
-                        data-reveal-item
-                        className="flex gap-3 text-[15px] leading-[1.7] text-ink-soft"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className="mt-[10px] h-1 w-1 shrink-0 rounded-full bg-accent-deep"
-                        />
-                        <span className="min-w-0">{capability}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
+              return (
+                <article
+                  key={domain.id}
+                  className="group overflow-hidden rounded-[24px] border border-hairline bg-surface shadow-sm transition-all duration-300 hover:border-hairline-strong hover:shadow-panel"
+                >
+                  <div className="grid gap-0 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)_minmax(0,340px)]">
+                    {/* Left: Domain Intro — no "Domain Platform 01" text */}
+                    <div className="p-7 md:p-9">
+                      <h3 className="text-[26px] font-medium leading-[1.15] tracking-[-0.03em] text-ink md:text-[32px]">
+                        {domain.name}
+                      </h3>
+
+                      <p className="mt-4 text-[15px] leading-[1.8] text-ink-soft md:text-[16px]">
+                        {domain.summary}
+                      </p>
+
+                      <div className="mt-8">
+                        <Link
+                          href="/solutions"
+                          className="inline-flex items-center gap-2 text-[13.5px] font-semibold text-ink transition-colors hover:text-accent-deep"
+                        >
+                          <span>Explore {domain.name} Solutions</span>
+                          <span>→</span>
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Middle: Capabilities */}
+                    <div className="border-t border-hairline p-7 md:p-9 lg:border-t-0 lg:border-l">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                        Core Capabilities
+                      </p>
+
+                      <ul data-reveal-group className="mt-5 space-y-2.5">
+                        {domain.capabilities.map((capability) => (
+                          <li
+                            key={capability}
+                            data-reveal-item
+                            className="flex items-center gap-3 rounded-[12px] border border-hairline bg-surface-muted p-3 text-[14px] leading-[1.5] text-ink"
+                          >
+                            <svg
+                              className="h-4 w-4 shrink-0 text-emerald-600"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                            >
+                              <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.2" />
+                              <path
+                                d="M5 8l2 2 4-4"
+                                stroke="currentColor"
+                                strokeWidth="1.2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                            <span className="font-medium">{capability}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Right: Clean Realistic Image without any text on top */}
+                    <div className="relative min-h-[220px] border-t border-hairline lg:border-t-0 lg:border-l">
+                      <Image
+                        src={domainImg}
+                        alt={domain.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 05 — The Aero Intelli system */}
-      <section id="system" className="bg-legal-dark py-20 md:py-28">
+      {/* ── 05 · The Closed-Loop System Architecture ──────────────────── */}
+      {/* Clean video without any text overlays */}
+      <section id="system" className="relative bg-legal-dark py-24 md:py-32">
         <div className={SHELL}>
-          <SectionHeader
-            index="05"
-            label="The system"
-            title={["Everything connects", "back to the resource."]}
-            intro="Water enters, is treated, carries a production cycle, gives up its nutrients to a second one, and returns. Data is produced at every stage, interpreted, and acted on. The loop below is the company's argument in one diagram."
-            tone="dark"
-          />
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] lg:items-end">
+            <div>
+              <SectionHeader
+                index="05"
+                label="The System Architecture"
+                title={["Every resource stream connects", "back into the production cycle."]}
+                intro="Water enters, is conditioned, sustains high-density aquatic biomass, surrenders its enriched nutrient load to soilless cultivation, and is clarified for recirculation. Data is harvested at each node to guide predictive adjustment."
+                tone="dark"
+              />
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <span className="rounded-full border border-white/20 bg-white/[0.05] px-4 py-1.5 text-[12px] text-footer-text">
+                  10 Interconnected Stages
+                </span>
+                <span className="rounded-full border border-white/20 bg-white/[0.05] px-4 py-1.5 text-[12px] text-footer-text">
+                  Continuous Mass-Balance Conservation
+                </span>
+                <span className="rounded-full border border-white/20 bg-white/[0.05] px-4 py-1.5 text-[12px] text-footer-text">
+                  Zero Waste Runoff
+                </span>
+              </div>
+            </div>
+
+            {/* Clean Recirculating Water Video Loop — zero text on top */}
+            <AmbientVideo
+              src="/videos/water-flow.mp4"
+              poster="/images/aquaculture-ras.jpg"
+              className="aspect-[16/9] w-full border border-white/20 shadow-panel"
+            />
+          </div>
         </div>
 
-        <div className={`${SHELL} mt-10`}>
+        {/* Interactive 10-Stage System Stage Console */}
+        <div className={`${SHELL} mt-12`}>
           <SystemStage />
         </div>
       </section>
 
-      {/* 06 — Philosophy */}
-      <section id="philosophy" className="bg-surface py-20 md:py-28">
+      {/* ── 06 · Corporate Governance & Executive Leadership ───────────── */}
+      {/* Image removed for Krishanth as requested */}
+      {/* "Executive Board & Key Officers Leadership Directory" text removed as requested */}
+      <section
+        id="leadership"
+        className="border-t border-hairline bg-surface-muted py-24 md:py-32"
+      >
         <div className={SHELL}>
-          <SectionHeader index="06" label="How we think" title={["We think in systems."]} />
+          <SectionHeader
+            index="06"
+            label="Corporate Governance & Leadership"
+            title={["Executive leadership,", "disciplined engineering."]}
+            intro="Aero Intelli is steered by founders and engineers with deep expertise spanning physical hydraulics, biological cycle control, software architectures, and corporate governance."
+          />
 
-          <ol data-stage-track className="mt-14 space-y-10 md:mt-20 md:space-y-14">
+          {/* Founder & CEO Spotlight Card — Pure Corporate Plate, No Photo */}
+          <div className="mt-14 rounded-[26px] border border-hairline-strong bg-surface p-7 shadow-panel md:p-11">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-14">
+              {/* Executive Plate & Monogram Crest — No Photo */}
+              <div className="relative flex flex-col justify-between overflow-hidden rounded-[22px] border border-hairline-strong bg-gradient-to-b from-ink to-legal-dark p-7 text-white shadow-md">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-accent/10 blur-2xl"
+                />
+
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
+                    AERO INTELLI
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[10px] font-medium text-white">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                    FOUNDER &amp; CEO
+                  </span>
+                </div>
+
+                {/* Central Corporate Insignia */}
+                <div className="relative z-10 my-10 flex flex-col items-center justify-center text-center">
+                  <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl border border-white/25 bg-white/[0.08] shadow-inner">
+                    <span className="font-mono text-[34px] font-semibold tracking-[-0.03em] text-accent">
+                      KR
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="absolute -bottom-1 -right-1 h-3.5 w-3.5 rounded-full border-2 border-ink bg-emerald-400"
+                    />
+                  </div>
+                  <h4 className="mt-4 text-[22px] font-semibold tracking-[-0.02em] text-white">
+                    {founder.name}
+                  </h4>
+                  <p className="mt-1 text-[13px] text-accent font-medium">
+                    {founder.role}
+                  </p>
+                </div>
+
+                <div className="relative z-10 border-t border-white/15 pt-4 text-center">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/60">
+                    Systems Architecture &amp; Deep Tech
+                  </p>
+                </div>
+              </div>
+
+              {/* Founder Statement & Credentials */}
+              <div className="flex flex-col justify-between">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface-muted px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                    Executive Mandate
+                  </div>
+
+                  <h3 className="mt-4 text-[28px] font-medium leading-[1.18] tracking-[-0.03em] text-ink md:text-[36px]">
+                    {founder.name}
+                  </h3>
+                  <p className="mt-1.5 text-[15px] font-semibold text-ink-soft">
+                    {founder.role}
+                  </p>
+
+                  <blockquote className="mt-6 border-l-2 border-ink pl-5 text-[16.5px] leading-[1.8] font-normal text-ink md:text-[18px] md:leading-[1.85]">
+                    &ldquo;{founder.message}&rdquo;
+                  </blockquote>
+
+                  <p className="mt-5 text-[14.5px] leading-[1.7] text-ink-soft">
+                    {founder.caption}
+                  </p>
+                </div>
+
+                {/* Team Disciplines */}
+                <div className="mt-8 border-t border-hairline pt-6">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                    Multidisciplinary Engineering Oversight
+                  </p>
+                  <div className="mt-3.5">
+                    <TermList items={teamDisciplines} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 07 · Technology Philosophy & Physical-Digital Stack ────────── */}
+      <section id="stack" className="bg-legal-dark py-24 md:py-32">
+        <div className={SHELL}>
+          <SectionHeader
+            index="07"
+            label="Technology Architecture"
+            title={["Physical infrastructure at the base,", "autonomous intelligence at the apex."]}
+            intro="Instrumentation retrofitted after construction only reads the system it was bolted onto. We embed multi-variable sensory acquisition into physical fabrication so intelligence is an innate property."
+            tone="dark"
+          />
+
+          <div className="mt-14">
+            <StackDiagram />
+          </div>
+
+          <div className="mt-10 rounded-[18px] border border-white/10 bg-white/[0.03] p-6 text-legal-dark-muted">
+            <p className="text-[14.5px] leading-[1.75]">
+              Every actuation command calculated at the decision tier returns directly to the
+              physical valve, heater, aerator, or doser — creating an uncompromised, self-tuning
+              closed control loop.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 08 · Physical to Digital Bridge ────────────────────────────── */}
+      <section id="bridge" className="border-t border-hairline bg-surface py-24 md:py-32">
+        <div className={SHELL}>
+          <SectionHeader
+            index="08"
+            label="The Physical-to-Digital Bridge"
+            title={["A physical production asset", "and a digital twin at once."]}
+            intro="Physical hardware grows the crop and shelters the aquatic stock. Digital models make operating dynamics transparent and predictive. Neither is a complete product without the other."
+          />
+
+          <div className="mt-14">
+            <BridgeDiagram />
+          </div>
+
+          {/* Equation summary */}
+          <div className="mt-14">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-soft">
+              The Systems Synthesis
+            </p>
+            <div className="mt-4">
+              <EquationDiagram />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 09 · Corporate Operating Principles & Values ───────────────── */}
+      <section
+        id="philosophy"
+        className="border-t border-hairline bg-surface-muted py-24 md:py-32"
+      >
+        <div className={SHELL}>
+          <SectionHeader
+            index="09"
+            label="Operating Principles"
+            title={["How we think: Systems first,", "evidence always."]}
+            intro="We reject speculative claims and vendor bloat. These five operating principles govern how our engineers design, deploy, and evaluate every facility."
+          />
+
+          <ol data-stage-track className="mt-14 space-y-6 md:mt-20 md:space-y-8">
             {principles.map((principle) => (
               <li
                 key={principle.index}
                 data-stage
-                className="grid gap-4 border-t border-hairline pt-7 lg:grid-cols-[minmax(0,160px)_minmax(0,1fr)] lg:gap-12"
+                className="rounded-[22px] border border-hairline bg-surface p-7 shadow-sm transition-all duration-300 hover:border-hairline-strong md:p-9"
               >
-                <span className="text-[13px] font-semibold tabular-nums tracking-[0.12em] text-ink-soft lg:sticky lg:top-28 lg:self-start lg:text-[15px]">
-                  {principle.index}
-                </span>
-                <div>
-                  <h3 className="text-[24px] font-medium leading-[1.2] tracking-[-0.025em] md:text-[32px]">
-                    {principle.title}
-                  </h3>
-                  <p className="mt-3 max-w-[660px] text-[15px] leading-[1.8] text-ink-soft md:text-[16.5px]">
-                    {principle.body}
-                  </p>
+                <div className="grid gap-4 lg:grid-cols-[minmax(0,180px)_minmax(0,1fr)] lg:gap-12">
+                  <div className="flex items-center gap-3 lg:block">
+                    <span className="font-mono text-[14px] font-semibold text-emerald-700">
+                      PRINCIPLE {principle.index}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-[22px] font-medium leading-[1.2] tracking-[-0.025em] text-ink md:text-[28px]">
+                      {principle.title}
+                    </h3>
+                    <p className="mt-3 max-w-[680px] text-[15.5px] leading-[1.8] text-ink-soft md:text-[16.5px]">
+                      {principle.body}
+                    </p>
+                  </div>
                 </div>
               </li>
             ))}
           </ol>
-        </div>
-      </section>
 
-      {/* 07 — Mission */}
-      <section id="mission" className="bg-legal-dark py-24 md:py-32">
-        <div className={`${SHELL} text-center`}>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-legal-dark-muted">
-            Our mission
-          </p>
-
-          <RevealText
-            lines={[missionStatement]}
-            className="mx-auto mt-8 max-w-[900px] text-[24px] font-medium leading-[1.35] tracking-[-0.025em] text-footer-text md:text-[38px] md:leading-[1.28]"
-          />
-
-          <ul className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3">
-            {missionPillars.map((pillar) => (
-              <li
-                key={pillar}
-                className="text-[12px] font-semibold uppercase tracking-[0.16em] text-accent"
-              >
-                {pillar}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* 08 — Vision */}
-      <section id="vision" className="relative overflow-hidden bg-surface py-24 md:py-32">
-        {/* Decorative network. Sits behind the copy at every breakpoint. */}
-        <div
-          aria-hidden="true"
-          data-parallax="0.35"
-          className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 opacity-[0.35]"
-        >
-          <svg viewBox="0 0 1200 300" className="h-auto w-full text-ink-soft">
-            {[40, 100, 160, 220, 280].map((y) => (
-              <line
-                key={y}
-                x1="0"
-                y1={y}
-                x2="1200"
-                y2={y}
-                stroke="currentColor"
-                strokeOpacity="0.12"
-                strokeWidth="1"
-              />
-            ))}
-            {[120, 320, 520, 720, 920, 1120].map((x) => (
-              <line
-                key={x}
-                x1={x}
-                y1="20"
-                x2={x}
-                y2="300"
-                stroke="currentColor"
-                strokeOpacity="0.08"
-                strokeWidth="1"
-              />
-            ))}
-          </svg>
-        </div>
-
-        <div className={`${SHELL} relative`}>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-ink-soft">
-            Our vision
-          </p>
-
-          <RevealText
-            lines={[visionStatement]}
-            className="mt-8 max-w-[980px] text-[26px] font-medium leading-[1.3] tracking-[-0.03em] md:text-[44px] md:leading-[1.22]"
-          />
-        </div>
-      </section>
-
-      {/* 09 — Values */}
-      <section id="values" className="border-t border-hairline bg-surface py-20 md:py-28">
-        <div className={SHELL}>
-          <SectionHeader index="09" label="What guides us" title={["Six values, not twelve."]} />
-
-          <div className="mt-12">
-            <ValuesList />
-          </div>
-        </div>
-      </section>
-
-      {/* 10 — Leadership */}
-      <section id="leadership" className="bg-surface-muted py-20 md:py-28">
-        <div className={SHELL}>
-          <SectionHeader index="10" label="Leadership" title={["Building Aero Intelli."]} />
-
-          <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-16">
-            {/* No portrait is published yet. The plate says so rather than
-                standing in a stock photograph of someone else. */}
-            <div className="flex aspect-[4/5] max-w-[340px] items-end rounded-[18px] border border-hairline bg-surface p-5">
-              <p className="text-[11px] uppercase tracking-[0.14em] text-ink-soft/70">
-                Portrait to be published
+          {/* Corporate Core Values */}
+          <div className="mt-20">
+            <div className="border-t border-hairline pt-12">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-soft">
+                Corporate Core Values
               </p>
-            </div>
-
-            <div>
-              <h3 className="text-[26px] font-medium leading-[1.15] tracking-[-0.03em] md:text-[34px]">
-                {founder.name}
+              <h3 className="mt-2 text-[26px] font-medium tracking-[-0.025em] text-ink md:text-[32px]">
+                Six Values, Not Twelve
               </h3>
-              {/* Same reasoning as the roster below: the title is a full
-                  sentence-length phrase now, so it is set as one rather than as
-                  a wide-tracked uppercase label. */}
-              <p className="mt-2 text-[14px] font-medium leading-[1.4] text-ink-soft">
-                {founder.role}
+              <p className="mt-2 max-w-[620px] text-[15px] text-ink-soft">
+                Clear ethical and technical commitments that guide our client relationships and
+                engineering rigor.
               </p>
+            </div>
 
-              <p className="mt-6 max-w-[680px] text-[16px] leading-[1.8] text-ink-soft md:text-[17px]">
-                {founder.message}
-              </p>
-
-              <p className="mt-6 max-w-[600px] border-l border-hairline-strong pl-4 text-[14.5px] leading-[1.7] text-ink-soft">
-                {founder.caption}
-              </p>
-
-              <div className="mt-10 border-t border-hairline pt-6">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-soft">
-                  Disciplines on the team
-                </p>
-                <div className="mt-4">
-                  <TermList items={teamDisciplines} />
-                </div>
-              </div>
+            <div className="mt-8">
+              <ValuesList />
             </div>
           </div>
-
-          {/* The roster.
-
-              Deliberately a hairline register rather than a grid of cards with
-              avatars. There are no portraits to publish, and a card built
-              around an empty circle or a set of initials draws the eye straight
-              to the thing that is missing. A typographic list has nothing
-              missing from it — the name is the content.
-
-              Two columns from `sm` and three from `lg`. Six people divide
-              evenly into both, so no row is ever left with a single orphan
-              cell. The 1px gaps over a hairline background are the same
-              register treatment the ecosystem and evidence sections use. */}
-          <div className="mt-14 border-t border-hairline pt-12 md:mt-20 md:pt-16">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-soft">
-              The team
-            </p>
-
-            <ul
-              data-reveal-group
-              className="mt-6 grid gap-px overflow-hidden rounded-[18px] border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3"
-            >
-              {teamMembers.map((member, index) => (
-                <li
-                  key={member.name}
-                  data-reveal-item
-                  className="flex items-start gap-4 bg-surface px-5 py-5 md:px-6 md:py-6"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="mt-0.5 shrink-0 text-[10.5px] font-semibold tabular-nums tracking-[0.1em] text-ink-soft/55"
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <span className="min-w-0">
-                    <span className="block text-[16px] font-medium leading-[1.3] tracking-[-0.015em] md:text-[17px]">
-                      {member.name}
-                    </span>
-                    {/* Sentence case, normal tracking — not the uppercase
-                        micro-label used elsewhere on this page. Titles are
-                        written out in full now, and "CHIEF FINANCIAL OFFICER
-                        (CFO) & CHIEF STRATEGY OFFICER (CSO)" set in wide-tracked
-                        uppercase runs to three ragged lines in a column this
-                        narrow and is genuinely harder to read than the acronym
-                        it replaced. Lowercase with a little extra leading keeps
-                        it to two clean lines. */}
-                    <span className="mt-1.5 block text-[12.5px] font-medium leading-[1.45] text-ink-soft">
-                      {member.role}
-                    </span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
 
-      {/* 11 — Technology philosophy */}
-      <section id="stack" className="bg-legal-dark py-20 md:py-28">
+      {/* ── 10 · Enterprise R&D Roadmap & Innovation Horizons ──────────── */}
+      <section id="research" className="bg-legal-dark py-24 md:py-32">
         <div className={SHELL}>
-          <SectionHeader
-            index="11"
-            label="Technology philosophy"
-            title={["Technology is the infrastructure.", "Intelligence is the layer."]}
-            intro="Each layer below exists only because the one under it reports honestly. Instrumentation added after commissioning measures the system it was retrofitted into, not the system that was designed — which is why sensing belongs in the architecture rather than beside it."
-            tone="dark"
-          />
-
-          <div className="mt-12">
-            <StackDiagram />
-          </div>
-
-          <p className="mt-8 max-w-[720px] border-t border-white/10 pt-6 text-[14.5px] leading-[1.75] text-legal-dark-muted">
-            The decision layer acts on the physical systems it sits above. That return path closes
-            the stack into the same loop the system diagram describes.
-          </p>
-        </div>
-      </section>
-
-      {/* 12 — Physical to digital */}
-      <section id="bridge" className="bg-surface py-20 md:py-28">
-        <div className={SHELL}>
-          <SectionHeader
-            index="12"
-            label="Physical to digital"
-            title={["A facility is a physical system", "and a data system at once."]}
-            intro="The equipment on the left is what produces food. The layer on the right is what makes its behaviour legible. Neither is the product on its own."
-          />
-
-          <div className="mt-12">
-            <BridgeDiagram />
-          </div>
-        </div>
-      </section>
-
-      {/* 13 — Ecosystem */}
-      <section id="ecosystem" className="border-t border-hairline bg-surface-muted py-20 md:py-28">
-        <div className={SHELL}>
-          <SectionHeader
-            index="13"
-            label="Ecosystem"
-            title={["The domains we work in."]}
-            intro="Deliberately bounded. These are the areas Aero Intelli builds in — not an ambition to operate in every adjacent market."
-          />
-
-          <div className="mt-10">
-            <EcosystemMap />
-          </div>
-        </div>
-      </section>
-
-      {/* 14 — Sustainability */}
-      <section id="sustainability" className="bg-surface py-20 md:py-28">
-        <div className={SHELL}>
-          <SectionHeader
-            index="14"
-            label="Sustainability"
-            title={["Sustainability is built", "into the architecture."]}
-            intro="Resource efficiency is a property of how a system is designed, not a programme run alongside it. The dedicated page sets out the approach in full, including what has and has not been measured."
-          />
-
-          <div className="mt-8">
-            <TermList items={sustainabilityThemes} />
-          </div>
-
-          <div className="mt-9">
-            <SecondaryLink href="/sustainability">Explore sustainability</SecondaryLink>
-          </div>
-        </div>
-      </section>
-
-      {/* 15 — Research and development.
-
-          The directions were a single row of pills that ran off the right edge
-          and drifted on scroll. It looked busy and it hid its own tail: on a
-          phone the last four were simply unreachable. An indexed two-column
-          register states the same eight in less vertical space, reads as a
-          register of active work rather than as marketing, and has no content
-          outside the viewport. */}
-      <section id="research" className="bg-legal-dark py-16 md:py-20">
-        <div className={SHELL}>
-          <div className="grid gap-9 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:items-start lg:gap-16">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)] lg:gap-16">
             <div>
               <SectionHeader
-                index="15"
-                label="Research"
-                title={["Always building", "what comes next."]}
-                intro="Active directions, not announcements. Each is a line of work rather than a shipped capability — where one produces a result worth publishing, it will be published with the measurement behind it."
+                index="10"
+                label="Innovation Pipeline"
+                title={["Active R&D,", "measured progression."]}
+                intro="Our internal research initiatives represent real engineering pipelines rather than press announcements. Where an innovation yields verifiable results, it is published with empirical baseline data."
                 tone="dark"
               />
 
-              <div className="mt-7">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <SecondaryLink href="/knowledge" tone="dark">
-                  Explore knowledge
+                  Explore knowledge base
                 </SecondaryLink>
               </div>
             </div>
 
-            <ul data-reveal-group className="border-t border-white/10 sm:grid sm:grid-cols-2 sm:gap-x-10">
-              {researchDirections.map((direction, index) => (
-                <li
-                  key={direction}
-                  data-reveal-item
-                  className="flex items-baseline gap-3.5 border-b border-white/10 py-3"
-                >
-                  <span className="shrink-0 text-[10.5px] font-semibold tabular-nums tracking-[0.1em] text-accent/70">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-[14.5px] leading-[1.5] text-footer-text">{direction}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Research Directions Matrix */}
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
+                Active Engineering Vectors
+              </p>
+              <ul
+                data-reveal-group
+                className="mt-4 grid gap-3 sm:grid-cols-2"
+              >
+                {researchDirections.map((direction, index) => (
+                  <li
+                    key={direction}
+                    data-reveal-item
+                    className="flex items-center gap-3.5 rounded-[14px] border border-white/10 bg-white/[0.03] p-4 text-footer-text transition-colors hover:border-white/20 hover:bg-white/[0.06]"
+                  >
+                    <span className="font-mono text-[11px] font-semibold text-accent/80">
+                      R&amp;D-{String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[14.5px] font-medium leading-[1.4]">
+                      {direction}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* 16 — How we work */}
-      <section id="process" className="bg-surface py-20 md:py-28">
-        <div className={SHELL}>
-          <SectionHeader
-            index="16"
-            label="How we work"
-            title={["Understand, engineer,", "integrate, monitor, optimise."]}
-            intro="The last step returns to the fourth. Optimisation that is not measured again is a change, not an improvement."
-          />
+          {/* Three Horizons Roadmap */}
+          <div className="mt-20 border-t border-white/10 pt-14">
+            <div className="mb-8">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
+                Strategic Horizon Framework
+              </p>
+              <h3 className="mt-2 text-[26px] font-medium tracking-[-0.025em] text-footer-text md:text-[32px]">
+                Long-Term Horizon Architecture
+              </h3>
+            </div>
 
-          <div className="mt-14">
-            <ProcessTimeline />
-          </div>
-        </div>
-      </section>
-
-      {/* 17 — Where we're going */}
-      <section id="future" className="bg-legal-dark py-20 md:py-28">
-        <div className={SHELL}>
-          <SectionHeader
-            index="17"
-            label="Where we're going"
-            title={["Building toward intelligent", "resource infrastructure."]}
-            intro="Three horizons, no dates. A year on this page would be a commitment, and these are directions rather than commitments."
-            tone="dark"
-          />
-
-          <div className="mt-12">
             <HorizonTimeline />
           </div>
         </div>
       </section>
 
-      {/* 18 — Evidence */}
-      <section id="evidence" className="bg-surface py-20 md:py-28">
+      {/* ── 11 · Operational Method: How We Work ───────────────────────── */}
+      <section id="process" className="border-t border-hairline bg-surface py-24 md:py-32">
         <div className={SHELL}>
           <SectionHeader
-            index="18"
-            label="Evidence"
-            title={["Built on measurement,", "not claims."]}
-            intro="This site publishes no water savings, carbon reductions, energy figures or efficiency percentages, because none has yet been measured on an operating Aero Intelli project. When performance is claimed it will rest on the following, and it will state the baseline it was measured against."
+            index="11"
+            label="Operational Method"
+            title={["Understand, engineer,", "integrate, monitor, optimise."]}
+            intro="Our systematic facility delivery methodology ensures that physical fabrication and digital telemetry match the exact biological load of the target crop or aquatic species."
           />
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <ul data-reveal-group className="grid gap-3">
-              {evidenceBasis.map((basis) => (
-                <li
-                  key={basis}
-                  data-reveal-item
-                  className="flex gap-3 border-b border-hairline pb-3 text-[15px] text-ink-soft"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-accent-deep"
-                  />
-                  <span className="min-w-0">{basis}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Descriptors, not statistics. Nothing here needs verification to
-                publish, which is exactly why it is what the page states. */}
-            <dl className="grid gap-px overflow-hidden rounded-[18px] border border-hairline bg-hairline">
-              {keyFacts.map((fact) => (
-                <div key={fact.term} className="bg-surface p-5">
-                  <dt className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-soft/70">
-                    {fact.term}
-                  </dt>
-                  <dd className="mt-2 text-[15.5px] leading-[1.6]">{fact.description}</dd>
-                </div>
-              ))}
-            </dl>
+          <div className="mt-16">
+            <ProcessTimeline />
           </div>
         </div>
       </section>
 
-      {/* Closing */}
-      <section className="border-t border-hairline bg-surface-muted py-20 md:py-28">
+      {/* ── 12 · Governance, Evidence & Corporate Integrity ───────────── */}
+      <section id="evidence" className="border-t border-hairline bg-surface-muted py-24 md:py-32">
         <div className={SHELL}>
-          <RevealText
-            lines={["We are building systems", "for a more intelligent future."]}
-            className="max-w-[900px] text-[30px] font-medium leading-[1.1] tracking-[-0.035em] md:text-[52px]"
+          <SectionHeader
+            index="12"
+            label="Corporate Integrity & Evidence"
+            title={["Committed to empirical evidence,", "not unmeasured claims."]}
+            intro="Aero Intelli does not publish inflated marketing percentages or unverified sustainability claims. Performance metrics are released exclusively when validated against empirical operating baselines."
           />
 
-          <p className="mt-7 max-w-[720px] text-[16px] leading-[1.8] text-ink-soft md:text-[17px]">
-            Aero Intelli brings together engineering, biological systems, water management,
-            controlled cultivation and artificial intelligence to develop technologies for the next
-            generation of food and resource infrastructure.
-          </p>
+          <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:gap-16">
+            {/* Evidence Verification Pillars */}
+            <div className="rounded-[22px] border border-hairline bg-surface p-7 shadow-sm md:p-9">
+              <h3 className="text-[20px] font-medium tracking-[-0.02em] text-ink md:text-[22px]">
+                The Four Pillars of Verification
+              </h3>
+              <p className="mt-2 text-[14.5px] leading-[1.7] text-ink-soft">
+                Before any performance efficiency is verified, our systems must satisfy
+                the following empirical audit criteria:
+              </p>
 
-          <div className="mt-10 flex flex-wrap gap-3">
-            <PrimaryLink href="/solutions">Explore solutions</PrimaryLink>
-            <SecondaryLink href="/contact">Talk to Aero Intelli</SecondaryLink>
+              <ul data-reveal-group className="mt-6 space-y-3.5">
+                {evidenceBasis.map((basis) => (
+                  <li
+                    key={basis}
+                    data-reveal-item
+                    className="flex items-center gap-3 rounded-[12px] border border-hairline bg-surface-muted px-4 py-3 text-[14.5px] text-ink"
+                  >
+                    <svg
+                      className="h-4 w-4 shrink-0 text-emerald-600"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <path
+                        d="M13.333 4L6 11.333 2.667 8"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="font-medium">{basis}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Operational Framework & System Scope */}
+            <div className="rounded-[22px] border border-hairline bg-surface p-7 shadow-sm md:p-9">
+              <h3 className="text-[20px] font-medium tracking-[-0.02em] text-ink md:text-[22px]">
+                Operational Framework &amp; Technical Scope
+              </h3>
+              <p className="mt-2 text-[14.5px] leading-[1.7] text-ink-soft">
+                Continuous measurement, closed-loop engineering, and scalable production disciplines.
+              </p>
+
+              <dl className="mt-6 divide-y divide-hairline rounded-[16px] border border-hairline bg-surface-muted overflow-hidden">
+                {keyFacts.map((fact) => (
+                  <div key={fact.term} className="p-4 sm:flex sm:items-center sm:justify-between">
+                    <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-soft">
+                      {fact.term}
+                    </dt>
+                    <dd className="mt-1 font-medium text-[14.5px] text-ink sm:mt-0 sm:text-right">
+                      {fact.description}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 13 · Executive Call to Action ─────────────────────────────── */}
+      <section className="relative overflow-hidden bg-ink py-24 text-surface-muted md:py-32">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-accent/10 blur-3xl"
+        />
+
+        <div className={SHELL}>
+          <div className="max-w-[860px]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
+              Commercial Engagement
+            </div>
+
+            <RevealText
+              lines={[
+                "Ready to engineer more intelligent,",
+                "resilient resource infrastructure?",
+              ]}
+              className="mt-7 text-[32px] font-medium leading-[1.1] tracking-[-0.035em] text-footer-text sm:text-[40px] md:text-[54px]"
+            />
+
+            <p className="mt-7 max-w-[720px] text-[16px] leading-[1.8] text-footer-secondary md:text-[18px]">
+              Aero Intelli partners with enterprise agriculture operators, commercial aquaculture
+              facilities, municipal resource planners, and institutional investors to deploy
+              state-of-the-art closed-loop production systems.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <PrimaryLink href="/contact" tone="dark">Schedule Executive Consultation</PrimaryLink>
+              <SecondaryLink href="/solutions" tone="dark">
+                Explore Commercial Solutions
+              </SecondaryLink>
+              <SecondaryLink href="/sustainability" tone="dark">
+                Sustainability Architecture
+              </SecondaryLink>
+            </div>
+
+            {/* Corporate Contact Note */}
+            <div className="mt-14 border-t border-white/15 pt-8 flex flex-wrap items-center justify-between gap-4 text-[13px] text-footer-muted">
+              <p>
+                Aero Intelli · Intelligent Resource Infrastructure
+              </p>
+              <Link
+                href="/contact"
+                className="font-medium text-accent hover:underline"
+              >
+                Direct Executive Inquiries →
+              </Link>
+            </div>
           </div>
         </div>
       </section>

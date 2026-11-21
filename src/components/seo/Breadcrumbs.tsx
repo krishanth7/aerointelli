@@ -105,7 +105,7 @@ export function Breadcrumbs() {
   const pathname = usePathname();
 
   const segments = pathname.split("/").filter(Boolean);
-  if (segments.length === 0) return null;
+  if (segments.length === 0 || pathname === "/about") return null;
 
   const trail = segments.map((segment, index) => ({
     label: labelFor(segment),
