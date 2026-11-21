@@ -140,37 +140,25 @@ function SecondaryLink({
 export default function Page() {
   return (
     <HomeScaffold>
-      {/* 01 — Hero with dynamic real-time video feed backdrop */}
+      {/* 01 — Hero with realistic seamless video loop backdrop */}
       <HomeHeroVideo>
         <div className={SHELL}>
           <div className="grid gap-12 py-8 md:py-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,420px)] xl:items-center xl:gap-16 2xl:grid-cols-[minmax(0,1fr)_minmax(0,460px)]">
             <div>
-              <div className="flex items-center gap-4">
-                <span className="shrink-0 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
-                  Aero Intelli · Closed-Loop Systems
-                </span>
-                <span
-                  aria-hidden="true"
-                  data-rule
-                  className="h-px flex-1 bg-white/20 lg:max-w-[140px]"
-                />
-              </div>
-
               <RevealText
                 as="h1"
                 split="letters"
                 lines={heroHeadline}
-                className="mt-6 text-[29px] font-medium leading-[1.1] tracking-[-0.035em] text-white min-[360px]:text-[31px] min-[414px]:text-[35px] md:mt-7 md:text-[50px] lg:text-[52px]"
+                className="text-[30px] font-medium leading-[1.1] tracking-[-0.035em] text-white min-[360px]:text-[33px] min-[414px]:text-[37px] md:text-[50px] lg:text-[54px]"
               />
 
-              <p className="mt-6 max-w-[560px] text-[15px] leading-[1.8] text-white/80 md:mt-7 md:text-[16.5px]">
+              <p className="mt-6 max-w-[560px] text-[15px] leading-[1.8] text-white/85 md:mt-7 md:text-[16.5px]">
                 {heroLede}
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3 md:mt-9">
                 <PrimaryLink href="/contact" tone="dark">Talk to Aero Intelli</PrimaryLink>
                 <SecondaryLink href="/about" tone="dark">How we work</SecondaryLink>
-                <SecondaryLink href="/solutions" tone="dark">Explore Systems</SecondaryLink>
               </div>
             </div>
 
