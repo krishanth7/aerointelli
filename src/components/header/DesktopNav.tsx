@@ -97,17 +97,15 @@ export function DesktopNav({
                 aria-controls={`nav-menu-${item.label.toLowerCase()}`}
                 aria-current={active ? "page" : undefined}
                 onClick={() => setOpenLabel(open ? null : item.label)}
-                className={`${itemClass} ${activeClass} ${
-                  open ? (dark ? "bg-white/10 text-white" : "bg-surface-muted text-ink") : ""
-                }`}
+                className={`${itemClass} ${activeClass} ${open ? (dark ? "bg-white/10 text-white" : "bg-surface-muted text-ink") : ""
+                  }`}
               >
                 <span>{item.label}</span>
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 12 12"
-                  className={`h-3 w-3 transition-transform duration-200 ${
-                    open ? "rotate-180" : ""
-                  } ${dark ? "text-white/60" : "text-ink-soft/75"}`}
+                  className={`h-3 w-3 transition-transform duration-200 ${open ? "rotate-180" : ""
+                    } ${dark ? "text-white/60" : "text-ink-soft/75"}`}
                 >
                   <path
                     d="M3 4.75 6 7.75l3-3"
